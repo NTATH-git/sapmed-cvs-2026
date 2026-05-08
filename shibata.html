@@ -228,7 +228,7 @@
   .footer-inner h4{font-family:"Noto Serif JP",serif;color:#fff;font-size:16px;margin-bottom:6px}
   .footer-bottom{font-size:11px;color:#6c7689;letter-spacing:0.1em}
 
-  /* Responsive */
+  /* Responsive (tablet) */
   @media(max-width:960px){
     .nav,.topbar-links{display:none}
     .doctor-hero-inner{grid-template-columns:1fr;gap:32px;text-align:center}
@@ -245,6 +245,96 @@
     .msg-text{font-size:22px}
     section{padding:64px 20px}
     .section-title{font-size:26px}
+  }
+
+  /* Responsive (smartphone) */
+  @media(max-width:600px){
+    /* Topbar / Header */
+    .topbar-inner{padding:8px 16px;font-size:11px}
+    .topbar-inner > div:first-child{font-size:11px;line-height:1.4}
+    .header-inner{padding:14px 16px}
+    .logo-mark{width:40px;height:40px;font-size:18px}
+    .logo-text .ja{font-size:14px}
+    .logo-text .en{font-size:10px}
+    .breadcrumb{padding:12px 16px;font-size:11px}
+    .breadcrumb .sep{margin:0 8px}
+
+    /* Hero */
+    .doctor-hero{padding:48px 18px 64px}
+    .doctor-hero-inner{gap:24px}
+    .doctor-photo-frame{max-width:240px;padding:10px}
+    .doctor-photo-frame::before{transform:translate(10px,10px)}
+    .doctor-eyebrow{font-size:11px;letter-spacing:0.3em;margin-bottom:12px}
+    .doctor-eyebrow::before{width:24px}
+    .doctor-name-ja{font-size:28px;line-height:1.4;letter-spacing:0.04em}
+    .doctor-name-en{font-size:13px;margin-bottom:18px;letter-spacing:0.06em}
+    .doctor-role{font-size:11px;letter-spacing:0.1em;padding:5px 14px;margin-bottom:20px}
+    .doctor-tagline{font-size:15px;line-height:1.85;padding-left:14px;border-left-width:2px}
+
+    /* Sections common */
+    section{padding:48px 18px}
+    .section-head{margin-bottom:36px}
+    .section-eyebrow{font-size:11px;letter-spacing:0.3em;margin-bottom:10px}
+    .section-title{font-size:22px;line-height:1.55;letter-spacing:0.04em}
+    .section-head.center .section-title::after{margin-top:18px}
+    .section-sub{font-size:13px;margin-top:14px;line-height:1.85}
+
+    /* Specialties */
+    .spec-card{padding:32px 22px}
+    .spec-card .num{font-size:46px;right:14px}
+    .spec-card .icon{width:46px;height:46px;margin-bottom:18px}
+    .spec-card h3{font-size:18px;margin-bottom:10px}
+    .spec-card .lead{font-size:13px;line-height:1.9;margin-bottom:14px}
+    .spec-card ul{font-size:12px;padding-top:14px}
+
+    /* Cases */
+    .case-image{aspect-ratio:16/10}
+    .case-body{padding:18px 20px 22px}
+    .case-tag{font-size:10px;padding:3px 10px;margin-bottom:10px}
+    .case-card h3{font-size:16px;margin-bottom:8px}
+    .case-card p{font-size:12px;line-height:1.85}
+    .case-note{font-size:11px;margin-top:24px}
+
+    /* Numbers */
+    .numbers{padding:56px 18px}
+    .num-grid{gap:28px 12px}
+    .num-val{font-size:42px}
+    .num-val small{font-size:13px}
+    .num-label{font-size:11px;letter-spacing:0.1em}
+
+    /* Timeline */
+    .tl-list{padding-left:18px}
+    .tl-list::before{left:6px;width:1.5px}
+    .tl-item{padding:0 0 32px 26px}
+    .tl-item::before{left:-22px;width:14px;height:14px;border-width:2px;box-shadow:0 0 0 3px rgba(184,51,42,0.1)}
+    .tl-year{font-size:18px;margin-bottom:4px}
+    .tl-where{font-size:15px;line-height:1.5;margin-bottom:6px}
+    .tl-detail{font-size:13px;line-height:1.85}
+
+    /* Credentials */
+    .cred-block h3{font-size:18px;flex-wrap:wrap;gap:6px;margin-bottom:18px;padding-bottom:12px}
+    .cred-block h3 .en{font-size:11px;letter-spacing:0.15em}
+    .cred-list li{font-size:12px;padding:12px 14px;line-height:1.6}
+
+    /* Message */
+    .message{padding:80px 18px}
+    .msg-quote{font-size:64px;margin-bottom:-10px}
+    .msg-text{font-size:18px;line-height:1.9;letter-spacing:0.04em}
+    .msg-author{font-size:11px;letter-spacing:0.15em}
+    .msg-author strong{font-size:15px}
+
+    /* CTA */
+    .cta{padding:56px 18px}
+    .cta h2{font-size:20px;line-height:1.55;margin-bottom:14px}
+    .cta p{font-size:13px;margin-bottom:22px}
+    .cta-actions{flex-direction:column;align-items:stretch;max-width:280px;margin:0 auto}
+    .btn{padding:13px 22px;font-size:13px;justify-content:center}
+
+    /* Footer */
+    footer{padding:36px 18px 20px;font-size:12px}
+    .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
+    .footer-inner h4{font-size:14px}
+    .footer-bottom{font-size:10px}
   }
 </style>
 </head>
