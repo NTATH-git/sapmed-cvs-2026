@@ -224,7 +224,9 @@
   .staff-grid{
     display:flex;flex-wrap:wrap;justify-content:center;gap:24px;
   }
-  .staff-grid .staff-card{width:260px;flex:0 0 260px}
+  .staff-grid > *{width:260px;flex:0 0 260px}
+  .staff-card-link{display:block;color:inherit;text-decoration:none}
+  .staff-card-link .staff-card{height:100%}
   .staff-grid-5{max-width:828px;margin:0 auto} /* 3 cards × 260 + 2 gaps */
   .staff-card{
     background:#fff;border:1px solid var(--line);overflow:hidden;
@@ -575,28 +577,39 @@
       </div>
     </div>
 
+    <!-- 准教授 -->
+    <div class="staff-tier">
+      <div class="tier-label">准教授 <span class="en">Associate Professor</span></div>
+      <div class="staff-grid staff-grid-2">
+        <a href="nakajima.html" class="staff-card-link">
+          <article class="staff-card">
+            <div class="staff-photo has-photo" data-name="中島 智博" style="background-image:url('https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Nakajima.jpg')"></div>
+            <div class="staff-info">
+              <div class="staff-role">Associate Professor</div>
+              <h3>中島 智博</h3>
+              <div class="staff-en">Tomohiro Nakajima, M.D., Ph.D.</div>
+              <p class="staff-spec">専門：心臓血管外科 / 血管内治療</p>
+            </div>
+          </article>
+        </a>
+      </div>
+    </div>
+
     <!-- 講師 -->
     <div class="staff-tier">
       <div class="tier-label">講師 <span class="en">Lecturer</span></div>
       <div class="staff-grid staff-grid-2">
-        <article class="staff-card">
-          <div class="staff-photo has-photo" data-name="中島 智博" style="background-image:url('https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Nakajima.jpg')"></div>
-          <div class="staff-info">
-            <div class="staff-role">Lecturer</div>
-            <h3>中島 智博</h3>
-            <div class="staff-en">Tomohiro Nakajima, M.D., Ph.D.</div>
-            <p class="staff-spec">専門：心臓血管外科</p>
-          </div>
-        </article>
-        <article class="staff-card">
-          <div class="staff-photo has-photo" data-name="柴田 豪" style="background-image:url('https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Shibata.jpg')"></div>
-          <div class="staff-info">
-            <div class="staff-role">Lecturer</div>
-            <h3>柴田 豪</h3>
-            <div class="staff-en">Tsuyoshi Shibata, M.D., Ph.D.</div>
-            <p class="staff-spec">専門：心臓血管外科</p>
-          </div>
-        </article>
+        <a href="shibata.html" class="staff-card-link">
+          <article class="staff-card">
+            <div class="staff-photo has-photo" data-name="柴田 豪" style="background-image:url('https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Shibata.jpg')"></div>
+            <div class="staff-info">
+              <div class="staff-role">Lecturer</div>
+              <h3>柴田 豪</h3>
+              <div class="staff-en">Tsuyoshi Shibata, M.D., Ph.D.</div>
+              <p class="staff-spec">専門：心臓血管外科 / 末梢動脈疾患</p>
+            </div>
+          </article>
+        </a>
       </div>
     </div>
 
