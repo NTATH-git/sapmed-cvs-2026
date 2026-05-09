@@ -78,8 +78,19 @@
   .doctor-name-en{font-family:"Cormorant Garamond",serif;font-size:18px;letter-spacing:0.1em;color:#ffd9d6;margin-bottom:24px}
   .doctor-role{
     display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);
-    padding:6px 18px;font-size:13px;letter-spacing:0.15em;margin-bottom:28px;backdrop-filter:blur(4px);
+    padding:6px 18px;font-size:13px;letter-spacing:0.15em;margin-bottom:18px;backdrop-filter:blur(4px);
   }
+  .doctor-facts{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .fact{
+    display:inline-flex;align-items:center;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.22);padding:6px 14px;font-size:12px;
+    letter-spacing:0.12em;backdrop-filter:blur(4px);
+  }
+  .fact .label{
+    font-family:"Cormorant Garamond",serif;font-size:10px;letter-spacing:0.25em;
+    color:#ffd9d6;text-transform:uppercase;margin-right:8px;
+  }
+  .fact .val{font-weight:500;color:#fff}
   .doctor-tagline{
     font-family:"Noto Serif JP",serif;font-weight:400;font-size:22px;line-height:1.9;
     color:#fff;border-left:3px solid var(--accent);padding-left:20px;
@@ -268,7 +279,10 @@
     .doctor-eyebrow::before{width:24px}
     .doctor-name-ja{font-size:28px;line-height:1.4;letter-spacing:0.04em}
     .doctor-name-en{font-size:13px;margin-bottom:18px;letter-spacing:0.06em}
-    .doctor-role{font-size:11px;letter-spacing:0.1em;padding:5px 14px;margin-bottom:20px}
+    .doctor-role{font-size:11px;letter-spacing:0.1em;padding:5px 14px;margin-bottom:14px}
+    .doctor-facts{justify-content:center;gap:8px;margin-bottom:20px}
+    .fact{font-size:11px;padding:5px 12px;letter-spacing:0.06em}
+    .fact .label{font-size:9px;letter-spacing:0.18em;margin-right:6px}
     .doctor-tagline{font-size:15px;line-height:1.85;padding-left:14px;border-left-width:2px}
 
     /* Sections common */
@@ -371,6 +385,10 @@
       <h1 class="doctor-name-ja">柴田 豪</h1>
       <div class="doctor-name-en">Tsuyoshi Shibata, M.D., Ph.D.</div>
       <div class="doctor-role">講師 ／ 心臓血管外科 ・ 末梢動脈疾患</div>
+      <div class="doctor-facts">
+        <span class="fact"><span class="label">Blood Type</span><span class="val">B型</span></span>
+        <span class="fact"><span class="label">Family</span><span class="val">次男坊</span></span>
+      </div>
       <p class="doctor-tagline">
         足の血流から、いのちを支える。<br>
         ステントグラフトと血管内治療で、<br>
