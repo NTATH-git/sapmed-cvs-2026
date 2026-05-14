@@ -30,6 +30,19 @@
   img{max-width:100%;display:block}
   ::selection{background:var(--coral);color:#fff}
 
+  /* Topbar (sub-nav) */
+  .topbar{background:var(--ink);color:rgba(255,255,255,0.85);font-size:12px}
+  .topbar-inner{
+    max-width:var(--max);margin:0 auto;padding:8px var(--gutter);
+    display:flex;justify-content:flex-end;align-items:center;gap:24px;
+    letter-spacing:0.05em;
+  }
+  .topbar a{color:rgba(255,255,255,0.85);transition:color .2s}
+  .topbar a:hover{color:var(--gold-light);opacity:1}
+  .topbar .alumni-link{color:var(--gold-light);font-weight:500;letter-spacing:0.1em}
+  .topbar .alumni-link:hover{color:#fff}
+  .topbar .sep{color:rgba(255,255,255,0.25)}
+
   /* Header */
   .header{
     position:sticky;top:0;z-index:100;
@@ -356,13 +369,6 @@
   }
   .footer-bottom .logomark{font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:0.4em}
 
-  /* Doumonkai nav tab accent */
-  .nav a.alumni-tab{
-    color:var(--gold);font-weight:600;
-    padding:6px 14px;border:1px solid var(--gold);
-  }
-  .nav a.alumni-tab::after{display:none}
-  .nav a.alumni-tab:hover{background:var(--gold);color:var(--cream);opacity:1}
 
   /* Responsive */
   @media(max-width:1100px){
@@ -385,6 +391,11 @@
     :root{--gutter:20px}
     .nav,.header-cta{display:none}
     .menu-btn{display:block}
+
+    /* Topbar (sub-nav) */
+    .topbar-inner{padding:8px var(--gutter);gap:14px;font-size:11px;flex-wrap:wrap}
+    .topbar .sep{display:none}
+    .topbar a{font-size:11px;letter-spacing:0.05em}
 
     /* Header */
     .header-inner{padding:14px var(--gutter)}
@@ -536,6 +547,17 @@
 </head>
 <body>
 
+<!-- Topbar (sub-nav) -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="#">大学病院公式サイト</a>
+    <span class="sep">|</span>
+    <a href="#">アクセス</a>
+    <span class="sep">|</span>
+    <a href="doumonkai.html" class="alumni-link">同門会の方へ →</a>
+  </div>
+</div>
+
 <header class="header">
   <div class="header-inner">
     <a href="#" class="brand">
@@ -551,7 +573,6 @@
       <a href="#areas">専門領域</a>
       <a href="#staff">スタッフ</a>
       <a href="#news">お知らせ</a>
-      <a href="doumonkai.html" class="alumni-tab">同門会</a>
     </nav>
     <a href="#" class="header-cta">外来予約 →</a>
     <button class="menu-btn">≡</button>
@@ -874,7 +895,7 @@
     </div>
     <div class="footer-col"><h5>About</h5><ul><li>ご挨拶</li><li>教室の歴史</li><li>スタッフ</li><li>関連病院</li></ul></div>
     <div class="footer-col"><h5>Clinical</h5><ul><li>外来のご案内</li><li>入院のご案内</li><li>疾患と手術</li><li>セカンドオピニオン</li></ul></div>
-    <div class="footer-col"><h5>Academic</h5><ul><li>研究内容</li><li>学会・論文</li><li>入局・採用</li><li>同門会</li></ul></div>
+    <div class="footer-col"><h5>Academic</h5><ul><li>研究内容</li><li>学会・論文</li><li>入局・採用</li><li><a href="doumonkai.html" style="color:var(--gold-light)">同門会の方へ →</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <div>© 2026 Department of Cardiovascular Surgery, Sapporo Medical University.</div>
