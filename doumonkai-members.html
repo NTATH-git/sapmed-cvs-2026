@@ -221,6 +221,42 @@
   }
   .demo-notice strong{color:#7c2d12}
 
+  /* Refer banner（同僚への会員登録案内）*/
+  .refer-banner{
+    max-width:var(--max);margin:24px auto 0;
+    background:linear-gradient(135deg,#faf8f4,#fff);
+    border:1px solid var(--gold);border-left:4px solid var(--gold);
+    padding:24px 32px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;
+  }
+  .refer-banner .refer-icon{
+    width:54px;height:54px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
+  }
+  .refer-banner .refer-text h3{
+    font-family:"Noto Serif JP",serif;font-size:17px;color:var(--primary-dark);
+    font-weight:600;margin-bottom:4px;letter-spacing:0.04em;
+  }
+  .refer-banner .refer-text p{
+    font-size:13px;color:var(--text-soft);line-height:1.85;margin:0;
+  }
+  .refer-banner .refer-btn{
+    background:var(--gold);color:#fff;
+    padding:12px 22px;font-size:13px;font-weight:600;letter-spacing:0.1em;
+    text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+    transition:background .2s;white-space:nowrap;
+  }
+  .refer-banner .refer-btn:hover{background:#9a7a48;opacity:1}
+  .refer-banner .refer-btn .arrow{transition:transform .2s}
+  .refer-banner .refer-btn:hover .arrow{transform:translateX(4px)}
+  .refer-banner .copy-link{
+    margin-top:10px;display:flex;align-items:center;gap:8px;
+    background:#fff;border:1px solid var(--line);padding:6px 10px;
+    font-size:11px;color:var(--text-soft);font-family:monospace;
+    letter-spacing:0;cursor:pointer;transition:all .2s;
+  }
+  .refer-banner .copy-link:hover{border-color:var(--gold);color:var(--primary-dark)}
+  .refer-banner .copy-link .copy-icon{font-size:13px}
+
   /* Responsive */
   @media(max-width:960px){
     .layout{grid-template-columns:1fr;gap:24px;padding:32px 18px}
@@ -236,6 +272,15 @@
     .members-hero{padding:40px 18px}
     .members-hero h1{font-size:18px}
     .members-hero .badge{font-size:10px;padding:4px 10px}
+    .refer-banner{
+      grid-template-columns:1fr;gap:14px;padding:20px 22px;
+      text-align:center;
+    }
+    .refer-banner .refer-icon{margin:0 auto;width:46px;height:46px}
+    .refer-banner .refer-text h3{font-size:15px}
+    .refer-banner .refer-text p{font-size:12.5px}
+    .refer-banner .copy-link{font-size:10px;flex-wrap:wrap;justify-content:center}
+    .refer-banner .refer-btn{width:100%;justify-content:center}
     .topbar-inner{padding:8px 16px;font-size:10px}
   }
 </style>
@@ -326,6 +371,33 @@
   <div class="demo-notice">
     <strong>⚠️ デモ表示中：</strong>
     これはサンプル実装です。実際の運用では StatiCrypt 等の本格暗号化方式や、WordPress会員プラグインへの移行を推奨します。
+  </div>
+
+  <!-- 同僚への会員登録案内バナー -->
+  <div class="refer-banner">
+    <div class="refer-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="9" cy="8" r="3"/>
+        <path d="M2 21c0-3 3-5 7-5s7 2 7 5"/>
+        <circle cx="17" cy="9" r="2"/>
+        <path d="M21 18c0-2 -2-3.5 -4-3.5"/>
+      </svg>
+    </div>
+    <div class="refer-text">
+      <h3>まだご登録されていない同門の先生をご存知ですか？</h3>
+      <p>
+        胸部外科同門会では、同門の先生方の会員登録をお待ちしています。<br>
+        ぜひ周りの先生方にも会員登録ページをご案内ください。
+      </p>
+      <button type="button" class="copy-link" onclick="copyRegisterUrl(this)">
+        <span class="copy-icon">📋</span>
+        <span id="copy-url-text">https://ntath-git.github.io/sapmed-cvs-2026/doumonkai-signup.html</span>
+      </button>
+    </div>
+    <a href="doumonkai-signup.html" target="_blank" class="refer-btn">
+      会員登録ページを開く
+      <span class="arrow">→</span>
+    </a>
   </div>
 
   <!-- Layout -->
@@ -490,6 +562,20 @@
   // セッション有効ならスキップ
   if(sessionStorage.getItem("doumonkai_authed") === "1"){
     showContent();
+  }
+
+  // URLコピー機能（同僚への登録案内バナー用）
+  function copyRegisterUrl(btn){
+    const url = "https://ntath-git.github.io/sapmed-cvs-2026/doumonkai-signup.html";
+    navigator.clipboard.writeText(url).then(() => {
+      const originalText = btn.querySelector("#copy-url-text").textContent;
+      btn.querySelector("#copy-url-text").textContent = "✓ URLをコピーしました";
+      setTimeout(() => {
+        btn.querySelector("#copy-url-text").textContent = originalText;
+      }, 2000);
+    }).catch(() => {
+      alert("コピーに失敗しました。手動でURLをコピーしてください：\n" + url);
+    });
   }
 </script>
 
