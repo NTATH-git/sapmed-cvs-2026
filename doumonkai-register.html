@@ -64,9 +64,11 @@
   .steps-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;gap:0;align-items:flex-start;position:relative}
   .steps-inner::before{
     content:"";position:absolute;top:22px;left:14%;right:14%;height:2px;
-    background:linear-gradient(to right,var(--gold) 0%,var(--gold) 33%,var(--line) 33%);
+    background:linear-gradient(to right,var(--gold) 0%,var(--gold) 50%,var(--line) 50%);
     z-index:0;
   }
+  .step .num.done,
+  .step:first-child .num{background:var(--gold);color:#fff;border-color:var(--gold)}
   .step{flex:1;text-align:center;position:relative;z-index:1}
   .step .num{
     display:inline-flex;align-items:center;justify-content:center;
@@ -243,11 +245,11 @@
 <!-- Hero -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Member Registration</div>
-    <h1>同門会 会員登録</h1>
+    <div class="hero-eyebrow">Step 2 of 3 · Complete Your Profile</div>
+    <h1>会員情報のご入力</h1>
     <p>
-      ご登録いただきますと、年次総会・胸部外科フォーラム・Annual Report 発刊などの<br>
-      最新情報をメールでお届けいたします。
+      メールアドレスのご確認ありがとうございます。<br>
+      引き続き、お名前・ご所属などの会員情報をご入力ください。
     </p>
   </div>
 </section>
@@ -255,15 +257,15 @@
 <!-- Steps -->
 <div class="steps">
   <div class="steps-inner">
-    <div class="step active">
-      <div class="num">1</div>
-      <div class="label">情報入力</div>
-      <div class="sub">お名前・メール・所属</div>
-    </div>
     <div class="step">
+      <div class="num">✓</div>
+      <div class="label">メール入力</div>
+      <div class="sub">完了</div>
+    </div>
+    <div class="step active">
       <div class="num">2</div>
-      <div class="label">確認メール</div>
-      <div class="sub">ご登録メールに届きます</div>
+      <div class="label">情報入力</div>
+      <div class="sub">お名前・所属など</div>
     </div>
     <div class="step">
       <div class="num">3</div>
@@ -313,11 +315,11 @@
           </div>
         </div>
 
-        <!-- メール -->
+        <!-- メール（事前登録時に自動入力）-->
         <div class="form-row">
           <label for="email">メールアドレス <span class="required">必須</span></label>
-          <input type="email" id="email" name="EMAIL" required placeholder="例：example@hospital.jp">
-          <p class="form-help">同門会からのお知らせをこのアドレスに送付します。職場・個人いずれでも構いません。</p>
+          <input type="email" id="email" name="EMAIL" required placeholder="例：example@hospital.jp" readonly>
+          <p class="form-help">事前登録時のメールアドレスが自動入力されています。<br>変更が必要な場合は事務局までお問い合わせください。</p>
         </div>
 
         <!-- 所属 -->
@@ -412,6 +414,20 @@
   <p>© 2026 札幌医科大学 胸部外科同門会</p>
   <p class="small">SAPMED · THORACIC · ALUMNI · since 1958</p>
 </footer>
+
+<script>
+  // URLパラメータからメールアドレスを自動入力（メールリンクからの遷移に対応）
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if(email){
+      const emailInput = document.getElementById('email');
+      if(emailInput){
+        emailInput.value = decodeURIComponent(email);
+      }
+    }
+  })();
+</script>
 
 </body>
 </html>
