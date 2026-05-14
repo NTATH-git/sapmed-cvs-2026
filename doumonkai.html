@@ -146,6 +146,58 @@
   .history-content h3{font-family:"Noto Serif JP",serif;font-size:16px;font-weight:600;color:var(--primary-dark);margin-bottom:6px}
   .history-content p{font-size:12.5px;color:var(--ink-soft);line-height:1.85}
 
+  /* === Legacy / 歴代 === */
+  .legacy{background:var(--paper)}
+  .legacy-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .legacy-block h3{
+    font-family:"Noto Serif JP",serif;font-size:20px;color:var(--primary-dark);font-weight:600;
+    margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--gold);
+    display:flex;align-items:center;gap:14px;letter-spacing:0.05em;
+  }
+  .legacy-block h3 .en{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.25em;color:var(--ink-soft);text-transform:uppercase;font-weight:500}
+  .legacy-list{list-style:none;display:flex;flex-direction:column;gap:0}
+  .legacy-row{
+    display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;
+    padding:14px 0;border-bottom:1px dashed var(--line);
+  }
+  .legacy-row:last-child{border-bottom:0}
+  .legacy-row.current{background:linear-gradient(90deg,var(--bg-cream),transparent);padding:14px 16px;border-bottom:1px solid var(--gold);margin:0 -8px}
+  .legacy-row .period{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.1em;color:var(--gold);font-weight:600}
+  .legacy-row .name{font-family:"Noto Serif JP",serif;font-size:15px;color:var(--primary-dark);font-weight:600;letter-spacing:0.04em}
+  .legacy-row .name small{font-size:11px;font-weight:400;color:var(--ink-soft);margin-left:6px;font-family:inherit}
+  .legacy-row .badge{
+    font-size:9px;letter-spacing:0.15em;padding:3px 9px;
+    background:var(--gold);color:#fff;font-family:"Cormorant Garamond",serif;
+    text-transform:uppercase;font-weight:600;
+  }
+  .legacy-row .badge.past{background:var(--bg-cream);color:var(--ink-soft);border:1px solid var(--line)}
+
+  /* === Awards / 同門会賞 === */
+  .awards{background:var(--bg-cream)}
+  .awards-list{
+    max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--line);
+  }
+  .awards-row{
+    display:grid;grid-template-columns:80px 1fr 220px;gap:24px;
+    padding:20px 28px;border-bottom:1px solid var(--line);align-items:center;
+  }
+  .awards-row:last-child{border-bottom:0}
+  .awards-row:hover{background:var(--bg-cream)}
+  .awards-year{
+    font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--gold);
+    line-height:1;letter-spacing:0.05em;
+  }
+  .awards-paper{
+    font-family:"Noto Serif JP",serif;font-size:14px;color:var(--primary-dark);font-weight:500;
+    line-height:1.7;letter-spacing:0.02em;
+  }
+  .awards-paper em{font-style:normal;color:var(--ink-soft);font-size:12.5px;display:block;margin-top:4px;font-family:"Inter",sans-serif;font-weight:400}
+  .awards-author{font-family:"Noto Serif JP",serif;font-size:13px;color:var(--ink-soft);text-align:right;letter-spacing:0.04em}
+  .awards-author strong{display:block;color:var(--primary-dark);font-size:14px;margin-bottom:2px}
+  .awards-note{
+    text-align:center;margin-top:24px;font-size:12px;color:var(--ink-soft);line-height:1.85;
+  }
+
   /* === About === */
   .about{background:#fff}
   .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start}
@@ -298,6 +350,12 @@
     .history-content{padding:18px 22px}
     .history-year{font-size:22px}
     .about-grid{grid-template-columns:1fr;gap:36px}
+    .legacy-grid{grid-template-columns:1fr;gap:36px}
+    .awards-row{grid-template-columns:60px 1fr;gap:14px;padding:18px 20px}
+    .awards-author{grid-column:2;text-align:left;padding-top:8px;border-top:1px dashed var(--line)}
+    .awards-paper{font-size:13px}
+    .awards-paper em{font-size:11.5px}
+    .awards-year{font-size:20px}
     .htbl-head,.htbl-row{grid-template-columns:32px 1fr 70px;gap:10px;padding:12px 16px;font-size:12px}
     .htbl-head .tag-col,.htbl-row .tag{display:none}
     .htbl-row .cases{font-size:15px}
@@ -338,6 +396,14 @@
     .officer-card.lead .lead-quote{font-size:15px}
     .about-stats{padding:32px 22px}
     .stat-row dd{font-size:18px}
+    .legacy-row{grid-template-columns:1fr;gap:6px;padding:14px 0}
+    .legacy-row .badge{justify-self:start}
+    .legacy-row.current{padding:14px 12px}
+    .awards-row{padding:16px 18px}
+    .awards-paper{font-size:12.5px;line-height:1.7}
+    .awards-paper em{font-size:11px}
+    .awards-author{font-size:11.5px}
+    .awards-author strong{font-size:13px}
     .hospitals-tabs{margin-bottom:24px}
     .htab{padding:12px 20px;font-size:13px}
     .hospitals-summary{padding:20px 24px}
@@ -383,9 +449,9 @@
     <nav class="nav">
       <a href="#officers">役員</a>
       <a href="#history">歩み</a>
-      <a href="#about">同門会について</a>
+      <a href="#legacy">歴代</a>
+      <a href="#awards">同門会賞</a>
       <a href="#hospitals">関連施設</a>
-      <a href="#activities">活動</a>
       <a href="#reports">年報</a>
       <a href="#schedule">行事</a>
       <a href="#join">入会</a>
@@ -535,7 +601,7 @@
         <div class="history-content">
           <div class="history-year">1997</div>
           <h3>Annual Report 創刊</h3>
-          <p>安倍十三夫教授の時代に Annual Report 創刊。関連施設の症例数・業績を一冊にまとめる伝統が始まる。</p>
+          <p>安倍 十三夫 教授の時代に Annual Report 創刊。関連施設の症例数・業績を一冊にまとめる伝統が始まる。</p>
         </div>
         <div class="history-dot"></div>
       </div>
@@ -544,7 +610,7 @@
         <div class="history-content">
           <div class="history-year">2008</div>
           <h3>創立50周年 記念祝賀会</h3>
-          <p>2008年8月30日、京王プラザホテル札幌にて50周年記念祝賀会を盛大に開催。</p>
+          <p>2008年8月30日、京王プラザホテル札幌にて50周年記念祝賀会を盛大に開催。当時の日本胸部外科学会理事長 田林晄一先生・富山大学第一外科教授 三崎拓郎先生らが記念講演。</p>
         </div>
       </div>
       <div class="history-item">
@@ -556,38 +622,246 @@
         <div class="history-dot"></div>
       </div>
       <div class="history-item">
-        <div class="history-dot special"></div>
+        <div class="history-dot"></div>
         <div class="history-content">
-          <div class="history-year">2018</div>
-          <h3>創立60周年 記念祝賀会</h3>
-          <p>2018年7月21日、京王プラザホテル札幌にて60周年記念祝賀会を開催。</p>
+          <div class="history-year">2016</div>
+          <h3>第100回 日本胸部外科北海道地方会</h3>
+          <p>1月30日、川原田 修義 教授が大会長を務め、第100回記念大会を開催。前身の北海道胸部外科学会から共に歩んできた歴史の節目。</p>
         </div>
       </div>
       <div class="history-item">
         <div class="history-content">
-          <div class="history-year">2025</div>
-          <h3>新体制への移行</h3>
-          <p>3月、川原田修義教授が退任。9月、宮島正博先生が呼吸器外科 主任教授に就任。</p>
+          <div class="history-year">2018</div>
+          <h3>創立60周年 記念学術講演会</h3>
+          <p>7月21日、開講60周年記念学術講演会を開催。南カリフォルニア大学 岩城 裕一 先生・前 大阪大学 奥村 明之進 先生・日本胸部外科学会理事長 大北 裕 先生が記念講演。同年 4月よりロボット支援呼吸器外科手術 開始。</p>
+        </div>
+        <div class="history-dot special"></div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot"></div>
+        <div class="history-content">
+          <div class="history-year">2019</div>
+          <h3>令和元年 ／ HOPES 立ち上げ</h3>
+          <p>5月、元号が令和に。9月、北海道外科系学会連合 HOPES（Hokkaido Organization of Professional and Educational Surgical Societies）の第3回大会が開催され、渡辺 敦 教授が第109回北海道外科学会会長を務める。</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-content">
+          <div class="history-year">2020</div>
+          <h3>COVID-19 ／ Web 同門会総会</h3>
+          <p>COVID-19 流行のため対面イベントが中止に。12月、初の Web 同門会総会を開催。川原田 教授による SMC Web Forum も同年末に開催され、関連施設の交流をオンラインで継続。</p>
         </div>
         <div class="history-dot"></div>
       </div>
       <div class="history-item">
-        <div class="history-dot special"></div>
+        <div class="history-dot"></div>
+        <div class="history-content">
+          <div class="history-year">2023</div>
+          <h3>第76回 日本胸部外科学会 分野会長</h3>
+          <p>10月、渡辺 敦 教授が第76回日本胸部外科学会分野会長を務める。教室一同で全力支援。同年 12月の同門会賞は 札幌医大心臓血管外科 柴田 豪 助教（TEVAR治療研究）。</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-content">
+          <div class="history-year">2024</div>
+          <h3>体制の節目</h3>
+          <p>4月、渡辺 敦 先生が札幌医大附属病院 病院長に就任。山田 陽 先生が同門会学術振興会 代表世話人に就任（前任：中村 雅則 先生）。</p>
+        </div>
+        <div class="history-dot"></div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot"></div>
+        <div class="history-content">
+          <div class="history-year">2025</div>
+          <h3>新教授体制への移行</h3>
+          <p>3月、川原田 修義 教授が 10年の任期を終え退任（現 小樽市立病院 総合臨床センター長）。9月、宮島 正博 先生が呼吸器外科 第2代教授に就任。</p>
+        </div>
+      </div>
+      <div class="history-item">
         <div class="history-content">
           <div class="history-year">2026</div>
           <h3>新章 ── 伊庭 裕 教授 就任</h3>
           <p>令和8年5月、伊庭 裕 先生が心臓血管外科 主任教授（第6代）に就任。同門会も新たな章へ。</p>
         </div>
+        <div class="history-dot special"></div>
       </div>
       <div class="history-item">
+        <div class="history-dot special"></div>
         <div class="history-content">
           <div class="history-year">2028</div>
           <h3>創立70周年 記念祝賀会（予定）</h3>
           <p>新体制での開講70周年祝賀会を企画予定。同門の総力を結集した記念の年へ。</p>
         </div>
-        <div class="history-dot special"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Legacy Leadership -->
+<section class="legacy" id="legacy">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Legacy Leadership</div>
+      <h2 class="section-title">歴代の代表世話人 ・ 主任教授</h2>
+      <p class="section-sub">同門会と教室を支えてきた歴代の役員・教授（直近約10年分）。</p>
+    </div>
+    <div class="legacy-grid">
+
+      <!-- 学術振興会代表世話人 -->
+      <div class="legacy-block">
+        <h3>学術振興会 代表世話人 <span class="en">Executive Secretary</span></h3>
+        <ul class="legacy-list">
+          <li class="legacy-row current">
+            <span class="period">2024 – 現任</span>
+            <span class="name">山田 陽 <small>先生</small></span>
+            <span class="badge">現任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">2020 – 2024</span>
+            <span class="name">中村 雅則 <small>先生</small></span>
+            <span class="badge past">前任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">2017 – 2019</span>
+            <span class="name">木村 希望 <small>先生</small></span>
+            <span class="badge past">前任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">– 2016</span>
+            <span class="name">中西 克彦 <small>先生</small></span>
+            <span class="badge past">前々任</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 心臓血管外科 主任教授 -->
+      <div class="legacy-block">
+        <h3>心臓血管外科 主任教授 <span class="en">Chair · Cardiovascular</span></h3>
+        <ul class="legacy-list">
+          <li class="legacy-row current">
+            <span class="period">2026 – 現任</span>
+            <span class="name">伊庭 裕 <small>先生（第6代）</small></span>
+            <span class="badge">現任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">– 2025.3</span>
+            <span class="name">川原田 修義 <small>先生</small></span>
+            <span class="badge past">前任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">– 1990年代後半</span>
+            <span class="name">安倍 十三夫 <small>先生</small></span>
+            <span class="badge past">歴代</span>
+          </li>
+        </ul>
+        <h3 style="margin-top:36px">呼吸器外科 主任教授 <span class="en">Chair · Thoracic</span></h3>
+        <ul class="legacy-list">
+          <li class="legacy-row current">
+            <span class="period">2025.9 – 現任</span>
+            <span class="name">宮島 正博 <small>先生（第2代）</small></span>
+            <span class="badge">現任</span>
+          </li>
+          <li class="legacy-row">
+            <span class="period">2012 – 2024</span>
+            <span class="name">渡辺 敦 <small>先生（初代 / 現 病院長）</small></span>
+            <span class="badge past">前任</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Awards -->
+<section class="awards" id="awards">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Doumonkai Award</div>
+      <h2 class="section-title">同門会賞 受賞者一覧</h2>
+      <p class="section-sub">同門会賞は、優れた英語論文・研究を発表された同門会員を表彰する制度です。<br>毎年12月の同門会忘年会において記念講演を行っていただいています。</p>
+    </div>
+    <div class="awards-list">
+      <div class="awards-row">
+        <div class="awards-year">2024</div>
+        <div class="awards-paper">
+          肺腺癌における細胞接着・転写因子の発現と治療応用に関する研究
+          <em>The Roles and Regulatory Mechanisms of Tight Junction Protein Cingulin and Transcription Factor Forkhead Box Protein O1 in Human Lung Adenocarcinoma A549 Cells and Normal Lung Epithelial Cells（Int J Mol Sci. 2024）</em>
+        </div>
+        <div class="awards-author">
+          <strong>石井 大智 先生</strong>
+          呼吸器外科
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2023</div>
+        <div class="awards-paper">
+          胸腹部大動脈瘤に対する安全な TEVAR 治療のための斬新な治療法の確立
+          <em>胸腹部大動脈ステントグラフト治療の血流動態・治療成績に関する研究</em>
+        </div>
+        <div class="awards-author">
+          <strong>柴田 豪 先生</strong>
+          札幌医大 心臓血管外科 助教
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2022</div>
+        <div class="awards-paper">
+          関連施設からの斬新な臨床研究テーマによる論文業績
+          <em>大学以外の関連施設からの精力的な論文発表として表彰</em>
+        </div>
+        <div class="awards-author">
+          <strong>佐藤 宏 先生</strong>
+          小樽市立病院
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2021</div>
+        <div class="awards-paper">
+          同門会総会記念講演 ／ 心臓血管外科領域の臨床研究
+          <em>第71回 同門会総会後の記念講演として登壇</em>
+        </div>
+        <div class="awards-author">
+          <strong>三上 拓真 先生</strong>
+          市立函館病院
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2019</div>
+        <div class="awards-paper">
+          内胸動脈と冠動脈周囲の脂肪組織における phenotype の差異に関する研究
+          <em>Differential Phenotypes in Perivascular Adipose Tissue Surrounding the Internal Thoracic Artery and Diseased Coronary Artery</em>
+        </div>
+        <div class="awards-author">
+          <strong>沼口 亮介 先生</strong>
+          心臓血管外科
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2018</div>
+        <div class="awards-paper">
+          人工腱索を用いた後尖弁逸脱に対する僧帽弁形成術
+          <em>Mitral Valve Repair with Artificial Chordae for Posterior Leaflet Disease</em>
+        </div>
+        <div class="awards-author">
+          <strong>柳清 洋祐 先生</strong>
+          札幌医大 心臓血管外科
+        </div>
+      </div>
+      <div class="awards-row">
+        <div class="awards-year">2018</div>
+        <div class="awards-paper">
+          B型急性大動脈解離における大動脈拡大予測因子の研究
+          <em>New predictor of aortic enlargement in uncomplicated type B aortic dissection based on elliptic Fourier analysis</em>
+        </div>
+        <div class="awards-author">
+          <strong>佐藤 宏 先生</strong>
+          心臓血管外科
+        </div>
+      </div>
+    </div>
+    <p class="awards-note">
+      ※ 論文名・要旨は各年の Annual Report より要約掲載。詳細は会員専用ページよりPDFをご参照ください。
+    </p>
   </div>
 </section>
 
