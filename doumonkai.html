@@ -3,50 +3,73 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>札幌医科大学 心臓血管外科 同門会</title>
-<meta name="description" content="札幌医科大学 心臓血管外科 同門会 公式ページ。歴代の卒業生・関連病院在籍者の親睦と学術交流の場として活動しています。" />
+<title>札幌医科大学 心臓血管外科 同門会 ── since 1958</title>
+<meta name="description" content="札幌医科大学 心臓血管外科 同門会 公式ページ。1958年創設の旧第二外科に源流をもつ同門の絆。年次総会・若手研究助成・会報発行などを通じ、世代を超えた交流を続けています。" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
+    --ink:#0f172a;--ink-soft:#475569;
     --primary:#0d3b66;--primary-dark:#082848;
+    --navy:#0a2540;--navy-deep:#061528;
     --accent:#b8332a;--accent-light:#d35450;
-    --gold:#b08d57;
+    --gold:#b08d57;--gold-light:#d4b87a;
     --bg:#fff;--bg-soft:#f5f7fa;--bg-cream:#faf8f4;
-    --text:#1a1f2c;--text-soft:#566173;--line:#e2e6ec;
-    --max:1200px;--radius:4px;
+    --paper:#fffdf8;--line:#e8e2d0;
+    --max:1200px;--gutter:32px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
-    color:var(--text);background:var(--bg);line-height:1.85;
+    color:var(--ink);background:var(--bg-cream);line-height:1.85;
     font-feature-settings:"palt";-webkit-font-smoothing:antialiased;
   }
-  a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none;transition:opacity .2s,color .2s}
+  a:hover{opacity:0.75}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--gold);color:#fff}
 
   /* Topbar */
   .topbar{background:var(--primary-dark);color:#fff;font-size:12px}
-  .topbar-inner{max-width:var(--max);margin:0 auto;padding:8px 24px}
+  .topbar-inner{
+    max-width:var(--max);margin:0 auto;padding:8px var(--gutter);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .topbar a{color:#fff}
+  .topbar a:hover{opacity:0.7}
 
   /* Header */
   .header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
-  .header-inner{max-width:var(--max);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .header-inner{
+    max-width:var(--max);margin:0 auto;padding:18px var(--gutter);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
   .logo{display:flex;align-items:center;gap:14px}
-  .logo-mark{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:16px;letter-spacing:0.05em}
+  .logo-mark{
+    width:46px;height:46px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--gold));
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    font-family:"Noto Serif JP",serif;font-weight:600;font-size:18px;
+  }
   .logo-text .ja{font-weight:700;font-size:16px;letter-spacing:0.05em}
-  .logo-text .en{font-family:"Cormorant Garamond",serif;font-size:11px;color:var(--text-soft);letter-spacing:0.15em;text-transform:uppercase}
+  .logo-text .en{font-family:"Cormorant Garamond",serif;font-size:11px;color:var(--ink-soft);letter-spacing:0.15em;text-transform:uppercase}
+  .nav{display:flex;gap:24px;font-size:13px;font-weight:500;letter-spacing:0.05em}
+  .nav a{padding:6px 0;position:relative}
+  .nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .25s}
+  .nav a:hover{color:var(--primary);opacity:1}
+  .nav a:hover::after{width:100%}
   .header-cta{
-    background:var(--primary);color:#fff;padding:10px 22px;border-radius:var(--radius);
+    background:var(--primary);color:#fff;padding:10px 22px;border-radius:4px;
     font-size:13px;font-weight:500;letter-spacing:0.06em;transition:background .2s;
   }
-  .header-cta:hover{background:var(--primary-dark)}
+  .header-cta:hover{background:var(--primary-dark);opacity:1}
 
   /* Hero */
   .hero{
     background:linear-gradient(135deg,#082848 0%,#0d3b66 50%,#1c5a99 100%);
-    color:#fff;padding:120px 24px 100px;position:relative;overflow:hidden;
+    color:#fff;padding:120px var(--gutter) 100px;position:relative;overflow:hidden;
   }
   .hero::before{
     content:"";position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;border-radius:50%;
@@ -65,30 +88,37 @@
   .hero-eyebrow::before,.hero-eyebrow::after{content:"";width:40px;height:1px;background:#e8d4ad}
   .hero h1{
     font-family:"Noto Serif JP",serif;font-weight:600;
-    font-size:46px;line-height:1.5;letter-spacing:0.1em;
-    margin-bottom:18px;
+    font-size:clamp(28px,4vw,48px);line-height:1.5;letter-spacing:0.1em;margin-bottom:14px;
   }
   .hero-en{
     font-family:"Cormorant Garamond",serif;font-size:18px;letter-spacing:0.25em;
-    color:#cfdcec;margin-bottom:32px;
+    color:#cfdcec;margin-bottom:24px;
+  }
+  .hero-since{
+    display:inline-block;padding:8px 24px;border:1px solid var(--gold-light);
+    font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:0.3em;
+    color:var(--gold-light);margin-bottom:28px;
   }
   .hero p{font-size:16px;line-height:2;max-width:680px;margin:0 auto 40px;color:#e8edf2}
   .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .btn{
-    display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius);
+    display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;
     font-size:14px;font-weight:500;letter-spacing:0.06em;transition:all .2s;
   }
   .btn-primary{background:#fff;color:var(--primary)}
-  .btn-primary:hover{background:#e8d4ad;color:var(--primary-dark)}
+  .btn-primary:hover{background:#e8d4ad;color:var(--primary-dark);opacity:1}
   .btn-outline{border:1px solid #fff;color:#fff;background:transparent}
-  .btn-outline:hover{background:#fff;color:var(--primary)}
+  .btn-outline:hover{background:#fff;color:var(--primary);opacity:1}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:var(--gold-light);color:var(--primary-dark);opacity:1}
   .btn .arrow{transition:transform .2s}
   .btn:hover .arrow{transform:translateX(4px)}
 
-  /* Common */
-  section{padding:90px 24px}
+  /* Sections common */
+  section{padding:90px var(--gutter)}
   .section-inner{max-width:var(--max);margin:0 auto}
   .section-head{text-align:center;margin-bottom:56px}
+  .section-head.left{text-align:left}
   .section-eyebrow{
     font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.4em;
     text-transform:uppercase;color:var(--gold);margin-bottom:14px;
@@ -97,19 +127,95 @@
     font-family:"Noto Serif JP",serif;font-weight:600;font-size:32px;
     letter-spacing:0.06em;color:var(--primary-dark);line-height:1.5;
   }
+  .section-head.left .section-title::after{margin:22px 0 0}
   .section-title::after{
     content:"";display:block;width:48px;height:2px;background:var(--gold);margin:22px auto 0;
   }
-  .section-sub{font-size:14px;color:var(--text-soft);margin-top:18px;line-height:2}
+  .section-sub{font-size:14px;color:var(--ink-soft);margin-top:18px;line-height:2;max-width:640px;margin-left:auto;margin-right:auto}
 
-  /* About */
-  .about{background:var(--bg-cream)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .about-text p{margin-bottom:18px;color:var(--text-soft);line-height:2.1}
+  /* === Chairman's greeting === */
+  .chair{background:var(--paper);position:relative}
+  .chair::before{
+    content:"M";position:absolute;top:60px;right:60px;
+    font-family:"Cormorant Garamond",serif;font-size:240px;font-weight:600;
+    color:var(--bg-cream);line-height:1;z-index:0;
+  }
+  .chair-grid{
+    display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;
+    position:relative;z-index:2;
+  }
+  .chair-photo-wrap{position:relative;padding:14px}
+  .chair-photo-wrap::before{
+    content:"";position:absolute;inset:0;border:1px solid var(--gold);
+    transform:translate(14px,14px);z-index:0;
+  }
+  .chair-photo{
+    aspect-ratio:4/5;
+    background-image:url("https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Iba.jpg");
+    background-size:cover;background-position:center 18%;
+    box-shadow:0 16px 40px rgba(13,59,102,0.18);position:relative;z-index:1;
+  }
+  .chair-text .role{
+    font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.3em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:14px;
+  }
+  .chair-text h2{
+    font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:clamp(22px,2.6vw,32px);line-height:1.65;letter-spacing:0.04em;
+    color:var(--primary-dark);margin-bottom:24px;
+  }
+  .chair-quote{
+    font-family:"Noto Serif JP",serif;font-size:18px;line-height:1.95;
+    color:var(--accent);font-weight:500;margin-bottom:24px;
+    padding-left:18px;border-left:3px solid var(--gold);
+  }
+  .chair-text p{margin-bottom:16px;color:var(--ink-soft);line-height:2;font-size:14.5px}
+  .chair-sign{
+    margin-top:28px;padding-top:20px;border-top:1px solid var(--line);
+  }
+  .chair-sign strong{font-family:"Noto Serif JP",serif;font-size:20px;font-weight:600;color:var(--primary-dark);display:block;margin-bottom:4px}
+  .chair-sign .sub{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.15em;color:var(--ink-soft)}
+
+  /* === History Timeline === */
+  .history{background:var(--bg-cream)}
+  .history-track{
+    position:relative;padding:40px 0;max-width:920px;margin:0 auto;
+  }
+  .history-track::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+    background:linear-gradient(var(--gold),var(--accent),var(--primary));
+    transform:translateX(-50%);
+  }
+  .history-item{
+    display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:center;
+    margin-bottom:48px;position:relative;
+  }
+  .history-item:last-child{margin-bottom:0}
+  .history-dot{
+    grid-column:2;justify-self:center;
+    width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--gold);
+    box-shadow:0 0 0 5px rgba(176,141,87,0.12);position:relative;z-index:2;
+  }
+  .history-content{
+    background:#fff;padding:28px 32px;border:1px solid var(--line);
+    box-shadow:0 4px 14px rgba(13,59,102,0.05);
+  }
+  .history-item:nth-child(odd) .history-content{grid-column:1;text-align:right}
+  .history-item:nth-child(even) .history-content{grid-column:3}
+  .history-year{
+    font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:600;
+    color:var(--accent);line-height:1;margin-bottom:8px;
+  }
+  .history-content h3{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:600;color:var(--primary-dark);margin-bottom:8px}
+  .history-content p{font-size:13px;color:var(--ink-soft);line-height:1.85}
+
+  /* === About === */
+  .about{background:#fff}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start}
+  .about-text p{margin-bottom:18px;color:var(--ink-soft);line-height:2.1}
   .about-text p:last-child{margin-bottom:0}
   .about-stats{
-    background:#fff;padding:48px 36px;border:1px solid var(--line);
-    box-shadow:0 4px 18px rgba(13,59,102,0.05);
+    background:var(--bg-cream);padding:48px 36px;border:1px solid var(--line);
   }
   .about-stats h3{
     font-family:"Noto Serif JP",serif;font-size:18px;color:var(--primary-dark);font-weight:600;
@@ -117,12 +223,12 @@
   }
   .stat-row{display:grid;grid-template-columns:1fr auto;padding:14px 0;border-bottom:1px dashed var(--line);align-items:baseline}
   .stat-row:last-child{border-bottom:0}
-  .stat-row dt{font-size:13px;color:var(--text-soft);letter-spacing:0.08em}
+  .stat-row dt{font-size:13px;color:var(--ink-soft);letter-spacing:0.08em}
   .stat-row dd{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;color:var(--primary)}
-  .stat-row dd small{font-size:13px;margin-left:4px;color:var(--text-soft)}
+  .stat-row dd small{font-size:13px;margin-left:4px;color:var(--ink-soft)}
 
-  /* Activities */
-  .activities{background:#fff}
+  /* === Activities === */
+  .activities{background:var(--bg-cream)}
   .act-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
   .act-card{
     border:1px solid var(--line);padding:36px 26px;text-align:center;
@@ -138,12 +244,64 @@
     font-family:"Noto Serif JP",serif;font-size:17px;color:var(--primary-dark);font-weight:600;
     margin-bottom:10px;letter-spacing:0.04em;
   }
-  .act-card p{font-size:13px;color:var(--text-soft);line-height:1.85}
+  .act-card p{font-size:13px;color:var(--ink-soft);line-height:1.85}
 
-  /* Members CTA */
+  /* === Voices (会員からの声) === */
+  .voices{background:#fff}
+  .voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .voice-card{
+    background:var(--bg-cream);padding:36px 32px;position:relative;
+    border-left:3px solid var(--gold);
+  }
+  .voice-card::before{
+    content:"\201C";position:absolute;top:6px;right:24px;
+    font-family:"Cormorant Garamond",serif;font-size:80px;color:var(--line);line-height:1;
+  }
+  .voice-text{
+    font-family:"Noto Serif JP",serif;font-size:15px;line-height:2;
+    color:var(--primary-dark);margin-bottom:20px;
+  }
+  .voice-author{
+    border-top:1px solid var(--line);padding-top:14px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .voice-avatar{
+    width:42px;height:42px;border-radius:50%;background:var(--gold);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif JP",serif;font-weight:600;font-size:16px;flex-shrink:0;
+  }
+  .voice-name{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:600;color:var(--primary-dark);margin-bottom:2px}
+  .voice-info{font-size:11px;color:var(--ink-soft);letter-spacing:0.05em}
+
+  /* === Schedule (年間行事) === */
+  .schedule{background:var(--bg-cream)}
+  .schedule-list{
+    max-width:820px;margin:0 auto;background:#fff;
+    border:1px solid var(--line);
+  }
+  .schedule-row{
+    display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;
+    padding:22px 28px;border-bottom:1px solid var(--line);transition:background .2s;
+  }
+  .schedule-row:last-child{border-bottom:0}
+  .schedule-row:hover{background:var(--bg-cream)}
+  .schedule-month{
+    font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:0.15em;
+    color:var(--gold);font-weight:600;text-transform:uppercase;
+  }
+  .schedule-month strong{display:block;font-size:24px;color:var(--primary-dark);margin-top:4px;letter-spacing:0.05em}
+  .schedule-event{font-family:"Noto Serif JP",serif;font-size:16px;font-weight:600;color:var(--primary-dark);margin-bottom:4px;letter-spacing:0.04em}
+  .schedule-place{font-size:12px;color:var(--ink-soft)}
+  .schedule-tag{
+    font-size:10px;letter-spacing:0.15em;padding:4px 10px;
+    background:var(--bg-cream);color:var(--gold);border:1px solid var(--gold);
+    text-transform:uppercase;font-family:"Cormorant Garamond",serif;
+  }
+
+  /* === Members CTA === */
   .members-cta{
     background:linear-gradient(135deg,var(--primary-dark),var(--primary));
-    color:#fff;padding:80px 24px;
+    color:#fff;padding:80px var(--gutter);
   }
   .mc-inner{max-width:760px;margin:0 auto;text-align:center}
   .mc-tag{
@@ -160,70 +318,116 @@
     display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;color:#e8d4ad;
   }
 
-  /* Join */
-  .join{background:var(--bg-soft)}
-  .join-inner{max-width:760px;margin:0 auto;text-align:center}
-  .join h2{
-    font-family:"Noto Serif JP",serif;font-size:26px;color:var(--primary-dark);margin-bottom:18px;
-  }
-  .join p{color:var(--text-soft);margin-bottom:28px;font-size:14px;line-height:2}
+  /* === Join === */
+  .join{background:var(--bg-cream)}
+  .join-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
   .join-card{
-    background:#fff;padding:36px;border-left:4px solid var(--gold);text-align:left;
+    background:#fff;padding:36px;border-left:4px solid var(--gold);
     box-shadow:0 4px 18px rgba(13,59,102,0.05);
   }
-  .join-card dt{font-family:"Noto Serif JP",serif;font-weight:600;color:var(--primary-dark);margin-bottom:6px;font-size:15px}
-  .join-card dd{font-size:13px;color:var(--text-soft);margin-bottom:18px;padding-left:16px;line-height:1.85}
-  .join-card dd:last-child{margin-bottom:0}
+  .join-card h3{
+    font-family:"Noto Serif JP",serif;font-size:18px;color:var(--primary-dark);font-weight:600;
+    margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .join-card h3 .num{
+    font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:0.2em;color:var(--gold);
+    background:var(--bg-cream);padding:3px 10px;
+  }
+  .join-card dt{font-family:"Noto Serif JP",serif;font-weight:600;color:var(--primary-dark);margin-bottom:6px;font-size:14px;margin-top:14px}
+  .join-card dt:first-child{margin-top:0}
+  .join-card dd{font-size:13px;color:var(--ink-soft);padding-left:14px;line-height:1.85}
+  .join-note{
+    text-align:center;margin-top:32px;font-size:13px;color:var(--ink-soft);line-height:2;
+  }
+  .join-note strong{color:var(--primary-dark)}
 
-  /* Footer */
-  footer{background:#0a2540;color:#cbd2dc;padding:48px 24px 24px;font-size:13px}
-  .footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  .footer-inner h4{font-family:"Noto Serif JP",serif;color:#fff;font-size:15px;margin-bottom:6px}
-  .footer-bottom{font-size:11px;color:#6c7689;letter-spacing:0.1em}
-
-  /* Responsive (tablet) */
-  @media(max-width:960px){
-    .hero h1{font-size:32px}
-    .about-grid{grid-template-columns:1fr;gap:36px}
-    .act-grid{grid-template-columns:repeat(2,1fr)}
-    section{padding:64px 20px}
+  /* === Footer === */
+  footer{background:#0a2540;color:#cbd2dc;padding:60px var(--gutter) 24px;font-size:13px}
+  .footer-inner{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;
+    padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand h4{font-family:"Noto Serif JP",serif;color:#fff;font-size:16px;margin-bottom:8px;letter-spacing:0.04em}
+  .footer-brand p{font-size:12px;line-height:1.95;color:rgba(255,255,255,0.5);margin-bottom:14px}
+  .footer-contact{font-size:12px;line-height:1.95}
+  .footer-contact strong{color:#fff;display:block;margin-bottom:4px}
+  .footer-col h5{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.3em;color:#e8d4ad;text-transform:uppercase;margin-bottom:14px}
+  .footer-col ul{list-style:none;font-size:12.5px;line-height:2.2}
+  .footer-col a:hover{color:#fff;opacity:1}
+  .footer-bottom{
+    max-width:var(--max);margin:0 auto;padding-top:20px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;
   }
 
-  /* Responsive (smartphone) */
+  /* === Responsive === */
+  @media(max-width:960px){
+    .nav{display:none}
+    .hero{padding:80px var(--gutter) 70px}
+    .hero h1{font-size:24px}
+    .chair-grid{grid-template-columns:1fr;gap:36px}
+    .chair-photo-wrap{max-width:300px;margin:0 auto}
+    .chair::before{font-size:160px;right:20px}
+    .history-track::before{left:18px}
+    .history-item{grid-template-columns:36px 1fr;gap:18px}
+    .history-dot{grid-column:1;width:14px;height:14px;border-width:2px}
+    .history-item .history-content{grid-column:2;text-align:left!important}
+    .history-content{padding:22px 24px}
+    .history-year{font-size:24px}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .act-grid{grid-template-columns:repeat(2,1fr)}
+    .voices-grid{grid-template-columns:1fr;gap:20px}
+    .schedule-row{grid-template-columns:80px 1fr;gap:14px;padding:18px 20px}
+    .schedule-tag{grid-column:2;justify-self:start}
+    .schedule-month strong{font-size:20px}
+    .join-grid{grid-template-columns:1fr;gap:20px}
+    .footer-inner{grid-template-columns:1fr;gap:24px}
+    section{padding:64px var(--gutter)}
+    .section-title{font-size:24px}
+  }
   @media(max-width:600px){
+    :root{--gutter:18px}
     .topbar-inner{padding:8px 16px;font-size:11px}
     .header-inner{padding:14px 16px}
-    .logo-mark{width:40px;height:40px;font-size:13px}
-    .logo-text .ja{font-size:14px}
+    .logo-mark{width:38px;height:38px;font-size:14px}
+    .logo-text .ja{font-size:13px}
+    .logo-text .en{font-size:9px}
     .header-cta{padding:8px 14px;font-size:11px}
-
-    .hero{padding:64px 18px 56px}
-    .hero h1{font-size:24px;letter-spacing:0.06em;line-height:1.6}
-    .hero-en{font-size:13px;letter-spacing:0.18em;margin-bottom:22px}
-    .hero p{font-size:14px;line-height:1.95}
+    .hero{padding:56px var(--gutter) 48px}
+    .hero h1{font-size:20px;letter-spacing:0.06em;line-height:1.6}
+    .hero-en{font-size:13px;letter-spacing:0.18em;margin-bottom:18px}
+    .hero-since{font-size:11px;padding:6px 18px;letter-spacing:0.25em;margin-bottom:22px}
+    .hero p{font-size:13.5px;line-height:1.95}
     .hero-eyebrow{font-size:11px;letter-spacing:0.25em;gap:10px}
     .hero-eyebrow::before,.hero-eyebrow::after{width:24px}
-
-    section{padding:48px 18px}
+    section{padding:48px var(--gutter)}
     .section-head{margin-bottom:36px}
     .section-title{font-size:22px}
     .section-eyebrow{font-size:11px;letter-spacing:0.3em}
-
+    .chair-photo-wrap{max-width:240px;padding:10px}
+    .chair-photo-wrap::before{transform:translate(10px,10px)}
+    .chair-text h2{font-size:20px;line-height:1.65}
+    .chair-quote{font-size:15px;line-height:1.85;padding-left:14px}
+    .chair-text p{font-size:13.5px;line-height:1.95}
+    .chair-sign strong{font-size:18px}
+    .chair::before{font-size:120px;top:30px;right:14px}
     .about-stats{padding:32px 22px}
     .stat-row dd{font-size:20px}
     .act-grid{grid-template-columns:1fr;gap:18px}
     .act-card{padding:28px 22px}
-
+    .voice-card{padding:28px 24px}
+    .voice-text{font-size:13.5px;line-height:1.95}
+    .schedule-row{padding:16px 18px}
+    .schedule-event{font-size:14px}
     .members-cta{padding:60px 18px}
     .members-cta h2{font-size:20px;line-height:1.6}
-    .members-cta p{font-size:13px}
-
-    .join h2{font-size:20px}
+    .members-cta p{font-size:13.5px}
     .join-card{padding:28px 22px}
-
     .btn{padding:12px 22px;font-size:13px}
-    footer{padding:32px 18px 18px}
-    .footer-inner{flex-direction:column;align-items:flex-start;gap:12px}
+    footer{padding:36px var(--gutter) 18px}
+    .footer-inner{padding-bottom:28px;gap:22px}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;font-size:10px}
   }
 </style>
 </head>
@@ -231,32 +435,44 @@
 
 <!-- Topbar -->
 <div class="topbar">
-  <div class="topbar-inner">札幌医科大学附属病院 心臓血管外科</div>
+  <div class="topbar-inner">
+    <div>札幌医科大学附属病院 心臓血管外科 同門会</div>
+    <a href="index.html">← 教室トップへ戻る</a>
+  </div>
 </div>
 
 <!-- Header -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">
+    <a href="index.html" class="logo">
       <div class="logo-mark">同</div>
       <div class="logo-text">
         <div class="ja">心臓血管外科 同門会</div>
-        <div class="en">Alumni Association</div>
+        <div class="en">Alumni Association · since 1958</div>
       </div>
-    </div>
-    <a href="doumonkai-members.html" class="header-cta">会員専用ページ →</a>
+    </a>
+    <nav class="nav">
+      <a href="#chair">会長挨拶</a>
+      <a href="#history">同門会の歩み</a>
+      <a href="#about">同門会について</a>
+      <a href="#activities">活動</a>
+      <a href="#schedule">年間行事</a>
+      <a href="#join">入会案内</a>
+    </nav>
+    <a href="doumonkai-members.html" class="header-cta">会員専用 →</a>
   </div>
 </header>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Sapporo Medical CVS Alumni Association</div>
+    <div class="hero-eyebrow">Sapmed CVS Alumni Association</div>
     <h1>札幌医科大学 心臓血管外科 同門会</h1>
     <div class="hero-en">— Connecting generations of surgeons —</div>
+    <div class="hero-since">Since 1958</div>
     <p>
-      昭和の創設以来、北海道の心臓血管外科を支えてきた同門の先生方の親睦と、<br>
-      次代の心臓血管外科を担う若手医師の育成を目的とした同門会です。
+      昭和33年（1958年）に開講された札幌医科大学 外科学第二講座（旧 第二外科）に源流をもつ同門会です。<br>
+      創設以来 60 余年、北海道の心臓血管外科を世代を超えて支えてきた同門の絆を、令和の時代へ受け継ぎます。
     </p>
     <div class="hero-actions">
       <a href="doumonkai-members.html" class="btn btn-primary">会員専用ページへ <span class="arrow">→</span></a>
@@ -265,8 +481,98 @@
   </div>
 </section>
 
+<!-- Chairman's Greeting -->
+<section class="chair" id="chair">
+  <div class="section-inner">
+    <div class="chair-grid">
+      <div class="chair-photo-wrap">
+        <div class="chair-photo"></div>
+      </div>
+      <div class="chair-text">
+        <div class="role">Message from the Chairman</div>
+        <h2>同門会員の皆さまへ ── 新しい章のはじまりに寄せて</h2>
+        <p class="chair-quote">
+          世代を超えて受け継がれてきた同門の絆を、次の60年へ。
+        </p>
+        <p>
+          同門会員の先生方におかれましては、ますますご活躍のこととお慶び申し上げます。
+          このたび 2026 年 5 月より、札幌医科大学 心臓血管外科 教授ならびに当同門会の会長を拝命いたしました伊庭 裕でございます。
+        </p>
+        <p>
+          1958 年（昭和33年）の創設以来、本同門会は北海道全域の関連病院ネットワークを中心に、
+          臨床・教育・研究を通じた同門の交流を支えてまいりました。
+          歴代の主任教授・先輩諸先生方の遺された伝統を継承しつつ、
+          新たな時代に求められる若手医師の育成と国際的な研究発信に、より一層注力してまいります。
+        </p>
+        <p>
+          年次総会・特別講演会・若手研究助成・会報発行など、これまでの活動を着実に続けながら、
+          同門の絆をいっそう深める場を皆さまとともに育んでまいりたいと存じます。
+          今後とも変わらぬご支援を賜りますよう、よろしくお願い申し上げます。
+        </p>
+        <div class="chair-sign">
+          <strong>会長　伊庭 裕</strong>
+          <span class="sub">Yutaka Iba, M.D., Ph.D. ／ Chairman, Sapmed CVS Alumni Association</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- History Timeline -->
+<section class="history" id="history">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Our History</div>
+      <h2 class="section-title">同門会の歩み</h2>
+      <p class="section-sub">創設から令和の新章まで、世代を超えて受け継がれてきた歴史。</p>
+    </div>
+    <div class="history-track">
+      <div class="history-item">
+        <div class="history-content">
+          <div class="history-year">1958</div>
+          <h3>外科学第二講座 開講</h3>
+          <p>札幌医科大学 外科学第二講座（旧 第二外科）が開講。北海道における心臓・呼吸器外科の礎が築かれる。</p>
+        </div>
+        <div class="history-dot"></div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot"></div>
+        <div class="history-content">
+          <div class="history-year">1965</div>
+          <h3>同門会 設立</h3>
+          <p>第二外科の出身者・在籍者を中心に、同門の親睦と学術交流を目的とした同門会が設立される。</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-content">
+          <div class="history-year">2012</div>
+          <h3>心臓血管外科として独立</h3>
+          <p>第二外科が「心臓血管外科」と「呼吸器外科」に分化。両科は引き続き同門の絆を共有する関係へ。</p>
+        </div>
+        <div class="history-dot"></div>
+      </div>
+      <div class="history-item">
+        <div class="history-dot"></div>
+        <div class="history-content">
+          <div class="history-year">2015</div>
+          <h3>低侵襲治療の進展</h3>
+          <p>大動脈に対するステントグラフト治療・経カテーテル弁治療などの低侵襲治療が大きく進展。同門の関連病院にも普及。</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <div class="history-content">
+          <div class="history-year">2026</div>
+          <h3>新章 ── 伊庭 裕 教授・会長 就任</h3>
+          <p>令和8年5月、伊庭 裕 教授が新たに就任。同門会は次の世代へ向けた新しい章を迎える。</p>
+        </div>
+        <div class="history-dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- About -->
-<section class="about">
+<section class="about" id="about">
   <div class="section-inner">
     <div class="section-head">
       <div class="section-eyebrow">About Our Association</div>
@@ -275,7 +581,7 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          札幌医科大学心臓血管外科 同門会は、札幌医科大学 外科学第二講座（旧第二外科）および 心臓血管外科 で研修・勤務した医師、
+          札幌医科大学 心臓血管外科 同門会は、札幌医科大学 外科学第二講座（旧 第二外科）および 心臓血管外科 で研修・勤務した医師、
           ならびに関連病院に勤務する心臓血管外科医を会員とする学術・親睦団体です。
         </p>
         <p>
@@ -285,6 +591,8 @@
         <p>
           年次総会・特別講演会・若手研究助成・会報発行などを通じ、
           同門の先生方の交流と次代への継承を支えています。
+          会員の先生方は北海道のみならず、全国・海外で活躍されており、
+          そのネットワークは同門会の大きな財産となっています。
         </p>
       </div>
       <div class="about-stats">
@@ -292,7 +600,8 @@
         <dl>
           <div class="stat-row"><dt>会員数</dt><dd>約 250<small>名</small></dd></div>
           <div class="stat-row"><dt>関連病院</dt><dd>15<small>施設</small></dd></div>
-          <div class="stat-row"><dt>設立</dt><dd>1965<small>年</small></dd></div>
+          <div class="stat-row"><dt>講座開設</dt><dd>1958<small>年</small></dd></div>
+          <div class="stat-row"><dt>同門会設立</dt><dd>1965<small>年</small></dd></div>
           <div class="stat-row"><dt>年次総会</dt><dd>年 1<small>回</small></dd></div>
           <div class="stat-row"><dt>会報発行</dt><dd>年 2<small>号</small></dd></div>
         </dl>
@@ -302,7 +611,7 @@
 </section>
 
 <!-- Activities -->
-<section class="activities">
+<section class="activities" id="activities">
   <div class="section-inner">
     <div class="section-head">
       <div class="section-eyebrow">Activities</div>
@@ -312,22 +621,143 @@
       <div class="act-card">
         <div class="act-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h18M5 8v12h14V8M9 4h6v4"/></svg></div>
         <h3>年次総会</h3>
-        <p>毎年春に札幌で開催。特別講演・教室運営報告・懇親会を併催。</p>
+        <p>毎年初夏に札幌で開催。特別講演・教室運営報告・懇親会を併催。会員相互の親睦を深める場となっています。</p>
       </div>
       <div class="act-card">
         <div class="act-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5a2 2 0 0 1 2-2h11l3 3v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM8 7h8M8 11h8M8 15h5"/></svg></div>
         <h3>会報発行</h3>
-        <p>年2号の会報を発行。同門の動静、論文紹介、若手紹介を掲載。</p>
+        <p>年2号の会報を発行。同門の動静、論文紹介、若手紹介、教室運営報告などを掲載しています。</p>
       </div>
       <div class="act-card">
         <div class="act-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
         <h3>若手研究助成</h3>
-        <p>同門の若手医師の臨床研究・国際学会発表に対する助成制度。</p>
+        <p>同門の若手医師の臨床研究・国際学会発表に対する助成制度を設けています。次代の研究者育成への投資です。</p>
       </div>
       <div class="act-card">
         <div class="act-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6l4 2-4 2v6M5 12h14"/></svg></div>
         <h3>関連病院連携</h3>
-        <p>北海道15施設の関連病院との人的交流・症例検討会の支援。</p>
+        <p>北海道15施設の関連病院との人的交流・症例検討会・出張講師の派遣などを支援しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section class="voices">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Voices</div>
+      <h2 class="section-title">同門会員の声</h2>
+      <p class="section-sub">様々な世代・施設で活躍する同門の先生方からのメッセージ。</p>
+    </div>
+    <div class="voices-grid">
+      <article class="voice-card">
+        <p class="voice-text">
+          市中病院に出てからも、症例で迷ったときに先輩の先生方に気軽に相談できるネットワークがある。
+          これは札幌医大の同門ならではの財産だと感じます。
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar">A</div>
+          <div>
+            <div class="voice-name">A 先生</div>
+            <div class="voice-info">関連病院 心臓血管外科 部長 ／ 卒後 18 年目</div>
+          </div>
+        </div>
+      </article>
+      <article class="voice-card">
+        <p class="voice-text">
+          海外留学への道筋を、同門の先輩方に丁寧に教えていただきました。
+          世代を超えて応援してくださる雰囲気こそ、この同門会の最大の魅力です。
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar">B</div>
+          <div>
+            <div class="voice-name">B 先生</div>
+            <div class="voice-info">米国留学中 ／ 卒後 9 年目</div>
+          </div>
+        </div>
+      </article>
+      <article class="voice-card">
+        <p class="voice-text">
+          年次総会で若手の先生方の発表を聞くたびに、同門会の未来が頼もしく感じられます。
+          長年支えてくれる同門の絆に、心から感謝しています。
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar">C</div>
+          <div>
+            <div class="voice-name">C 先生</div>
+            <div class="voice-info">名誉会員 ／ 元 関連病院 院長</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Annual Schedule -->
+<section class="schedule" id="schedule">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Annual Schedule</div>
+      <h2 class="section-title">年間行事カレンダー</h2>
+      <p class="section-sub">令和8年（2026）年度の主な行事です。詳細は会報および会員専用ページでご案内します。</p>
+    </div>
+    <div class="schedule-list">
+      <div class="schedule-row">
+        <div class="schedule-month">May<strong>5月</strong></div>
+        <div>
+          <div class="schedule-event">年会費 納入のご案内</div>
+          <div class="schedule-place">事務局 → 全会員 ／ 振込用紙の送付</div>
+        </div>
+        <span class="schedule-tag">事務</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">Jul<strong>7月</strong></div>
+        <div>
+          <div class="schedule-event">伊庭 裕 教授 就任記念祝賀会</div>
+          <div class="schedule-place">京王プラザホテル札幌</div>
+        </div>
+        <span class="schedule-tag">特別</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">Sep<strong>9月</strong></div>
+        <div>
+          <div class="schedule-event">会報 上半期号 発行</div>
+          <div class="schedule-place">PDF配信＋希望者には冊子郵送</div>
+        </div>
+        <span class="schedule-tag">会報</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">Oct<strong>10月</strong></div>
+        <div>
+          <div class="schedule-event">若手研究助成 申請締切</div>
+          <div class="schedule-place">事務局宛にご応募ください</div>
+        </div>
+        <span class="schedule-tag">助成</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">Dec<strong>12月</strong></div>
+        <div>
+          <div class="schedule-event">忘年会・若手交流会</div>
+          <div class="schedule-place">札幌市内 ／ 会員参加自由</div>
+        </div>
+        <span class="schedule-tag">親睦</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">Mar<strong>3月</strong></div>
+        <div>
+          <div class="schedule-event">会報 下半期号 発行 ／ 若手助成 採択発表</div>
+          <div class="schedule-place">PDF配信</div>
+        </div>
+        <span class="schedule-tag">会報</span>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-month">May<strong>5月</strong></div>
+        <div>
+          <div class="schedule-event">令和9年度 年次総会・特別講演会</div>
+          <div class="schedule-place">京王プラザホテル札幌（予定）</div>
+        </div>
+        <span class="schedule-tag">総会</span>
       </div>
     </div>
   </div>
@@ -351,21 +781,40 @@
 
 <!-- Join -->
 <section class="join" id="join">
-  <div class="join-inner">
-    <div class="section-eyebrow">Join Us</div>
-    <h2>入会のご案内</h2>
-    <p>当同門会への入会希望の方は、以下の要項をご確認のうえ、事務局までお問い合わせください。</p>
-    <div class="join-card">
-      <dl>
-        <dt>入会資格</dt>
-        <dd>札幌医科大学 心臓血管外科（旧 第二外科）または同関連病院にて研修・勤務した医師</dd>
-        <dt>年会費</dt>
-        <dd>会員：5,000円 ／ 名誉会員：免除</dd>
-        <dt>申込方法</dt>
-        <dd>事務局までメールにてご連絡ください（氏名・卒業年・現所属）</dd>
-        <dt>事務局</dt>
-        <dd>札幌医科大学医学部 外科学第二講座 内　TEL: 011-611-2111（内線 33120）</dd>
-      </dl>
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Join Us</div>
+      <h2 class="section-title">入会のご案内</h2>
+      <p class="section-sub">当同門会への入会・年会費・寄付に関するご案内です。詳細は事務局までお問い合わせください。</p>
+    </div>
+    <div class="join-grid">
+      <div class="join-card">
+        <h3><span class="num">01</span>入会のご案内</h3>
+        <dl>
+          <dt>入会資格</dt>
+          <dd>札幌医科大学 心臓血管外科（旧 第二外科）または同関連病院にて研修・勤務した医師。</dd>
+          <dt>申込方法</dt>
+          <dd>事務局までメールにてご連絡ください。氏名・卒業年・現所属をお知らせいただきます。</dd>
+          <dt>入会金</dt>
+          <dd>不要。</dd>
+        </dl>
+      </div>
+      <div class="join-card">
+        <h3><span class="num">02</span>年会費・寄付</h3>
+        <dl>
+          <dt>年会費</dt>
+          <dd>会員：5,000 円 ／ 名誉会員：免除</dd>
+          <dt>納入方法</dt>
+          <dd>5月にお送りする振込用紙にてお振込ください。</dd>
+          <dt>寄付について</dt>
+          <dd>若手研究助成・教室運営支援のための寄付も随時受け付けております（任意）。</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="join-note">
+      <strong>事務局</strong><br>
+      札幌医科大学医学部 外科学第二講座 内　TEL: 011-611-2111（内線 33120）<br>
+      〒060-8543 札幌市中央区南1条西16丁目
     </div>
   </div>
 </section>
@@ -373,11 +822,37 @@
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
-    <div>
+    <div class="footer-brand">
       <h4>札幌医科大学 心臓血管外科 同門会</h4>
-      <div>〒060-8543 札幌市中央区南1条西16丁目　TEL: 011-611-2111（内線 33120）</div>
+      <p>Sapmed CVS Alumni Association ／ since 1958<br>札幌医科大学 外科学第二講座を起点とする同門の絆。</p>
+      <div class="footer-contact">
+        <strong>事務局</strong>
+        〒060-8543 札幌市中央区南1条西16丁目<br>
+        TEL: 011-611-2111（内線 33120）
+      </div>
     </div>
-    <div class="footer-bottom">© 2026 SAPMED CVS Alumni Association.</div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="#chair">会長挨拶</a></li>
+        <li><a href="#history">同門会の歩み</a></li>
+        <li><a href="#about">同門会について</a></li>
+        <li><a href="#activities">活動</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Members</h5>
+      <ul>
+        <li><a href="#schedule">年間行事</a></li>
+        <li><a href="#join">入会案内</a></li>
+        <li><a href="doumonkai-members.html">会員専用ページ</a></li>
+        <li><a href="index.html">教室トップへ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Sapmed CVS Alumni Association.</div>
+    <div>SAPMED · CVS · ALUMNI · since 1958</div>
   </div>
 </footer>
 
