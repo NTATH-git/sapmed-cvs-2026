@@ -64,8 +64,8 @@
   .hero{
     min-height:88vh;
     background:
-      linear-gradient(120deg,rgba(8,40,72,0.92) 0%,rgba(13,59,102,0.78) 55%,rgba(13,59,102,0.45) 100%),
-      url("https://sapmed-geka2.jp/wp/wp-content/uploads/2022/06/nakajima_ope.jpg") right center/cover no-repeat;
+      linear-gradient(110deg,rgba(8,40,72,0.95) 0%,rgba(13,59,102,0.82) 50%,rgba(13,59,102,0.35) 100%),
+      url("https://sapmed-geka2.jp/wp/wp-content/uploads/2024/08/Iba.jpg") right 20% top/cover no-repeat;
     color:#fff;padding:80px var(--gutter) 100px;
     display:flex;align-items:center;position:relative;overflow:hidden;
   }
@@ -170,6 +170,46 @@
   .str-card .big{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:36px;color:var(--coral);line-height:1;margin-bottom:8px}
   .str-card .big small{font-size:0.4em;color:var(--ink-soft);margin-left:4px;letter-spacing:0.1em}
   .str-card p{font-size:13px;color:var(--ink-soft);line-height:1.85}
+
+  /* Training & Presentation Opportunities */
+  .training{background:#fff;position:relative;overflow:hidden}
+  .training::before{
+    content:"HANDS-ON";position:absolute;top:60px;right:40px;
+    font-family:"Cormorant Garamond",serif;font-size:140px;font-weight:600;
+    color:rgba(192,64,30,0.04);line-height:1;
+  }
+  .training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:1}
+  .training-card{
+    background:linear-gradient(180deg,var(--paper) 0%,var(--bg-cream) 100%);
+    border:1px solid var(--line);border-top:4px solid var(--coral);
+    padding:44px 36px;transition:all .35s;display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+  }
+  .training-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(192,64,30,0.12);border-top-color:var(--coral-bright)}
+  .training-card .training-num{
+    font-family:"Cormorant Garamond",serif;font-size:64px;font-weight:600;
+    color:var(--coral);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;
+  }
+  .training-tag{
+    display:inline-block;align-self:flex-start;
+    font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.3em;
+    color:var(--coral);text-transform:uppercase;font-weight:700;
+    background:rgba(192,64,30,0.08);padding:5px 12px;margin-bottom:18px;
+  }
+  .training-card h3{
+    font-family:"Noto Serif JP",serif;font-size:22px;font-weight:600;
+    color:var(--ink);margin-bottom:14px;letter-spacing:0.04em;line-height:1.5;
+  }
+  .training-card p{font-size:14px;color:var(--ink-soft);line-height:2;margin-bottom:24px;flex:1}
+  .training-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;color:var(--coral);
+    padding:12px 0;border-top:1px solid var(--line);
+    transition:gap .25s,color .25s;letter-spacing:0.04em;
+  }
+  .training-link:hover{color:var(--coral-bright);gap:12px;opacity:1}
+  .training-link::after{content:"↗";font-size:14px;transition:transform .25s}
+  .training-link:hover::after{transform:translate(2px,-2px)}
 
   /* Career path */
   .career{background:#fff}
@@ -338,6 +378,8 @@
     .hero-grid{grid-template-columns:1fr}
     .why-grid{grid-template-columns:1fr;gap:24px}
     .str-grid{grid-template-columns:repeat(2,1fr)}
+    .training-grid{grid-template-columns:1fr;gap:20px}
+    .training::before{display:none}
     .career-track{grid-template-columns:repeat(2,1fr);gap:32px}
     .career-track::before{display:none}
     .voices-grid{grid-template-columns:1fr;gap:20px}
@@ -375,6 +417,13 @@
     .str-grid{grid-template-columns:1fr;gap:18px}
     .str-card{padding:32px 24px}
     .str-card .big{font-size:30px}
+
+    .training-card{padding:32px 26px}
+    .training-card .training-num{font-size:48px}
+    .training-card h3{font-size:18px}
+    .training-card p{font-size:13px;line-height:1.95}
+    .training-tag{font-size:10px;letter-spacing:0.25em;padding:4px 10px;margin-bottom:14px}
+    .training-link{font-size:12px}
 
     .career-track{grid-template-columns:1fr;gap:24px}
     .career-step{display:flex;align-items:flex-start;gap:18px;text-align:left}
@@ -438,6 +487,7 @@
     <nav class="nav">
       <a href="#why">なぜ心臓血管外科</a>
       <a href="#strengths">当科の強み</a>
+      <a href="#training">学びの機会</a>
       <a href="#career">キャリアパス</a>
       <a href="#voices">先輩の声</a>
       <a href="#events">見学・イベント</a>
@@ -558,6 +608,63 @@
         <div class="big">100<small>%</small></div>
         <h3>マンツーマン指導</h3>
         <p>少数精鋭の医局体制で、指導医がマンツーマンで一人前の外科医に育てます。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Training & Presentation Opportunities -->
+<section class="training" id="training">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Hands-On &amp; Academic</div>
+      <h2 class="h2">手術技術と学術発信の<span class="em">三本柱</span></h2>
+      <p class="lead-text">
+        机上だけでは外科医は育ちません。当科は実技訓練・学会発表・全国大会参加を通じて、<br>
+        若手医師・学生の早期成長を支えます。
+      </p>
+    </div>
+    <div class="training-grid">
+      <article class="training-card">
+        <div class="training-num">01</div>
+        <span class="training-tag">Wet Lab</span>
+        <h3>Wet Lab 実技トレーニング</h3>
+        <p>
+          毎年夏に開催される「心臓血管外科サマースクール（CVS Camp）」など、
+          実際の組織を用いた縫合・吻合の実技訓練に参加可能。
+          全国の最前線講師から直接指導を受けられる、年に数えるほどしかない貴重な機会です。
+        </p>
+        <a href="https://sites.google.com/ebmc.jp/cvs-camp/" target="_blank" rel="noopener" class="training-link">
+          心臓血管外科サマースクール 2026
+        </a>
+      </article>
+
+      <article class="training-card">
+        <div class="training-num">02</div>
+        <span class="training-tag">HOPES</span>
+        <h3>HOPES での学会発表</h3>
+        <p>
+          北海道外科関連学会機構合同学術集会「HOPES」にて、
+          学生・若手医師として早期から学会発表のチャンスがあります。
+          道内の同世代と切磋琢磨し、外科系学会のエコシステムに飛び込む第一歩として最適です。
+        </p>
+        <a href="https://hopes2026.hkdo.jp/" target="_blank" rel="noopener" class="training-link">
+          HOPES 2026 公式サイト
+        </a>
+      </article>
+
+      <article class="training-card">
+        <div class="training-num">03</div>
+        <span class="training-tag">National</span>
+        <h3>全国学会への参加</h3>
+        <p>
+          日本心臓血管外科学会・日本胸部外科学会・日本血管外科学会など、
+          全国規模の学会への参加・発表機会を積極的に提供。
+          当科では学会出張の支援制度もあり、国際学会への登壇も視野に入ります。
+        </p>
+        <a href="#cta" class="training-link">
+          詳しく聞く ／ 見学を申し込む
+        </a>
       </article>
     </div>
   </div>
