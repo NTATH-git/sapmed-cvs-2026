@@ -513,9 +513,10 @@
         <span class="gate-section-en">Existing Members</span>
       </div>
       <form class="gate-form" onsubmit="return checkGate(event)">
+        <input type="email" id="gate-email" placeholder="ご登録のメールアドレス" autocomplete="email" required>
         <input type="password" id="gate-input" placeholder="会員パスワード" autocomplete="current-password" required>
         <button type="submit">ログインして閲覧</button>
-        <div class="gate-error" id="gate-error">パスワードが違います。再度ご確認ください。</div>
+        <div class="gate-error" id="gate-error">メールアドレスまたはパスワードが違います。</div>
       </form>
     </div>
 
@@ -1373,13 +1374,18 @@
   // 本番ではStatiCrypt等の真の暗号化を使用すること
   const GATE_PASSWORD = "geka2-2026-doumon";
   const GATE_KEY = "doumonkai_authed";
+  const GATE_EMAIL_KEY = "doumonkai_email";
 
   function checkGate(e){
     e.preventDefault();
+    const email = document.getElementById("gate-email").value.trim();
     const input = document.getElementById("gate-input").value;
     const errorBox = document.getElementById("gate-error");
-    if(input === GATE_PASSWORD){
+    // メールアドレス形式チェック + パスワードチェック
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(emailValid && input === GATE_PASSWORD){
       sessionStorage.setItem(GATE_KEY, "1");
+      sessionStorage.setItem(GATE_EMAIL_KEY, email);
       sessionStorage.setItem("doumonkai_login_time", new Date().toLocaleString("ja-JP"));
       revealContent();
     } else {

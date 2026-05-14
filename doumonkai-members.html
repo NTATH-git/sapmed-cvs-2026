@@ -304,9 +304,10 @@
         <span class="login-section-en">Existing Members</span>
       </div>
       <form class="login-form" onsubmit="return checkPassword(event)">
+        <input type="email" id="email-input" placeholder="ご登録のメールアドレス" autocomplete="email" required>
         <input type="password" id="password-input" placeholder="会員パスワード" autocomplete="current-password" required>
         <button type="submit">ログイン</button>
-        <div class="login-error" id="login-error">パスワードが違います。再度ご確認ください。</div>
+        <div class="login-error" id="login-error">メールアドレスまたはパスワードが違います。</div>
       </form>
     </div>
 
@@ -533,10 +534,13 @@
 
   async function checkPassword(e){
     e.preventDefault();
+    const email = document.getElementById("email-input").value.trim();
     const input = document.getElementById("password-input").value;
     const errorBox = document.getElementById("login-error");
-    if(input === PASSWORD_PLAIN){
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(emailValid && input === PASSWORD_PLAIN){
       sessionStorage.setItem("doumonkai_authed", "1");
+      sessionStorage.setItem("doumonkai_email", email);
       sessionStorage.setItem("doumonkai_login_time", new Date().toLocaleString("ja-JP"));
       showContent();
     } else {
