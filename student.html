@@ -33,6 +33,21 @@
   }
   /* 入力欄やコード等は英文用に通常の改行ルール */
   input,textarea,select,code,pre{word-break:normal;overflow-wrap:normal}
+
+  /* === 画像保存抑止（一般ユーザー向けのドラッグ・選択・長押し保存をブロック） === */
+  img{
+    -webkit-user-drag:none;          /* Safari: ドラッグ不可 */
+    -khtml-user-drag:none;
+    -moz-user-drag:none;
+    -o-user-drag:none;
+    user-drag:none;
+    -webkit-touch-callout:none;      /* iOS Safari: 長押しの「画像を保存」ポップアップを抑止 */
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+  /* 背景画像（hero / awards / activity card 等）は元から右クリック保存不可 */
   a{color:inherit;text-decoration:none;transition:opacity .2s,color .2s}
   a:hover{opacity:0.75}
   img{max-width:100%;display:block}
@@ -2048,6 +2063,24 @@
 </div>
 
 <script>
+  // === 画像保存の一般的な抑止（右クリック・ドラッグ） ===
+  // ※ スクリーンショット・開発者ツールでの取得は防げません。
+  document.addEventListener('contextmenu', function(e){
+    var t = e.target;
+    if (t && (t.tagName === 'IMG' ||
+              (t.classList && (t.classList.contains('hero-photo-card') ||
+                               t.classList.contains('awards-photo-large') ||
+                               t.classList.contains('photo') ||
+                               t.classList.contains('activity-card-photo'))))) {
+      e.preventDefault();
+    }
+  });
+  document.addEventListener('dragstart', function(e){
+    if (e.target && e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
   // Detect survey submission success (Formsubmit redirect)
   var SURVEY_SUBMITTED = (location.search.indexOf('submitted=1') !== -1);
 
