@@ -117,6 +117,36 @@
   }
   .header-cta:hover{background:var(--coral-bright);opacity:1}
 
+  /* === In-page disclaimer banner (page content 内、ヒーロー直上に固定で常時表示) === */
+  .disclaimer-banner{
+    background:#fff8e6;
+    border-top:3px solid #d4a64f;
+    border-bottom:3px solid #d4a64f;
+    padding:18px var(--gutter);
+    text-align:center;
+  }
+  .disclaimer-banner-inner{
+    max-width:880px;margin:0 auto;
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  }
+  .disclaimer-banner .badge{
+    flex:0 0 auto;
+    background:#a04a18;color:#ffd97a;
+    font-size:11px;font-weight:700;letter-spacing:0.12em;
+    padding:5px 12px;border-radius:3px;
+    text-transform:uppercase;
+  }
+  .disclaimer-banner p{
+    color:#5a3a14;font-size:14px;line-height:1.8;margin:0;
+    font-family:"Noto Serif JP",serif;font-weight:500;
+  }
+  .disclaimer-banner p strong{color:#7c3a0c;font-weight:700}
+  @media(max-width:760px){
+    .disclaimer-banner{padding:14px var(--gutter)}
+    .disclaimer-banner p{font-size:12.5px;line-height:1.7}
+    .disclaimer-banner .badge{font-size:10px;padding:4px 10px}
+  }
+
   /* Hero */
   .hero{
     min-height:88vh;
@@ -1060,6 +1090,17 @@
     <a href="#cta" class="header-cta">見学を申込む →</a>
   </div>
 </header>
+
+<!-- In-page disclaimer banner (always visible at top of content) -->
+<div class="disclaimer-banner" role="alert">
+  <div class="disclaimer-banner-inner">
+    <span class="badge">⚠ 非公式 ／ Unofficial</span>
+    <p>
+      このページは <strong>学生さん向けの説明用</strong> に、中島が個人的に作成したものです。<br>
+      <strong>札幌医科大学 心臓血管外科の公式サイトではありません</strong>。内容に不正確な部分が含まれる可能性があります。
+    </p>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -2091,7 +2132,10 @@
       <p>011-611-2111（内線 33120）<br>question_surg2@sapmed.ac.jp</p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Department of Cardiovascular Surgery, Sapporo Medical University.</div>
+  <div class="footer-bottom">
+    ※ 当ページは札幌医科大学 心臓血管外科の<strong style="color:#ffd97a">公式サイトではありません</strong>。学生さん向け説明用に中島が個人的に作成したものです。<br>
+    © 2026 Personal student-briefing draft / Not affiliated with the official department website.
+  </div>
 </footer>
 
 <!-- Lightbox Modal -->
