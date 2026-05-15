@@ -1669,6 +1669,14 @@
 </div>
 
 <script>
+  // Always start from the top of the page on load / reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('load', function(){
+    window.scrollTo(0, 0);
+  });
+
   // Photo gallery data
   const galleryPhotos = [
     {src:'images/wetlab-1.jpg', caption:'Wet Lab 実技訓練 ／ 指導医によるマンツーマン指導'},
