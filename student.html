@@ -333,6 +333,14 @@
 
   /* Photo Gallery (3 categories with lightbox) */
   .gallery{background:var(--bg-cream)}
+  .gallery-cat{position:relative}
+  .gallery-scroll-hint{
+    display:none;font-family:"Cormorant Garamond",serif;font-size:11px;
+    letter-spacing:0.25em;color:var(--coral);text-transform:uppercase;
+    margin:-12px 0 12px;text-align:right;font-weight:600;
+  }
+  .gallery-scroll-hint::before{content:"← ";opacity:0.6}
+  .gallery-scroll-hint::after{content:" →";opacity:0.6}
   .gallery-cat{margin-bottom:64px}
   .gallery-cat:last-child{margin-bottom:0}
   .gallery-cat-head{
@@ -628,9 +636,34 @@
     .awards-side{flex-direction:row}
     .awards-side .photo{aspect-ratio:1/1}
     .awards-stats{gap:18px}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-    .gallery-grid.three{grid-template-columns:repeat(2,1fr)}
-    .gallery-grid.two{grid-template-columns:repeat(2,1fr);max-width:none}
+
+    /* Show scroll hint on tablet/mobile */
+    .gallery-scroll-hint{display:block}
+
+    /* Gallery: horizontal scroll on smaller screens */
+    .gallery-grid,
+    .gallery-grid.two,
+    .gallery-grid.three{
+      display:flex;
+      grid-template-columns:none;
+      overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      gap:16px;
+      padding:8px var(--gutter) 24px;
+      margin:0 calc(-1 * var(--gutter));
+      scrollbar-width:none;
+      max-width:none;
+    }
+    .gallery-grid::-webkit-scrollbar,
+    .gallery-grid.two::-webkit-scrollbar,
+    .gallery-grid.three::-webkit-scrollbar{display:none;height:0}
+    .gallery-thumb{
+      flex:0 0 82%;
+      min-width:280px;
+      scroll-snap-align:start;
+      aspect-ratio:4/3;
+    }
     .training::before{display:none}
     .career-track{grid-template-columns:repeat(2,1fr);gap:32px}
     .career-track::before{display:none}
@@ -1046,6 +1079,7 @@
         実際の組織を使った縫合・吻合の実技訓練。少人数グループで指導医から直接指導を受けながら、
         基本手技を磨きます。学生・研修医も積極的に参加可能です。
       </p>
+      <div class="gallery-scroll-hint">スワイプで横にスクロール</div>
       <div class="gallery-grid">
         <a href="#" class="gallery-thumb" onclick="return openLightbox(0)">
           <img src="images/wetlab-1.jpg" alt="Wet Lab 実技訓練">
@@ -1106,6 +1140,7 @@
         HOPES 学会で <strong>優秀演題賞を受賞</strong> した瞬間。学生・若手医師の挑戦が、
         確かな評価につながっています。教室全体で支える文化が、こうした成果を生み出しています。
       </p>
+      <div class="gallery-scroll-hint">スワイプで横にスクロール</div>
       <div class="gallery-grid">
         <a href="#" class="gallery-thumb" onclick="return openLightbox(9)">
           <img src="images/hopes-award-1.jpg" alt="HOPES 表彰式">
