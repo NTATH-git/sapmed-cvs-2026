@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Future Surgeons ／ 札幌医科大学 心臓血管外科 — Cinematic Edition</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0c;
+    --ink-soft:#3b3b40;
+    --paper:#fffaf2;
+    --cream:#f7efde;
+    --coral:#c41e3a;
+    --coral-dark:#8a1428;
+    --gold:#c19a3d;
+    --gold-light:#e8cf86;
+    --max:1280px;
+    --gutter:32px;
+    --notice-h:42px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter","Noto Serif JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+    background:var(--ink);color:var(--paper);line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;overflow-wrap:anywhere;line-break:strict;
+    padding-top:var(--notice-h);
+  }
+  input,textarea,select,code,pre{word-break:normal;overflow-wrap:normal}
+  img{
+    -webkit-user-drag:none;user-drag:none;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;user-select:none;
+  }
+  a{color:inherit;text-decoration:none;transition:opacity .25s,color .25s}
+  a:hover{opacity:0.78}
+  ::selection{background:var(--coral);color:#fff}
+
+  /* ===== 上部固定 注意バー ===== */
+  .notice-bar{
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    min-height:var(--notice-h);
+    background:linear-gradient(90deg,#7c3a0c 0%,#a04a18 50%,#7c3a0c 100%);
+    color:#fff8e6;
+    display:flex;align-items:center;justify-content:center;
+    padding:6px 16px;text-align:center;
+    font-size:12.5px;line-height:1.5;letter-spacing:0.04em;
+    box-shadow:0 2px 12px rgba(0,0,0,0.4);
+    border-bottom:2px solid #d4a64f;
+  }
+  .notice-bar .ic{color:#ffd97a;margin-right:8px;font-size:14px}
+  .notice-bar strong{color:#ffd97a;font-weight:700;letter-spacing:0.06em}
+  .notice-bar .sub{
+    margin-left:10px;padding-left:10px;border-left:1px solid rgba(255,217,122,0.4);
+    color:rgba(255,248,230,0.85);font-size:11.5px;
+  }
+  @media(max-width:760px){
+    :root{--notice-h:54px}
+    .notice-bar{font-size:11px;padding:6px 10px;line-height:1.45}
+    .notice-bar .sub{display:block;margin:2px 0 0 0;padding:0;border:0}
+  }
+
+  /* ===== トップナビ ===== */
+  .topnav{
+    position:fixed;top:var(--notice-h);left:0;right:0;z-index:8000;
+    padding:18px var(--gutter);
+    background:linear-gradient(180deg,rgba(10,10,12,0.85) 0%,rgba(10,10,12,0) 100%);
+    display:flex;justify-content:space-between;align-items:center;
+    pointer-events:none;
+    transition:background .3s;
+  }
+  .topnav > *{pointer-events:auto}
+  .topnav.scrolled{background:rgba(10,10,12,0.92);backdrop-filter:blur(12px);padding:14px var(--gutter)}
+  .topnav-brand{
+    font-family:"Cormorant Garamond",serif;font-weight:600;letter-spacing:0.12em;
+    font-size:18px;color:var(--paper);
+  }
+  .topnav-brand small{display:block;font-size:10px;letter-spacing:0.2em;opacity:.6;font-family:"Inter",sans-serif;font-weight:400;margin-top:2px}
+  .topnav-links{display:flex;gap:28px;align-items:center}
+  .topnav-links a{
+    font-size:12px;letter-spacing:0.15em;text-transform:uppercase;
+    color:rgba(255,250,242,0.82);font-weight:500;
+  }
+  .topnav-links a:hover{color:var(--gold-light);opacity:1}
+  .topnav-cta{
+    background:var(--coral);color:#fff !important;
+    padding:10px 20px;font-size:11px;letter-spacing:0.18em;
+    border-radius:2px;font-weight:600;
+  }
+  .topnav-cta:hover{background:var(--coral-dark);opacity:1}
+  @media(max-width:760px){
+    .topnav{padding:14px 18px}
+    .topnav-links{gap:14px}
+    .topnav-links a:not(.topnav-cta){display:none}
+    .topnav-brand{font-size:15px}
+    .topnav-brand small{font-size:8px}
+    .topnav-cta{padding:8px 14px;font-size:10px}
+  }
+
+  /* ===== シネマヒーロー（共通） ===== */
+  .cinema{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;color:#fff;
+  }
+  .cinema-bg{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    transform:scale(1.08);
+    transition:transform 8s ease-out;
+    z-index:0;
+    will-change:transform;
+  }
+  .cinema.in-view .cinema-bg{transform:scale(1.0)}
+  .cinema::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,
+      rgba(10,10,12,0.55) 0%,
+      rgba(10,10,12,0.35) 40%,
+      rgba(10,10,12,0.65) 80%,
+      rgba(10,10,12,0.85) 100%);
+  }
+  .cinema-inner{
+    position:relative;z-index:2;
+    max-width:1100px;width:100%;
+    padding:120px var(--gutter) 80px;
+    text-align:center;
+  }
+  .cinema-eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:0.35em;
+    color:var(--gold-light);text-transform:uppercase;font-weight:600;
+    margin-bottom:28px;padding:8px 18px;
+    border:1px solid rgba(232,207,134,0.4);border-radius:2px;
+    background:rgba(0,0,0,0.2);backdrop-filter:blur(4px);
+  }
+  .cinema h1, .cinema h2{
+    font-family:"Noto Serif JP",serif;font-weight:600;
+    line-height:1.4;letter-spacing:0.02em;
+    text-shadow:0 4px 24px rgba(0,0,0,0.5);
+  }
+  .cinema h1{font-size:clamp(38px,7vw,86px);margin-bottom:28px}
+  .cinema h2{font-size:clamp(32px,5.5vw,64px);margin-bottom:24px}
+  .cinema h1 .em, .cinema h2 .em{
+    color:var(--coral);font-style:normal;
+    background:linear-gradient(90deg,#ff6b6b,#c41e3a);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:none;
+  }
+  .cinema-en{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:clamp(18px,2.4vw,28px);font-weight:400;
+    color:var(--gold-light);letter-spacing:0.12em;
+    margin-bottom:40px;text-shadow:0 2px 16px rgba(0,0,0,0.6);
+  }
+  .cinema-lead{
+    font-size:clamp(15px,1.5vw,18px);line-height:2.1;
+    color:rgba(255,250,242,0.92);max-width:680px;margin:0 auto 40px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.5);
+  }
+  .cinema-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+  .btn-pri,.btn-sec{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.18em;
+    text-transform:uppercase;border-radius:2px;
+    transition:all .3s;backdrop-filter:blur(8px);
+  }
+  .btn-pri{background:var(--coral);color:#fff;box-shadow:0 8px 32px rgba(196,30,58,0.4)}
+  .btn-pri:hover{background:var(--coral-dark);transform:translateY(-3px);box-shadow:0 16px 40px rgba(196,30,58,0.55);opacity:1}
+  .btn-sec{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.4)}
+  .btn-sec:hover{background:rgba(255,255,255,0.15);border-color:#fff;transform:translateY(-3px);opacity:1}
+  .btn-pri .arrow,.btn-sec .arrow{transition:transform .3s}
+  .btn-pri:hover .arrow,.btn-sec:hover .arrow{transform:translateX(6px)}
+
+  /* ===== ヒーローカルーセル（先頭） ===== */
+  .hero-stage{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;color:#fff;
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transform:scale(1.06);
+    transition:opacity 1.6s ease-in-out,transform 8s ease-out;
+    z-index:0;
+  }
+  .hero-slide.active{opacity:1;transform:scale(1.0)}
+  .hero-stage::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,
+      rgba(10,10,12,0.45) 0%,
+      rgba(10,10,12,0.25) 35%,
+      rgba(10,10,12,0.55) 75%,
+      rgba(10,10,12,0.92) 100%);
+  }
+  .hero-stage-inner{
+    position:relative;z-index:2;text-align:center;
+    padding:140px var(--gutter) 120px;max-width:1100px;
+  }
+  .hero-stage h1{
+    font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:clamp(44px,8vw,108px);line-height:1.25;letter-spacing:0.02em;
+    margin-bottom:32px;text-shadow:0 6px 32px rgba(0,0,0,0.6);
+  }
+  .hero-stage h1 .em{
+    background:linear-gradient(90deg,#ff5a5a,#c41e3a 60%,#8a1428);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-stage .accent{
+    display:block;font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:clamp(18px,2vw,26px);color:var(--gold-light);
+    letter-spacing:0.18em;margin-top:18px;font-weight:400;
+    text-shadow:0 2px 12px rgba(0,0,0,0.6);
+  }
+  .hero-stage .lead{
+    font-size:clamp(15px,1.5vw,18px);line-height:2.1;
+    color:rgba(255,250,242,0.92);max-width:720px;margin:0 auto 36px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.5);
+  }
+  .hero-dots{
+    position:absolute;bottom:50px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;z-index:3;
+  }
+  .hero-dots .dot{
+    width:36px;height:3px;background:rgba(255,255,255,0.3);
+    cursor:pointer;transition:all .3s;
+  }
+  .hero-dots .dot.active{background:var(--coral);width:60px}
+  .hero-scroll-hint{
+    position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+    color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:0.3em;
+    text-transform:uppercase;z-index:3;
+    animation:bounce 2.4s infinite;
+  }
+  @keyframes bounce{
+    0%,100%{transform:translate(-50%,0)}
+    50%{transform:translate(-50%,8px)}
+  }
+
+  /* ===== コンテンツブロック（暗背景の文字セクション） ===== */
+  .block{
+    background:#0a0a0c;
+    color:var(--paper);
+    padding:120px var(--gutter);
+    position:relative;
+  }
+  .block.cream{background:var(--cream);color:var(--ink)}
+  .block-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:2}
+  .block-eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:0.35em;
+    color:var(--coral);text-transform:uppercase;font-weight:700;
+    margin-bottom:24px;padding-bottom:10px;
+    border-bottom:1px solid var(--coral);
+  }
+  .block h2{
+    font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:clamp(30px,4vw,52px);line-height:1.4;
+    margin-bottom:32px;letter-spacing:0.02em;
+  }
+  .block h2 .em{color:var(--coral)}
+  .block .lead{
+    font-size:clamp(15px,1.4vw,17px);line-height:2.1;
+    color:rgba(255,250,242,0.85);max-width:780px;
+  }
+  .block.cream .lead{color:var(--ink-soft)}
+  .block.center{text-align:center}
+  .block.center .block-inner > *{margin-left:auto;margin-right:auto}
+
+  /* ===== 4-up カード（暗） ===== */
+  .why-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    margin-top:60px;
+  }
+  .why-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:36px 28px;transition:all .35s;
+    position:relative;overflow:hidden;
+  }
+  .why-card:hover{transform:translateY(-8px);background:rgba(196,30,58,0.08);border-color:var(--coral)}
+  .why-card .num{
+    font-family:"Cormorant Garamond",serif;font-size:48px;font-weight:600;
+    color:var(--coral);line-height:1;margin-bottom:18px;letter-spacing:-0.02em;
+  }
+  .why-card h3{
+    font-family:"Noto Serif JP",serif;font-size:18px;font-weight:600;
+    margin-bottom:14px;letter-spacing:0.04em;line-height:1.55;
+  }
+  .why-card p{font-size:13px;color:rgba(255,250,242,0.7);line-height:1.95}
+  @media(max-width:1100px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+
+  /* ===== Stats Strip ===== */
+  .stats-strip{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-top:60px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .stat{
+    text-align:center;padding:40px 24px;
+    border-right:1px solid rgba(255,255,255,0.1);
+  }
+  .stat:last-child{border-right:none}
+  .stat .n{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:clamp(48px,6vw,72px);line-height:1;
+    color:var(--gold-light);letter-spacing:-0.03em;
+    margin-bottom:12px;
+  }
+  .stat .n small{font-size:0.5em;color:var(--coral);margin-left:4px}
+  .stat .lbl{
+    font-size:10px;letter-spacing:0.25em;text-transform:uppercase;
+    color:rgba(255,250,242,0.6);font-weight:600;
+  }
+  @media(max-width:760px){
+    .stats-strip{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid rgba(255,255,255,0.1)}
+  }
+
+  /* ===== Photo Gallery (Mosaic) ===== */
+  .mosaic{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:160px;
+    gap:14px;margin-top:60px;
+  }
+  .mosaic .tile{
+    position:relative;overflow:hidden;cursor:pointer;
+    background-size:cover;background-position:center;
+    transition:transform .5s,box-shadow .5s;
+  }
+  .mosaic .tile::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.7) 100%);
+    opacity:0;transition:opacity .3s;
+  }
+  .mosaic .tile:hover{transform:scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,0.5);z-index:2}
+  .mosaic .tile:hover::after{opacity:1}
+  .mosaic .cap{
+    position:absolute;left:14px;right:14px;bottom:12px;z-index:2;
+    color:#fff;font-size:12px;letter-spacing:0.04em;
+    opacity:0;transform:translateY(8px);transition:all .3s;
+    text-shadow:0 1px 4px rgba(0,0,0,0.6);
+  }
+  .mosaic .tile:hover .cap{opacity:1;transform:translateY(0)}
+  /* tile sizes */
+  .t-2x2{grid-column:span 2;grid-row:span 2}
+  .t-3x2{grid-column:span 3;grid-row:span 2}
+  .t-2x1{grid-column:span 2;grid-row:span 1}
+  .t-3x1{grid-column:span 3;grid-row:span 1}
+  .t-1x1{grid-column:span 1;grid-row:span 1}
+  @media(max-width:960px){
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px;gap:10px}
+    .t-2x2,.t-3x2{grid-column:span 2;grid-row:span 2}
+    .t-2x1,.t-3x1{grid-column:span 2;grid-row:span 1}
+    .t-1x1{grid-column:span 1;grid-row:span 1}
+  }
+
+  /* ===== Quote Cinema (full bleed quote on photo) ===== */
+  .quote-cinema{
+    position:relative;min-height:90vh;
+    display:flex;align-items:center;justify-content:center;
+    background-size:cover;background-position:center;background-attachment:fixed;
+    color:#fff;text-align:center;overflow:hidden;
+  }
+  .quote-cinema::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.85) 100%);
+  }
+  .quote-cinema-inner{position:relative;z-index:2;max-width:900px;padding:80px var(--gutter)}
+  .quote-cinema .mark{
+    font-family:"Cormorant Garamond",serif;font-size:clamp(80px,10vw,140px);
+    line-height:1;color:var(--coral);margin-bottom:-20px;font-weight:600;
+  }
+  .quote-cinema blockquote{
+    font-family:"Noto Serif JP",serif;font-weight:500;
+    font-size:clamp(22px,3vw,36px);line-height:1.8;letter-spacing:0.03em;
+    color:#fff;margin-bottom:32px;text-shadow:0 4px 24px rgba(0,0,0,0.5);
+  }
+  .quote-cinema cite{
+    display:block;font-style:normal;font-size:13px;letter-spacing:0.25em;
+    color:var(--gold-light);text-transform:uppercase;
+  }
+  @media(max-width:760px){
+    .quote-cinema{background-attachment:scroll;min-height:70vh}
+  }
+
+  /* ===== Timeline (Activity Report) ===== */
+  .timeline{
+    position:relative;max-width:780px;margin:60px auto 0;
+    padding-left:32px;
+  }
+  .timeline::before{
+    content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+    background:linear-gradient(to bottom,var(--coral) 0,var(--gold) 60%,rgba(255,255,255,0.1) 100%);
+  }
+  .tl-item{position:relative;padding-bottom:32px}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:6px;
+    width:16px;height:16px;border-radius:50%;
+    background:#0a0a0c;border:3px solid var(--coral);
+    box-shadow:0 0 0 4px rgba(196,30,58,0.15);
+  }
+  .tl-item:last-child{padding-bottom:0}
+  .tl-date{
+    font-family:"Cormorant Garamond",serif;font-size:14px;
+    color:var(--coral);font-weight:600;letter-spacing:0.1em;margin-bottom:6px;
+  }
+  .tl-title{
+    font-family:"Noto Serif JP",serif;font-size:17px;font-weight:600;
+    color:var(--paper);margin-bottom:8px;letter-spacing:0.03em;line-height:1.6;
+  }
+  .tl-desc{font-size:13px;color:rgba(255,250,242,0.7);line-height:1.95}
+
+  /* ===== Lightbox ===== */
+  .lightbox{
+    position:fixed;inset:0;z-index:9998;
+    background:rgba(0,0,0,0.94);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:92vw;max-height:88vh;
+    box-shadow:0 24px 60px rgba(0,0,0,0.6);
+  }
+  .lightbox-close{
+    position:absolute;top:24px;right:32px;
+    color:#fff;font-size:36px;cursor:pointer;font-weight:300;
+    width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;background:rgba(0,0,0,0.4);
+  }
+  .lightbox-cap{
+    position:absolute;bottom:32px;left:0;right:0;
+    text-align:center;color:#fff;font-size:13px;letter-spacing:0.05em;
+    text-shadow:0 2px 8px rgba(0,0,0,0.6);
+  }
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:56px;height:56px;border:none;background:rgba(0,0,0,0.4);
+    color:#fff;font-size:32px;cursor:pointer;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-nav:hover{background:rgba(196,30,58,0.7)}
+  .lightbox-nav.prev{left:24px}
+  .lightbox-nav.next{right:24px}
+  @media(max-width:760px){
+    .lightbox-nav{width:44px;height:44px;font-size:24px}
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:#050507;color:rgba(255,250,242,0.55);
+    padding:80px var(--gutter) 32px;font-size:13px;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;
+    padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner h4{
+    font-family:"Noto Serif JP",serif;color:var(--paper);
+    font-size:16px;font-weight:600;margin-bottom:14px;letter-spacing:0.05em;
+  }
+  .footer-inner p{line-height:1.95;font-size:12.5px}
+  .footer-inner a{display:block;font-size:12.5px;line-height:2;color:rgba(255,250,242,0.7)}
+  .footer-bottom{
+    text-align:center;padding-top:28px;font-size:11.5px;line-height:1.95;
+    color:rgba(255,250,242,0.5);
+  }
+  .footer-bottom strong{color:#ffd97a;font-weight:600}
+  @media(max-width:760px){
+    .footer-inner{grid-template-columns:1fr;gap:28px}
+  }
+
+  /* ===== reveal-on-scroll ===== */
+  .reveal{opacity:0;transform:translateY(28px);transition:all 1.0s ease-out}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    .cinema-bg,.hero-slide{transform:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- Notice bar -->
+<div class="notice-bar" role="alert" aria-label="ページに関する注記">
+  <span class="ic">⚠</span>
+  <span>このページは <strong>学生さん向け説明用</strong> に個人的に作成したものです。<span class="sub">札幌医科大学 心臓血管外科の公式サイトではありません</span></span>
+</div>
+
+<!-- Top Nav -->
+<nav class="topnav" id="topnav">
+  <a href="student.html" class="topnav-brand">
+    Sapmed CVS
+    <small>For Future Surgeons</small>
+  </a>
+  <div class="topnav-links">
+    <a href="#why">Why CVS</a>
+    <a href="#activity">Activity</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact" class="topnav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- 1. HERO STAGE - Auto-rotating hero with multiple photos       -->
+<!-- ============================================================ -->
+<section class="hero-stage">
+  <div class="hero-slide active" style="background-image:url('images/iba-loupe.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('images/surgery-precision.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('images/team-surgery.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('images/shibata-surgery.jpg')"></div>
+
+  <div class="hero-stage-inner">
+    <h1>
+      心臓を、<br>
+      自分の<span class="em">手</span>で動かす。
+      <span class="accent">— Sapmed Cardiovascular Surgery —</span>
+    </h1>
+    <p class="lead">
+      最先端の技術。世界に通用する研鑽。仲間と切磋琢磨できる環境。<br>
+      ここに、あなたの「外科医としての原点」があります。
+    </p>
+    <div class="cinema-cta">
+      <a href="#why" class="btn-pri">教室を知る <span class="arrow">→</span></a>
+      <a href="#contact" class="btn-sec">見学を申込む <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="heroDots">
+    <span class="dot active" data-i="0"></span>
+    <span class="dot" data-i="1"></span>
+    <span class="dot" data-i="2"></span>
+    <span class="dot" data-i="3"></span>
+  </div>
+  <div class="hero-scroll-hint">SCROLL ↓</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. CINEMA - Why CVS (full screen)                             -->
+<!-- ============================================================ -->
+<section class="cinema" id="why-cinema">
+  <div class="cinema-bg" style="background-image:url('images/wetlab-3.jpg')"></div>
+  <div class="cinema-inner reveal">
+    <div class="cinema-eyebrow">Why Cardiovascular Surgery?</div>
+    <h2>なぜ、<span class="em">心臓血管外科</span>なのか。</h2>
+    <div class="cinema-en">— The Heart of Surgery —</div>
+    <p class="cinema-lead">
+      数ある外科のなかで、心臓血管外科を選ぶ意味とは。<br>
+      「いのち」に最も近い領域で、世界に通用する技術を磨く。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. BLOCK - 4 reasons                                          -->
+<!-- ============================================================ -->
+<section class="block" id="why">
+  <div class="block-inner">
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <div class="num">01</div>
+        <h3>「いのち」に最も近い外科</h3>
+        <p>心臓と血管 ── つまり「いのちそのもの」を扱う唯一の外科領域。患者さんの生死を握る緊張感と、それを救えたときの達成感。</p>
+      </article>
+      <article class="why-card reveal">
+        <div class="num">02</div>
+        <h3>高度な技術が一生の財産に</h3>
+        <p>顕微鏡下の繊細な縫合、ステントグラフト、ロボット支援手術 ── 一生かけて磨ける手技は、外科医人生最大の資産。</p>
+      </article>
+      <article class="why-card reveal">
+        <div class="num">03</div>
+        <h3>世界が舞台のフィールド</h3>
+        <p>心臓血管外科は世界共通言語。米国・欧州・アジアでの研鑽機会、国際学会での発表・論文執筆を通じ、世界の同世代と切磋琢磨。</p>
+      </article>
+      <article class="why-card reveal">
+        <div class="num">04</div>
+        <h3>チーム医療の最前線</h3>
+        <p>循環器内科・麻酔科・看護師・臨床工学技士 ── 多職種が一丸となるチーム医療の中心。リーダーシップが自然と磨かれる。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. CINEMA - Activity Report intro                             -->
+<!-- ============================================================ -->
+<section class="cinema" id="activity-cinema">
+  <div class="cinema-bg" style="background-image:url('images/challengers-1.jpg')"></div>
+  <div class="cinema-inner reveal">
+    <div class="cinema-eyebrow">Activity Report</div>
+    <h2><span class="em">活動の報告</span></h2>
+    <div class="cinema-en">— What we've been doing —</div>
+    <p class="cinema-lead">
+      Wet Lab、全国学会、Challengers Live ──<br>
+      若手・学生が中心となって、学術と臨床の両面で躍動しています。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. BLOCK - Timeline                                           -->
+<!-- ============================================================ -->
+<section class="block" id="activity">
+  <div class="block-inner center">
+    <div class="block-eyebrow">Recent Activities</div>
+    <h2>これまでの<span class="em">主な活動</span></h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">2026.05</div>
+        <div class="tl-title">伊庭 裕 新教授 就任</div>
+        <p class="tl-desc">札幌医科大学 心臓血管外科 教授に伊庭 裕 先生が就任。新体制での教室運営がスタート。</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026.04</div>
+        <div class="tl-title">Wet Lab 実技訓練 開催</div>
+        <p class="tl-desc">医学生・初期研修医対象のハンズオン実技訓練を札幌で開催。</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026.02</div>
+        <div class="tl-title">Challengers Live 参加</div>
+        <p class="tl-desc">若手対象の手技ライブイベントに当科より複数名が参加。</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2025.10</div>
+        <div class="tl-title">第78回 日本胸部外科学会 発表</div>
+        <p class="tl-desc">複数演題を発表。学会出張時には記念撮影、懇親会も実施。</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2025.08</div>
+        <div class="tl-title">HOPES 2025 学会 開催・受賞</div>
+        <p class="tl-desc">医学生・若手による研究発表会。当科より複数の優秀演題賞を受賞。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. CINEMA - HOPES Awards                                      -->
+<!-- ============================================================ -->
+<section class="cinema" id="awards-cinema">
+  <div class="cinema-bg" style="background-image:url('images/hopes-award-1.jpg')"></div>
+  <div class="cinema-inner reveal">
+    <div class="cinema-eyebrow">HOPES Award Winners</div>
+    <h2>HOPES 学会で<br><span class="em">受賞続出。</span></h2>
+    <div class="cinema-en">— Recognized for Excellence —</div>
+    <p class="cinema-lead">
+      医学生・若手医師として早期から学会発表に挑戦し、<br>
+      複数の優秀演題賞を受賞しています。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7. BLOCK - Stats                                              -->
+<!-- ============================================================ -->
+<section class="block">
+  <div class="block-inner center">
+    <div class="block-eyebrow">By the Numbers</div>
+    <h2>挑戦と評価の<span class="em">記録</span></h2>
+    <div class="stats-strip">
+      <div class="stat reveal">
+        <div class="n">6<small>+</small></div>
+        <div class="lbl">HOPES Awards</div>
+      </div>
+      <div class="stat reveal">
+        <div class="n">25<small>+</small></div>
+        <div class="lbl">Activity Photos</div>
+      </div>
+      <div class="stat reveal">
+        <div class="n">100<small>%</small></div>
+        <div class="lbl">Faculty Support</div>
+      </div>
+      <div class="stat reveal">
+        <div class="n">∞</div>
+        <div class="lbl">Possibilities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8. QUOTE CINEMA - Inspirational quote                         -->
+<!-- ============================================================ -->
+<section class="quote-cinema" style="background-image:url('images/conference-banner.jpg')">
+  <div class="quote-cinema-inner reveal">
+    <div class="mark">"</div>
+    <blockquote>
+      学生のうちから学会で発表し、評価される ──<br>
+      そんな貴重な経験を、当科は本気で応援します。
+    </blockquote>
+    <cite>— 札幌医科大学 心臓血管外科</cite>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 9. CINEMA - Photo Album intro                                 -->
+<!-- ============================================================ -->
+<section class="cinema" id="gallery-cinema">
+  <div class="cinema-bg" style="background-image:url('images/team-photo.png')"></div>
+  <div class="cinema-inner reveal">
+    <div class="cinema-eyebrow">Photo Album</div>
+    <h2>活動の様子を<br><span class="em">写真で見る。</span></h2>
+    <div class="cinema-en">— Moments that define us —</div>
+    <p class="cinema-lead">
+      Wet Lab、HOPES、Challengers Live、全国学会、親睦会 ──<br>
+      クリックで拡大表示されます。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10. BLOCK - Mosaic Gallery                                    -->
+<!-- ============================================================ -->
+<section class="block" id="gallery">
+  <div class="block-inner">
+    <div class="mosaic">
+      <div class="tile t-3x2" onclick="openLightbox(0)" style="background-image:url('images/wetlab-1.jpg')"><div class="cap">Wet Lab ／ マンツーマン指導</div></div>
+      <div class="tile t-3x2" onclick="openLightbox(7)" style="background-image:url('images/challengers-1.jpg')"><div class="cap">Challengers Live ／ CABG吻合</div></div>
+      <div class="tile t-2x2" onclick="openLightbox(11)" style="background-image:url('images/hopes-award-1.jpg')"><div class="cap">HOPES 表彰式</div></div>
+      <div class="tile t-2x2" onclick="openLightbox(15)" style="background-image:url('images/conference-banner.jpg')"><div class="cap">第78回 日本胸部外科学会</div></div>
+      <div class="tile t-2x2" onclick="openLightbox(5)" style="background-image:url('images/hopes-1.jpg')"><div class="cap">HOPES 学会発表</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(1)" style="background-image:url('images/wetlab-2.jpg')"><div class="cap">Wet Lab ／ 少人数実技</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(2)" style="background-image:url('images/wetlab-3.jpg')"><div class="cap">Wet Lab 全景</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(3)" style="background-image:url('images/wetlab-4.jpg')"><div class="cap">Wet Lab ／ 縫合練習</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(8)" style="background-image:url('images/challengers-3.jpg')"><div class="cap">サージカルルーペ</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(10)" style="background-image:url('images/challengers-5.jpg')"><div class="cap">PROLENE 縫合</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(12)" style="background-image:url('images/hopes-award-2.jpg')"><div class="cap">受賞者スピーチ</div></div>
+      <div class="tile t-3x1" onclick="openLightbox(17)" style="background-image:url('images/conference-3.jpg')"><div class="cap">学会後の懇親会</div></div>
+      <div class="tile t-3x1" onclick="openLightbox(18)" style="background-image:url('images/conference-4.jpg')"><div class="cap">千葉マリンスタジアム前にて</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(19)" style="background-image:url('images/social-1.jpg')"><div class="cap">関連病院との合同会</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(20)" style="background-image:url('images/social-2.jpg')"><div class="cap">少人数の懇親</div></div>
+      <div class="tile t-2x1" onclick="openLightbox(21)" style="background-image:url('images/social-3.jpg')"><div class="cap">先輩・後輩の交流</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11. CINEMA - CTA                                              -->
+<!-- ============================================================ -->
+<section class="cinema" id="cta-cinema">
+  <div class="cinema-bg" style="background-image:url('images/young-docs.jpg')"></div>
+  <div class="cinema-inner reveal">
+    <div class="cinema-eyebrow">Take the Next Step</div>
+    <h2>その<span class="em">「迷い」</span>を、<br>「確信」に変える日まで。</h2>
+    <p class="cinema-lead">
+      迷っているあなたへ。まずは見学から、お気軽にお越しください。<br>
+      私たちは、あなたの未来の同僚と、心からお会いしたいと願っています。
+    </p>
+    <div class="cinema-cta">
+      <a href="#contact" class="btn-pri">病院見学を申込む <span class="arrow">→</span></a>
+      <a href="mailto:t.nakajima@sapmed.ac.jp" class="btn-sec">メールで質問する <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12. BLOCK - Contact                                           -->
+<!-- ============================================================ -->
+<section class="block cream" id="contact">
+  <div class="block-inner center">
+    <div class="block-eyebrow">Contact</div>
+    <h2>お問い合わせ・<span class="em">見学申込</span></h2>
+    <p class="lead" style="margin:0 auto 40px;text-align:center">
+      病院見学・クリニカルクラークシップ・入局説明会のお申込み、その他ご質問は<br>
+      下記までお気軽にご連絡ください。
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:720px;margin:40px auto 0;text-align:left">
+      <div style="padding:24px;background:#fff;border-left:3px solid var(--coral)">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:8px">Email</div>
+        <a href="mailto:t.nakajima@sapmed.ac.jp" style="font-size:14px;color:var(--ink)">t.nakajima@sapmed.ac.jp</a>
+      </div>
+      <div style="padding:24px;background:#fff;border-left:3px solid var(--gold)">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px">Phone</div>
+        <span style="font-size:14px;color:var(--ink)">011-611-2111（内線 33120）</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- Footer                                                        -->
+<!-- ============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>札幌医科大学 心臓血管外科</h4>
+      <p>For Future Surgeons ／ Sapmed Cardiovascular Surgery<br>
+      〒060-8543 札幌市中央区南1条西16丁目</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:t.nakajima@sapmed.ac.jp">t.nakajima@sapmed.ac.jp</a>
+      <a>011-611-2111（内線 33120）</a>
+    </div>
+    <div>
+      <h4>Other</h4>
+      <a href="student.html">← v1（標準版）に戻る</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    ※ 当ページは札幌医科大学 心臓血管外科の<strong>公式サイトではありません</strong>。学生さん向け説明用に中島が個人的に作成したものです。<br>
+    © 2026 Personal student-briefing draft / Cinematic Edition v2 / Not affiliated with the official department website.
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">×</span>
+  <button class="lightbox-nav prev" onclick="event.stopPropagation();prevPhoto()">‹</button>
+  <button class="lightbox-nav next" onclick="event.stopPropagation();nextPhoto()">›</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+  <div class="lightbox-cap" id="lightbox-cap"></div>
+</div>
+
+<script>
+  // ===== Force scroll-to-top on load (mobile-safe) =====
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) { try { history.replaceState(null, '', location.pathname); } catch(e){} }
+  function forceTop(){
+    try { window.scrollTo({top:0,left:0,behavior:'instant'}); } catch(e){ window.scrollTo(0,0); }
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+  }
+  forceTop();
+  document.addEventListener('DOMContentLoaded', forceTop);
+  window.addEventListener('load', function(){
+    forceTop();
+    requestAnimationFrame(forceTop);
+    setTimeout(forceTop, 100);
+    setTimeout(forceTop, 350);
+  });
+  window.addEventListener('pageshow', function(e){ if (e.persisted) forceTop(); });
+
+  // ===== Image protection =====
+  document.addEventListener('contextmenu', function(e){
+    var t = e.target;
+    if (t && (t.tagName === 'IMG' || (t.classList && (
+      t.classList.contains('hero-slide') || t.classList.contains('cinema-bg') ||
+      t.classList.contains('tile') || t.classList.contains('quote-cinema'))))) {
+      e.preventDefault();
+    }
+  });
+  document.addEventListener('dragstart', function(e){
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  // ===== Hero carousel auto-rotate =====
+  (function(){
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('#heroDots .dot');
+    var idx = 0;
+    function show(i){
+      slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+      dots.forEach(function(d,k){ d.classList.toggle('active', k===i); });
+      idx = i;
+    }
+    dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); restart(); }); });
+    var timer;
+    function tick(){ show((idx+1) % slides.length); }
+    function restart(){ clearInterval(timer); timer = setInterval(tick, 5500); }
+    restart();
+  })();
+
+  // ===== Top nav scroll state =====
+  (function(){
+    var nav = document.getElementById('topnav');
+    function onScroll(){
+      if (window.scrollY > 80) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // ===== Reveal-on-scroll =====
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(e){ e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.15});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  // ===== Cinema bg zoom-in on enter view =====
+  (function(){
+    var cins = document.querySelectorAll('.cinema');
+    if (!('IntersectionObserver' in window)) {
+      cins.forEach(function(c){ c.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) en.target.classList.add('in-view');
+      });
+    }, {threshold:0.25});
+    cins.forEach(function(c){ io.observe(c); });
+  })();
+
+  // ===== Lightbox =====
+  var galleryPhotos = [
+    {src:'images/wetlab-1.jpg', cap:'Wet Lab 実技訓練 ／ マンツーマン指導'},
+    {src:'images/wetlab-2.jpg', cap:'Wet Lab ／ 少人数グループ実技'},
+    {src:'images/wetlab-3.jpg', cap:'Wet Lab 全景'},
+    {src:'images/wetlab-4.jpg', cap:'Wet Lab ／ チームでの縫合練習'},
+    {src:'images/hopes-1.jpg', cap:'HOPES 2024：医学生による発表'},
+    {src:'images/hopes-1.jpg', cap:'HOPES 学会発表'},
+    {src:'images/hopes-2.jpg', cap:'演者として登壇する若手'},
+    {src:'images/challengers-1.jpg', cap:'Challengers Live ／ CABG 2人での吻合手技'},
+    {src:'images/challengers-3.jpg', cap:'サージカルルーペでの精密手技'},
+    {src:'images/challengers-4.jpg', cap:'持針器を構える集中の瞬間'},
+    {src:'images/challengers-5.jpg', cap:'PROLENE 縫合 ／ 繊細な血管吻合'},
+    {src:'images/hopes-award-1.jpg', cap:'HOPES 表彰式 ／ 賞状授与の瞬間'},
+    {src:'images/hopes-award-2.jpg', cap:'受賞者スピーチ'},
+    {src:'images/hopes-award-3.jpg', cap:'受賞者ステージ集合'},
+    {src:'images/hopes-award-4.jpg', cap:'受賞・笑顔の瞬間'},
+    {src:'images/conference-banner.jpg', cap:'第78回 日本胸部外科学会 看板前にて'},
+    {src:'images/conference-travel.jpg', cap:'学会出張 ／ 仲間との移動'},
+    {src:'images/conference-3.jpg', cap:'学会後の懇親会 ／ チームで一献'},
+    {src:'images/conference-4.jpg', cap:'学会出張・千葉マリンスタジアム前にて'},
+    {src:'images/social-1.jpg', cap:'関連病院との合同会'},
+    {src:'images/social-2.jpg', cap:'少人数の懇親'},
+    {src:'images/social-3.jpg', cap:'先輩・後輩の交流'}
+  ];
+  var curIdx = 0;
+  function openLightbox(i){
+    if (i<0||i>=galleryPhotos.length) return false;
+    curIdx = i;
+    showLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    return false;
+  }
+  function showLightbox(){
+    var p = galleryPhotos[curIdx];
+    document.getElementById('lightbox-img').src = p.src;
+    document.getElementById('lightbox-cap').textContent = p.cap;
+  }
+  function nextPhoto(){ curIdx = (curIdx+1) % galleryPhotos.length; showLightbox(); }
+  function prevPhoto(){ curIdx = (curIdx-1+galleryPhotos.length) % galleryPhotos.length; showLightbox(); }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowRight') nextPhoto();
+    else if (e.key === 'ArrowLeft') prevPhoto();
+  });
+  // Touch swipe on lightbox
+  (function(){
+    var lb = document.getElementById('lightbox');
+    var sx = 0;
+    lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - sx;
+      if (dx > 60) prevPhoto();
+      else if (dx < -60) nextPhoto();
+    });
+  })();
+</script>
+</body>
+</html>
