@@ -1669,12 +1669,33 @@
 </div>
 
 <script>
-  // Always start from the top of the page on load / reload
+  // Always start from the top of the page on load / reload (mobile-safe)
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
+  // Strip any hash so anchor jumps don't pull us down
+  if (location.hash) {
+    try { history.replaceState(null, '', location.pathname + location.search); } catch(e){}
+  }
+  function forceTop(){
+    try { window.scrollTo({top:0, left:0, behavior:'instant'}); } catch(e){ window.scrollTo(0,0); }
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+  }
+  // Run as early as possible
+  forceTop();
+  document.addEventListener('DOMContentLoaded', forceTop);
   window.addEventListener('load', function(){
-    window.scrollTo(0, 0);
+    forceTop();
+    // Late re-trigger after images / fonts settle on mobile
+    requestAnimationFrame(forceTop);
+    setTimeout(forceTop, 0);
+    setTimeout(forceTop, 100);
+    setTimeout(forceTop, 350);
+  });
+  // bfcache restore (iOS Safari back/forward)
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) forceTop();
   });
 
   // Photo gallery data
