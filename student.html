@@ -130,46 +130,60 @@
   }
 
   /* Hero photo card (right side - contained, no text overlap) */
-  /* ===== Hero photo stack（縦並び・大きい・モノクロ寄り） ===== */
+  /* ===== Hero photo stack（縦並び・各画面いっぱい・モノクロ寄り） ===== */
   .hero-photo-stack{
-    display:flex;flex-direction:column;gap:32px;
+    display:flex;flex-direction:column;gap:0;
+    margin:0;
   }
   .hero-photo-block{
     position:relative;width:100%;
-    height:62vh;min-height:420px;max-height:680px;
+    height:100vh;min-height:520px;
     overflow:hidden;
-    box-shadow:0 18px 44px rgba(0,0,0,0.45);
     background-size:cover;background-position:center;
     /* 白黒に近いトーン：グレースケール 70% + 微コントラスト */
     filter:grayscale(70%) contrast(1.08) brightness(0.95);
   }
   .hero-photo-block::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(13,40,68,0.85) 100%);
+    background:linear-gradient(180deg,rgba(0,0,0,0.10) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 60%,rgba(13,40,68,0.92) 100%);
   }
   .hero-photo-block .fac-credit{
-    position:absolute;left:24px;bottom:24px;z-index:2;
-    background:rgba(13,40,68,0.95);
-    padding:18px 28px;border-left:3px solid var(--coral);
-    max-width:380px;
+    position:absolute;left:max(24px,calc((100% - 1200px)/2));bottom:48px;z-index:2;
+    background:rgba(13,40,68,0.96);
+    padding:22px 32px;border-left:3px solid var(--coral);
+    max-width:440px;
   }
   .hero-photo-block .fac-credit .role{
-    font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.28em;
-    color:var(--gold-light);text-transform:uppercase;font-weight:600;margin-bottom:6px;
+    font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:0.3em;
+    color:var(--gold-light);text-transform:uppercase;font-weight:600;margin-bottom:8px;
   }
   .hero-photo-block .fac-credit .name{
-    font-family:"Noto Serif JP",serif;font-size:17px;font-weight:600;
+    font-family:"Noto Serif JP",serif;font-size:20px;font-weight:600;
     color:#fff;letter-spacing:0.05em;line-height:1.55;
   }
   .hero-photo-block .fac-credit .name-en{
-    font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:0.1em;
-    color:rgba(255,255,255,0.65);margin-top:4px;
+    font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.1em;
+    color:rgba(255,255,255,0.7);margin-top:5px;
+  }
+  /* スクロールガイド：1枚目だけ表示 */
+  .hero-photo-block:first-child::before{
+    content:"SCROLL ↓";
+    position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+    z-index:3;
+    font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.3em;
+    color:rgba(255,255,255,0.7);
+    animation:scrollHint 2.4s infinite ease-in-out;
+  }
+  @keyframes scrollHint{
+    0%,100%{transform:translate(-50%,0);opacity:0.7}
+    50%{transform:translate(-50%,6px);opacity:1}
   }
   @media(max-width:760px){
-    .hero-photo-stack{gap:20px}
-    .hero-photo-block{height:48vh;min-height:280px}
-    .hero-photo-block .fac-credit{left:14px;bottom:14px;padding:14px 18px;max-width:260px}
+    .hero-photo-block{min-height:480px}
+    .hero-photo-block .fac-credit{left:14px;bottom:24px;padding:16px 20px;max-width:280px}
     .hero-photo-block .fac-credit .name{font-size:15px}
+    .hero-photo-block .fac-credit .role{font-size:10px;letter-spacing:0.22em}
+    .hero-photo-block .fac-credit .name-en{font-size:11px}
   }
   .hero::before{
     content:"FOR FUTURE SURGEONS";
@@ -981,7 +995,32 @@
   </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero photo showcase (full-screen each) -->
+<section class="hero-photo-stack">
+  <div class="hero-photo-block" style="background-image:url('images/iba-loupe.jpg');background-position:center 22%">
+    <div class="fac-credit">
+      <div class="role">Professor &amp; Chairman</div>
+      <div class="name">伊庭 裕 教授 ／ 術中</div>
+      <div class="name-en">Yutaka Iba, M.D., Ph.D.</div>
+    </div>
+  </div>
+  <div class="hero-photo-block" style="background-image:url('images/shibata-surgery.jpg');background-position:center 22%">
+    <div class="fac-credit">
+      <div class="role">Lecturer</div>
+      <div class="name">柴田 豪 講師 ／ 術中</div>
+      <div class="name-en">Go Shibata, M.D., Ph.D.</div>
+    </div>
+  </div>
+  <div class="hero-photo-block" style="background-image:url('images/team-surgery.jpg');background-position:center 28%">
+    <div class="fac-credit">
+      <div class="role">Sapmed CVS Team</div>
+      <div class="name">仲澤先生をはじめとする手術チーム</div>
+      <div class="name-en">Operating Team led by Dr. Nakazawa</div>
+    </div>
+  </div>
+</section>
+
+<!-- Hero (text + stats + CTA) -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-grid">
@@ -1014,29 +1053,6 @@
         <div class="hero-actions">
           <a href="#cta" class="btn btn-coral">病院見学を申込む <span class="arrow">→</span></a>
           <a href="#voices" class="btn btn-line">先輩の声を聞く <span class="arrow">→</span></a>
-        </div>
-      </div>
-      <div class="hero-photo-stack">
-        <div class="hero-photo-block" style="background-image:url('images/iba-loupe.jpg');background-position:center 22%">
-          <div class="fac-credit">
-            <div class="role">Professor &amp; Chairman</div>
-            <div class="name">伊庭 裕 教授 ／ 術中</div>
-            <div class="name-en">Yutaka Iba, M.D., Ph.D.</div>
-          </div>
-        </div>
-        <div class="hero-photo-block" style="background-image:url('images/shibata-surgery.jpg');background-position:center 22%">
-          <div class="fac-credit">
-            <div class="role">Lecturer</div>
-            <div class="name">柴田 豪 講師 ／ 術中</div>
-            <div class="name-en">Go Shibata, M.D., Ph.D.</div>
-          </div>
-        </div>
-        <div class="hero-photo-block" style="background-image:url('images/team-surgery.jpg');background-position:center 28%">
-          <div class="fac-credit">
-            <div class="role">Sapmed CVS Team</div>
-            <div class="name">仲澤先生をはじめとする手術チーム</div>
-            <div class="name-en">Operating Team led by Dr. Nakazawa</div>
-          </div>
         </div>
       </div>
     </div>
