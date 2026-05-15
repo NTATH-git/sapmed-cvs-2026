@@ -53,6 +53,42 @@
   img{max-width:100%;display:block}
   ::selection{background:var(--coral);color:#fff}
 
+  /* === Notice bar: 学生説明用・非公式の常時固定バー === */
+  :root{--notice-h:42px}
+  body{padding-top:var(--notice-h)}
+  .notice-bar{
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    min-height:var(--notice-h);
+    background:linear-gradient(90deg,#7c3a0c 0%,#a04a18 50%,#7c3a0c 100%);
+    color:#fff8e6;
+    display:flex;align-items:center;justify-content:center;
+    padding:6px 16px;text-align:center;
+    font-size:12.5px;line-height:1.5;letter-spacing:0.04em;
+    box-shadow:0 2px 12px rgba(0,0,0,0.25);
+    border-bottom:2px solid #d4a64f;
+  }
+  .notice-bar .notice-icon{
+    font-size:14px;margin-right:8px;flex:0 0 auto;
+    color:#ffd97a;
+  }
+  .notice-bar strong{color:#ffd97a;font-weight:700;letter-spacing:0.06em}
+  .notice-bar .notice-sub{
+    margin-left:10px;padding-left:10px;border-left:1px solid rgba(255,217,122,0.4);
+    color:rgba(255,248,230,0.85);font-size:11.5px;
+  }
+  /* sticky header を notice-bar の下に */
+  @media(min-width:1px){
+    .header{top:var(--notice-h) !important}
+  }
+  @media(max-width:760px){
+    :root{--notice-h:54px}
+    .notice-bar{font-size:11px;padding:6px 10px;line-height:1.45}
+    .notice-bar .notice-sub{display:block;margin:2px 0 0 0;padding:0;border:0}
+  }
+  @media(max-width:420px){
+    .notice-bar{font-size:10.5px}
+  }
+
   /* Topbar */
   .topbar{background:var(--ink);color:rgba(255,255,255,0.85);font-size:12px}
   .topbar-inner{max-width:var(--max);margin:0 auto;padding:8px var(--gutter);display:flex;justify-content:space-between;align-items:center;gap:24px;letter-spacing:0.05em}
@@ -983,6 +1019,12 @@
 </style>
 </head>
 <body>
+
+<!-- Notice bar: always-visible disclaimer that this is a personal student-briefing page -->
+<div class="notice-bar" role="alert" aria-label="ページに関する注記">
+  <span class="notice-icon">⚠</span>
+  <span>このページは <strong>学生さん向け説明用</strong> に個人的に作成したものです。<span class="notice-sub">札幌医科大学 心臓血管外科の公式サイトではありません</span></span>
+</div>
 
 <!-- Topbar -->
 <div class="topbar">
