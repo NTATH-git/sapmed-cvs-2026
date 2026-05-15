@@ -26,7 +26,13 @@
     font-family:"Inter","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
     color:var(--ink);background:var(--bg-cream);line-height:1.85;
     font-feature-settings:"palt";-webkit-font-smoothing:antialiased;
+    /* 日本語の熟語が分断されないようにする */
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+    line-break:strict;
   }
+  /* 入力欄やコード等は英文用に通常の改行ルール */
+  input,textarea,select,code,pre{word-break:normal;overflow-wrap:normal}
   a{color:inherit;text-decoration:none;transition:opacity .2s,color .2s}
   a:hover{opacity:0.75}
   img{max-width:100%;display:block}
@@ -423,6 +429,21 @@
     position:absolute;top:32px;left:32px;color:rgba(255,255,255,0.7);
     font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.2em;
   }
+  /* Lightbox navigation buttons (prev/next) */
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(255,255,255,0.1);color:#fff;
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.3);
+    font-size:30px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s,transform .2s;
+    line-height:1;font-family:inherit;padding:0 0 4px 0;
+    z-index:2;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.25);transform:translateY(-50%) scale(1.05)}
+  .lightbox-nav.prev{left:24px}
+  .lightbox-nav.next{right:24px}
 
   /* Career path */
   .career{background:#fff}
@@ -741,6 +762,9 @@
     .lightbox-close{top:16px;right:16px;width:40px;height:40px;font-size:24px}
     .lightbox-counter{top:24px;left:16px;font-size:11px}
     .lightbox-caption{font-size:12px;bottom:20px}
+    .lightbox-nav{width:42px;height:42px;font-size:22px}
+    .lightbox-nav.prev{left:10px}
+    .lightbox-nav.next{right:10px}
 
     .career-track{grid-template-columns:1fr;gap:24px}
     .career-step{display:flex;align-items:flex-start;gap:18px;text-align:left}
@@ -1558,7 +1582,9 @@
 <!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <span class="lightbox-counter" id="lightbox-counter"></span>
-  <span class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">×</span>
+  <span class="lightbox-close" onclick="event.stopPropagation();closeLightbox()" aria-label="閉じる">×</span>
+  <button class="lightbox-nav prev" onclick="event.stopPropagation();prevPhoto()" aria-label="前の写真">‹</button>
+  <button class="lightbox-nav next" onclick="event.stopPropagation();nextPhoto()" aria-label="次の写真">›</button>
   <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
   <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
@@ -1582,16 +1608,33 @@
     {src:'images/hopes-award-5.jpg', caption:'HOPES 受賞・表彰 ／ 教授陣との記念撮影'}
   ];
 
+  let currentLightboxIndex = 0;
+
   function openLightbox(index){
-    const photo = galleryPhotos[index];
-    if(!photo) return false;
-    document.getElementById('lightbox-img').src = photo.src;
-    document.getElementById('lightbox-caption').textContent = photo.caption;
-    document.getElementById('lightbox-counter').textContent =
-      String(index+1).padStart(2,'0') + ' / ' + String(galleryPhotos.length).padStart(2,'0');
+    if(index < 0 || index >= galleryPhotos.length) return false;
+    currentLightboxIndex = index;
+    showLightboxPhoto();
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
     return false;
+  }
+
+  function showLightboxPhoto(){
+    const photo = galleryPhotos[currentLightboxIndex];
+    document.getElementById('lightbox-img').src = photo.src;
+    document.getElementById('lightbox-caption').textContent = photo.caption;
+    document.getElementById('lightbox-counter').textContent =
+      String(currentLightboxIndex+1).padStart(2,'0') + ' / ' + String(galleryPhotos.length).padStart(2,'0');
+  }
+
+  function nextPhoto(){
+    currentLightboxIndex = (currentLightboxIndex + 1) % galleryPhotos.length;
+    showLightboxPhoto();
+  }
+
+  function prevPhoto(){
+    currentLightboxIndex = (currentLightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+    showLightboxPhoto();
   }
 
   function closeLightbox(){
@@ -1599,10 +1642,30 @@
     document.body.style.overflow = '';
   }
 
-  // ESC key to close
+  // Keyboard navigation: ← → / ESC
   document.addEventListener('keydown', function(e){
+    const isOpen = document.getElementById('lightbox').classList.contains('open');
+    if(!isOpen) return;
     if(e.key === 'Escape') closeLightbox();
+    else if(e.key === 'ArrowRight') nextPhoto();
+    else if(e.key === 'ArrowLeft') prevPhoto();
   });
+
+  // Touch swipe support on lightbox image
+  (function(){
+    const lightboxEl = document.getElementById('lightbox');
+    let touchStartX = 0, touchEndX = 0;
+    lightboxEl.addEventListener('touchstart', function(e){
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive:true});
+    lightboxEl.addEventListener('touchend', function(e){
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if(Math.abs(diff) < 50) return; // ignore small swipes
+      if(diff > 0) prevPhoto(); // swipe right → previous
+      else nextPhoto();         // swipe left → next
+    }, {passive:true});
+  })();
 </script>
 
 </body>
