@@ -120,11 +120,11 @@
     background:#0a0a0c;
   }
   .cinema-photo{
-    position:relative;flex:1 1 60vh;min-height:60vh;overflow:hidden;
+    position:relative;flex:1 1 70vh;min-height:70vh;overflow:hidden;
   }
   .cinema-bg{
     position:absolute;inset:0;
-    background-size:cover;background-position:center;
+    background-size:cover;background-position:center 25%;
     transform:scale(1.08);
     transition:transform 8s ease-out;
     will-change:transform;
@@ -202,11 +202,11 @@
     overflow:hidden;color:#fff;background:#0a0a0c;
   }
   .hero-photo{
-    position:relative;flex:1 1 60vh;min-height:60vh;overflow:hidden;
+    position:relative;flex:1 1 70vh;min-height:70vh;overflow:hidden;
   }
   .hero-slide{
     position:absolute;inset:0;
-    background-size:cover;background-position:center;
+    background-size:cover;background-position:center 22%;
     opacity:0;transform:scale(1.06);
     transition:opacity 1.6s ease-in-out,transform 8s ease-out;
   }
@@ -423,9 +423,9 @@
   }
   @media(max-width:760px){
     .quote-cinema{min-height:80vh}
-    .quote-cinema-photo{flex:1 1 40vh;min-height:40vh}
+    .quote-cinema-photo{flex:1 1 45vh;min-height:45vh}
     .quote-cinema-text{padding:48px 22px;min-height:auto}
-    .cinema-photo,.hero-photo{flex:1 1 50vh;min-height:50vh}
+    .cinema-photo,.hero-photo{flex:1 1 55vh;min-height:55vh}
     .cinema-text,.hero-text{padding:44px 22px;min-height:auto}
   }
 
@@ -556,10 +556,10 @@
 <!-- ============================================================ -->
 <section class="hero-stage">
   <div class="hero-photo">
-    <div class="hero-slide active" style="background-image:url('images/iba-loupe.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('images/surgery-precision.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('images/team-surgery.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('images/shibata-surgery.jpg')"></div>
+    <div class="hero-slide active" style="background-image:url('images/iba-loupe.jpg');background-position:center 18%"></div>
+    <div class="hero-slide" style="background-image:url('images/surgery-precision.jpg');background-position:center 35%"></div>
+    <div class="hero-slide" style="background-image:url('images/team-surgery.jpg');background-position:center 28%"></div>
+    <div class="hero-slide" style="background-image:url('images/shibata-surgery.jpg');background-position:center 22%"></div>
     <div class="hero-dots" id="heroDots">
       <span class="dot active" data-i="0"></span>
       <span class="dot" data-i="1"></span>
@@ -589,7 +589,7 @@
 <!-- ============================================================ -->
 <section class="cinema" id="why-cinema">
   <div class="cinema-photo">
-    <div class="cinema-bg" style="background-image:url('images/wetlab-3.jpg')"></div>
+    <div class="cinema-bg" style="background-image:url('images/wetlab-3.jpg');background-position:center 30%"></div>
   </div>
   <div class="cinema-text">
     <div class="cinema-inner reveal">
@@ -638,7 +638,7 @@
 <!-- ============================================================ -->
 <section class="cinema" id="activity-cinema">
   <div class="cinema-photo">
-    <div class="cinema-bg" style="background-image:url('images/challengers-1.jpg')"></div>
+    <div class="cinema-bg" style="background-image:url('images/challengers-1.jpg');background-position:center 40%"></div>
   </div>
   <div class="cinema-text">
     <div class="cinema-inner reveal">
@@ -694,7 +694,7 @@
 <!-- ============================================================ -->
 <section class="cinema" id="awards-cinema">
   <div class="cinema-photo">
-    <div class="cinema-bg" style="background-image:url('images/hopes-award-1.jpg')"></div>
+    <div class="cinema-bg" style="background-image:url('images/hopes-award-1.jpg');background-position:center 35%"></div>
   </div>
   <div class="cinema-text">
     <div class="cinema-inner reveal">
@@ -740,7 +740,7 @@
 <!-- 8. QUOTE CINEMA - Inspirational quote                         -->
 <!-- ============================================================ -->
 <section class="quote-cinema">
-  <div class="quote-cinema-photo" style="background-image:url('images/conference-banner.jpg')"></div>
+  <div class="quote-cinema-photo" style="background-image:url('images/conference-banner.jpg');background-position:center 30%"></div>
   <div class="quote-cinema-text">
     <div class="quote-cinema-inner reveal">
       <div class="mark">"</div>
@@ -757,7 +757,7 @@
 <!-- ============================================================ -->
 <section class="cinema" id="gallery-cinema">
   <div class="cinema-photo">
-    <div class="cinema-bg" style="background-image:url('images/team-photo.png')"></div>
+    <div class="cinema-bg" style="background-image:url('images/team-photo.png');background-position:center 35%"></div>
   </div>
   <div class="cinema-text">
     <div class="cinema-inner reveal">
@@ -802,7 +802,7 @@
 <!-- ============================================================ -->
 <section class="cinema" id="cta-cinema">
   <div class="cinema-photo">
-    <div class="cinema-bg" style="background-image:url('images/young-docs.jpg')"></div>
+    <div class="cinema-bg" style="background-image:url('images/young-docs.jpg');background-position:center 25%"></div>
   </div>
   <div class="cinema-text">
     <div class="cinema-inner reveal">
