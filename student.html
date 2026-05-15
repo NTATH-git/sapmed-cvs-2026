@@ -238,6 +238,91 @@
   .training-link::after{content:"↗";font-size:14px;transition:transform .25s}
   .training-link:hover::after{transform:translate(2px,-2px)}
 
+  /* Photo Gallery (3 categories with lightbox) */
+  .gallery{background:var(--bg-cream)}
+  .gallery-cat{margin-bottom:64px}
+  .gallery-cat:last-child{margin-bottom:0}
+  .gallery-cat-head{
+    display:flex;align-items:baseline;gap:18px;margin-bottom:24px;
+    padding-bottom:14px;border-bottom:2px solid var(--coral);
+  }
+  .gallery-cat-head h3{
+    font-family:"Noto Serif JP",serif;font-size:22px;color:var(--ink);font-weight:600;letter-spacing:0.05em;
+  }
+  .gallery-cat-head .en{
+    font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.3em;
+    color:var(--coral);text-transform:uppercase;font-weight:600;
+  }
+  .gallery-cat-head .count{
+    margin-left:auto;font-family:"Cormorant Garamond",serif;font-size:13px;
+    letter-spacing:0.15em;color:var(--ink-soft);
+  }
+  .gallery-cat-desc{
+    font-size:14px;color:var(--ink-soft);line-height:1.95;margin-bottom:24px;max-width:760px;
+  }
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gallery-grid.three{grid-template-columns:repeat(3,1fr)}
+  .gallery-grid.two{grid-template-columns:repeat(2,1fr);max-width:840px;margin:0 auto}
+  .gallery-thumb{
+    position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;
+    background:#000;display:block;
+  }
+  .gallery-thumb img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease,filter .3s ease;
+    filter:brightness(0.92);
+  }
+  .gallery-thumb:hover img{transform:scale(1.08);filter:brightness(1)}
+  .gallery-thumb-overlay{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:14px 16px;color:#fff;
+    background:linear-gradient(transparent,rgba(0,0,0,0.85));
+    font-family:"Noto Serif JP",serif;font-size:12px;letter-spacing:0.04em;
+    transform:translateY(8px);opacity:0;transition:all .3s ease;
+  }
+  .gallery-thumb:hover .gallery-thumb-overlay{transform:translateY(0);opacity:1}
+  .gallery-thumb-zoom{
+    position:absolute;top:12px;right:12px;
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(255,255,255,0.9);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;font-size:16px;
+    opacity:0;transition:opacity .3s;font-weight:600;
+  }
+  .gallery-thumb:hover .gallery-thumb-zoom{opacity:1}
+
+  /* Lightbox modal */
+  .lightbox{
+    display:none;position:fixed;inset:0;
+    background:rgba(0,0,0,0.94);z-index:9999;
+    align-items:center;justify-content:center;
+    padding:60px 24px 80px;cursor:zoom-out;
+    backdrop-filter:blur(8px);
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:95%;max-height:80vh;object-fit:contain;
+    box-shadow:0 24px 60px rgba(0,0,0,0.6);
+    cursor:default;
+  }
+  .lightbox-close{
+    position:absolute;top:24px;right:32px;
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,0.1);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;cursor:pointer;line-height:1;
+    border:1px solid rgba(255,255,255,0.3);transition:background .2s;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.2)}
+  .lightbox-caption{
+    position:absolute;bottom:30px;left:0;right:0;text-align:center;
+    color:#fff;font-family:"Noto Serif JP",serif;font-size:14px;letter-spacing:0.1em;
+    padding:0 24px;
+  }
+  .lightbox-counter{
+    position:absolute;top:32px;left:32px;color:rgba(255,255,255,0.7);
+    font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.2em;
+  }
+
   /* Career path */
   .career{background:#fff}
   .career-track{
@@ -446,6 +531,9 @@
     .why-grid{grid-template-columns:1fr;gap:24px}
     .str-grid{grid-template-columns:repeat(2,1fr)}
     .training-grid{grid-template-columns:1fr;gap:20px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .gallery-grid.three{grid-template-columns:repeat(2,1fr)}
+    .gallery-grid.two{grid-template-columns:repeat(2,1fr);max-width:none}
     .training::before{display:none}
     .career-track{grid-template-columns:repeat(2,1fr);gap:32px}
     .career-track::before{display:none}
@@ -501,6 +589,17 @@
     .training-card p{font-size:13px;line-height:1.95}
     .training-tag{font-size:10px;letter-spacing:0.25em;padding:4px 10px;margin-bottom:14px}
     .training-link{font-size:12px}
+
+    .gallery-cat{margin-bottom:48px}
+    .gallery-cat-head{flex-wrap:wrap;gap:10px;padding-bottom:10px}
+    .gallery-cat-head h3{font-size:18px}
+    .gallery-cat-head .en{font-size:11px;letter-spacing:0.25em}
+    .gallery-cat-head .count{font-size:11px}
+    .gallery-cat-desc{font-size:13px;line-height:1.85}
+    .lightbox{padding:50px 16px 70px}
+    .lightbox-close{top:16px;right:16px;width:40px;height:40px;font-size:24px}
+    .lightbox-counter{top:24px;left:16px;font-size:11px}
+    .lightbox-caption{font-size:12px;bottom:20px}
 
     .career-track{grid-template-columns:1fr;gap:24px}
     .career-step{display:flex;align-items:flex-start;gap:18px;text-align:left}
@@ -572,6 +671,7 @@
       <a href="#why">なぜ心臓血管外科</a>
       <a href="#strengths">当科の強み</a>
       <a href="#training">学びの機会</a>
+      <a href="#gallery">ギャラリー</a>
       <a href="#career">キャリアパス</a>
       <a href="#scenes">現場の風景</a>
       <a href="#voices">先輩の声</a>
@@ -759,6 +859,110 @@
           詳しく聞く ／ 見学を申し込む
         </a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Gallery (3 categories with lightbox) -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Photo Album</div>
+      <h2 class="h2">活動の様子を、<span class="em">写真で見る。</span></h2>
+      <p class="lead-text">
+        Wet Lab 実技訓練、HOPES 学会発表、教室の親睦会 ── 当科の活動の様子を写真でご紹介します。<br>
+        各写真をクリックすると拡大表示されます。
+      </p>
+    </div>
+
+    <!-- Wet Lab category -->
+    <div class="gallery-cat">
+      <div class="gallery-cat-head">
+        <h3>Wet Lab 実技訓練</h3>
+        <span class="en">Hands-on Training</span>
+        <span class="count">4 photos</span>
+      </div>
+      <p class="gallery-cat-desc">
+        実際の組織を使った縫合・吻合の実技訓練。少人数グループで指導医から直接指導を受けながら、
+        基本手技を磨きます。学生・研修医も積極的に参加可能です。
+      </p>
+      <div class="gallery-grid">
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(0)">
+          <img src="images/wetlab-1.jpg" alt="Wet Lab 実技訓練">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">指導医によるマンツーマン指導</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(1)">
+          <img src="images/wetlab-2.jpg" alt="Wet Lab 実技訓練">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">少人数グループ実技</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(2)">
+          <img src="images/wetlab-3.jpg" alt="Wet Lab 実技訓練">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">Wet Lab 全景</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(3)">
+          <img src="images/wetlab-4.jpg" alt="Wet Lab 実技訓練">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">チームでの縫合練習</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- HOPES category -->
+    <div class="gallery-cat">
+      <div class="gallery-cat-head">
+        <h3>HOPES 学会発表</h3>
+        <span class="en">Academic Presentation</span>
+        <span class="count">2 photos</span>
+      </div>
+      <p class="gallery-cat-desc">
+        北海道外科関連学会機構合同学術集会「HOPES」での学会発表。医学生・若手医師として早期から
+        全国規模の学会発表のチャンスがあります。教室全体で発表をサポートします。
+      </p>
+      <div class="gallery-grid two">
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(4)">
+          <img src="images/hopes-1.jpg" alt="HOPES 2024 学会発表">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">HOPES 2024：医学生による発表</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(5)">
+          <img src="images/hopes-2.jpg" alt="HOPES 学会 演者">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">演者として登壇する若手</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Social category -->
+    <div class="gallery-cat">
+      <div class="gallery-cat-head">
+        <h3>親睦・交流</h3>
+        <span class="en">Team &amp; Connection</span>
+        <span class="count">3 photos</span>
+      </div>
+      <p class="gallery-cat-desc">
+        診療や研究で集まる時間とは別に、教室全体・関連病院との交流の場も大切にしています。
+        フランクな雰囲気の中で先輩・後輩が話し合えるのも、当科の文化のひとつです。
+      </p>
+      <div class="gallery-grid three">
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(6)">
+          <img src="images/social-1.jpg" alt="親睦会">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">関連病院との合同会</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(7)">
+          <img src="images/social-2.jpg" alt="懇親会">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">少人数の懇親</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(8)">
+          <img src="images/social-3.jpg" alt="飲み会">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">先輩・後輩の交流</div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1115,6 +1319,51 @@
   </div>
   <div class="footer-bottom">© 2026 Department of Cardiovascular Surgery, Sapporo Medical University.</div>
 </footer>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-counter" id="lightbox-counter"></span>
+  <span class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+  // Photo gallery data
+  const galleryPhotos = [
+    {src:'images/wetlab-1.jpg', caption:'Wet Lab 実技訓練 ／ 指導医によるマンツーマン指導'},
+    {src:'images/wetlab-2.jpg', caption:'Wet Lab ／ 少人数グループでの実技'},
+    {src:'images/wetlab-3.jpg', caption:'Wet Lab 全景 ／ 多くの参加者で活気ある会場'},
+    {src:'images/wetlab-4.jpg', caption:'Wet Lab ／ チームでの縫合練習'},
+    {src:'images/hopes-1.jpg', caption:'HOPES 2024 ／ 医学生による研究発表'},
+    {src:'images/hopes-2.jpg', caption:'HOPES ／ 演者として登壇する若手'},
+    {src:'images/social-1.jpg', caption:'親睦・交流 ／ 関連病院との合同会'},
+    {src:'images/social-2.jpg', caption:'親睦・交流 ／ 少人数の懇親会'},
+    {src:'images/social-3.jpg', caption:'親睦・交流 ／ 先輩・後輩の交流'}
+  ];
+
+  function openLightbox(index){
+    const photo = galleryPhotos[index];
+    if(!photo) return false;
+    document.getElementById('lightbox-img').src = photo.src;
+    document.getElementById('lightbox-caption').textContent = photo.caption;
+    document.getElementById('lightbox-counter').textContent =
+      String(index+1).padStart(2,'0') + ' / ' + String(galleryPhotos.length).padStart(2,'0');
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    return false;
+  }
+
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ESC key to close
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
