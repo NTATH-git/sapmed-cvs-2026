@@ -12,12 +12,12 @@
   :root{
     --ink:#0a0a0c;
     --ink-soft:#3b3b40;
-    --paper:#fffaf2;
-    --cream:#f7efde;
-    --coral:#c41e3a;
-    --coral-dark:#8a1428;
-    --gold:#c19a3d;
-    --gold-light:#e8cf86;
+    --paper:#f5f5f5;
+    --cream:#ededed;
+    --coral:#ffffff;          /* primary accent: pure white */
+    --coral-dark:#bfbfbf;     /* hover: light gray */
+    --gold:#888888;           /* secondary accent: mid gray */
+    --gold-light:#cccccc;     /* light secondary: pale gray */
     --max:1280px;
     --gutter:32px;
     --notice-h:42px;
@@ -36,28 +36,36 @@
     -webkit-user-drag:none;user-drag:none;
     -webkit-touch-callout:none;
     -webkit-user-select:none;user-select:none;
+    filter:grayscale(100%);
+  }
+  /* === Global grayscale: 全画像（背景含む）を白黒に === */
+  .hero-slide,
+  .cinema-bg,
+  .quote-cinema,
+  .mosaic .tile{
+    filter:grayscale(100%) contrast(1.05);
   }
   a{color:inherit;text-decoration:none;transition:opacity .25s,color .25s}
   a:hover{opacity:0.78}
   ::selection{background:var(--coral);color:#fff}
 
-  /* ===== 上部固定 注意バー ===== */
+  /* ===== 上部固定 注意バー（白黒） ===== */
   .notice-bar{
     position:fixed;top:0;left:0;right:0;z-index:9999;
     min-height:var(--notice-h);
-    background:linear-gradient(90deg,#7c3a0c 0%,#a04a18 50%,#7c3a0c 100%);
-    color:#fff8e6;
+    background:linear-gradient(90deg,#1a1a1a 0%,#2c2c2c 50%,#1a1a1a 100%);
+    color:#f5f5f5;
     display:flex;align-items:center;justify-content:center;
     padding:6px 16px;text-align:center;
     font-size:12.5px;line-height:1.5;letter-spacing:0.04em;
     box-shadow:0 2px 12px rgba(0,0,0,0.4);
-    border-bottom:2px solid #d4a64f;
+    border-bottom:2px solid #ffffff;
   }
-  .notice-bar .ic{color:#ffd97a;margin-right:8px;font-size:14px}
-  .notice-bar strong{color:#ffd97a;font-weight:700;letter-spacing:0.06em}
+  .notice-bar .ic{color:#ffffff;margin-right:8px;font-size:14px}
+  .notice-bar strong{color:#ffffff;font-weight:700;letter-spacing:0.06em}
   .notice-bar .sub{
-    margin-left:10px;padding-left:10px;border-left:1px solid rgba(255,217,122,0.4);
-    color:rgba(255,248,230,0.85);font-size:11.5px;
+    margin-left:10px;padding-left:10px;border-left:1px solid rgba(255,255,255,0.4);
+    color:rgba(245,245,245,0.85);font-size:11.5px;
   }
   @media(max-width:760px){
     :root{--notice-h:54px}
@@ -146,8 +154,8 @@
   .cinema h1{font-size:clamp(38px,7vw,86px);margin-bottom:28px}
   .cinema h2{font-size:clamp(32px,5.5vw,64px);margin-bottom:24px}
   .cinema h1 .em, .cinema h2 .em{
-    color:var(--coral);font-style:normal;
-    background:linear-gradient(90deg,#ff6b6b,#c41e3a);
+    color:#fff;font-style:normal;
+    background:linear-gradient(90deg,#ffffff,#bdbdbd);
     -webkit-background-clip:text;background-clip:text;color:transparent;
     text-shadow:none;
   }
@@ -169,8 +177,8 @@
     text-transform:uppercase;border-radius:2px;
     transition:all .3s;backdrop-filter:blur(8px);
   }
-  .btn-pri{background:var(--coral);color:#fff;box-shadow:0 8px 32px rgba(196,30,58,0.4)}
-  .btn-pri:hover{background:var(--coral-dark);transform:translateY(-3px);box-shadow:0 16px 40px rgba(196,30,58,0.55);opacity:1}
+  .btn-pri{background:#ffffff;color:#0a0a0c;box-shadow:0 8px 32px rgba(255,255,255,0.18)}
+  .btn-pri:hover{background:#d9d9d9;transform:translateY(-3px);box-shadow:0 16px 40px rgba(255,255,255,0.28);opacity:1}
   .btn-sec{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.4)}
   .btn-sec:hover{background:rgba(255,255,255,0.15);border-color:#fff;transform:translateY(-3px);opacity:1}
   .btn-pri .arrow,.btn-sec .arrow{transition:transform .3s}
@@ -208,7 +216,7 @@
     margin-bottom:32px;text-shadow:0 6px 32px rgba(0,0,0,0.6);
   }
   .hero-stage h1 .em{
-    background:linear-gradient(90deg,#ff5a5a,#c41e3a 60%,#8a1428);
+    background:linear-gradient(90deg,#ffffff,#cccccc 60%,#888888);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .hero-stage .accent{
@@ -230,7 +238,7 @@
     width:36px;height:3px;background:rgba(255,255,255,0.3);
     cursor:pointer;transition:all .3s;
   }
-  .hero-dots .dot.active{background:var(--coral);width:60px}
+  .hero-dots .dot.active{background:#ffffff;width:60px}
   .hero-scroll-hint{
     position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
     color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:0.3em;
@@ -253,16 +261,18 @@
   .block-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:2}
   .block-eyebrow{
     display:inline-block;font-size:11px;letter-spacing:0.35em;
-    color:var(--coral);text-transform:uppercase;font-weight:700;
+    color:#ffffff;text-transform:uppercase;font-weight:700;
     margin-bottom:24px;padding-bottom:10px;
-    border-bottom:1px solid var(--coral);
+    border-bottom:1px solid #ffffff;
   }
+  .block.cream .block-eyebrow{color:var(--ink);border-bottom-color:var(--ink)}
   .block h2{
     font-family:"Noto Serif JP",serif;font-weight:600;
     font-size:clamp(30px,4vw,52px);line-height:1.4;
     margin-bottom:32px;letter-spacing:0.02em;
   }
-  .block h2 .em{color:var(--coral)}
+  .block h2 .em{color:#ffffff;font-style:normal}
+  .block.cream h2 .em{color:#000000}
   .block .lead{
     font-size:clamp(15px,1.4vw,17px);line-height:2.1;
     color:rgba(255,250,242,0.85);max-width:780px;
@@ -282,10 +292,10 @@
     padding:36px 28px;transition:all .35s;
     position:relative;overflow:hidden;
   }
-  .why-card:hover{transform:translateY(-8px);background:rgba(196,30,58,0.08);border-color:var(--coral)}
+  .why-card:hover{transform:translateY(-8px);background:rgba(255,255,255,0.06);border-color:#ffffff}
   .why-card .num{
     font-family:"Cormorant Garamond",serif;font-size:48px;font-weight:600;
-    color:var(--coral);line-height:1;margin-bottom:18px;letter-spacing:-0.02em;
+    color:#ffffff;line-height:1;margin-bottom:18px;letter-spacing:-0.02em;
   }
   .why-card h3{
     font-family:"Noto Serif JP",serif;font-size:18px;font-weight:600;
@@ -309,10 +319,10 @@
   .stat .n{
     font-family:"Cormorant Garamond",serif;font-weight:600;
     font-size:clamp(48px,6vw,72px);line-height:1;
-    color:var(--gold-light);letter-spacing:-0.03em;
+    color:#ffffff;letter-spacing:-0.03em;
     margin-bottom:12px;
   }
-  .stat .n small{font-size:0.5em;color:var(--coral);margin-left:4px}
+  .stat .n small{font-size:0.5em;color:#888888;margin-left:4px}
   .stat .lbl{
     font-size:10px;letter-spacing:0.25em;text-transform:uppercase;
     color:rgba(255,250,242,0.6);font-weight:600;
@@ -376,7 +386,7 @@
   .quote-cinema-inner{position:relative;z-index:2;max-width:900px;padding:80px var(--gutter)}
   .quote-cinema .mark{
     font-family:"Cormorant Garamond",serif;font-size:clamp(80px,10vw,140px);
-    line-height:1;color:var(--coral);margin-bottom:-20px;font-weight:600;
+    line-height:1;color:#ffffff;margin-bottom:-20px;font-weight:600;
   }
   .quote-cinema blockquote{
     font-family:"Noto Serif JP",serif;font-weight:500;
@@ -385,7 +395,7 @@
   }
   .quote-cinema cite{
     display:block;font-style:normal;font-size:13px;letter-spacing:0.25em;
-    color:var(--gold-light);text-transform:uppercase;
+    color:#cccccc;text-transform:uppercase;
   }
   @media(max-width:760px){
     .quote-cinema{background-attachment:scroll;min-height:70vh}
@@ -398,19 +408,19 @@
   }
   .timeline::before{
     content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
-    background:linear-gradient(to bottom,var(--coral) 0,var(--gold) 60%,rgba(255,255,255,0.1) 100%);
+    background:linear-gradient(to bottom,#ffffff 0,#888888 60%,rgba(255,255,255,0.1) 100%);
   }
   .tl-item{position:relative;padding-bottom:32px}
   .tl-item::before{
     content:"";position:absolute;left:-32px;top:6px;
     width:16px;height:16px;border-radius:50%;
-    background:#0a0a0c;border:3px solid var(--coral);
-    box-shadow:0 0 0 4px rgba(196,30,58,0.15);
+    background:#0a0a0c;border:3px solid #ffffff;
+    box-shadow:0 0 0 4px rgba(255,255,255,0.12);
   }
   .tl-item:last-child{padding-bottom:0}
   .tl-date{
     font-family:"Cormorant Garamond",serif;font-size:14px;
-    color:var(--coral);font-weight:600;letter-spacing:0.1em;margin-bottom:6px;
+    color:#ffffff;font-weight:600;letter-spacing:0.1em;margin-bottom:6px;
   }
   .tl-title{
     font-family:"Noto Serif JP",serif;font-size:17px;font-weight:600;
@@ -447,7 +457,7 @@
     color:#fff;font-size:32px;cursor:pointer;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
   }
-  .lightbox-nav:hover{background:rgba(196,30,58,0.7)}
+  .lightbox-nav:hover{background:rgba(255,255,255,0.25)}
   .lightbox-nav.prev{left:24px}
   .lightbox-nav.next{right:24px}
   @media(max-width:760px){
@@ -475,7 +485,7 @@
     text-align:center;padding-top:28px;font-size:11.5px;line-height:1.95;
     color:rgba(255,250,242,0.5);
   }
-  .footer-bottom strong{color:#ffd97a;font-weight:600}
+  .footer-bottom strong{color:#ffffff;font-weight:600}
   @media(max-width:760px){
     .footer-inner{grid-template-columns:1fr;gap:28px}
   }
@@ -777,12 +787,12 @@
       下記までお気軽にご連絡ください。
     </p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:720px;margin:40px auto 0;text-align:left">
-      <div style="padding:24px;background:#fff;border-left:3px solid var(--coral)">
-        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:8px">Email</div>
+      <div style="padding:24px;background:#fff;border-left:3px solid #000000">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#000000;font-weight:700;margin-bottom:8px">Email</div>
         <a href="mailto:t.nakajima@sapmed.ac.jp" style="font-size:14px;color:var(--ink)">t.nakajima@sapmed.ac.jp</a>
       </div>
-      <div style="padding:24px;background:#fff;border-left:3px solid var(--gold)">
-        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px">Phone</div>
+      <div style="padding:24px;background:#fff;border-left:3px solid #555555">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#555555;font-weight:700;margin-bottom:8px">Phone</div>
         <span style="font-size:14px;color:var(--ink)">011-611-2111（内線 33120）</span>
       </div>
     </div>
