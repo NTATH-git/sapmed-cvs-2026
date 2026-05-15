@@ -238,6 +238,99 @@
   .training-link::after{content:"↗";font-size:14px;transition:transform .25s}
   .training-link:hover::after{transform:translate(2px,-2px)}
 
+  /* HOPES Awards Highlight (featured banner) */
+  .awards{
+    background:linear-gradient(135deg,#1a0f08 0%,var(--navy-deep) 50%,#082848 100%);
+    color:#fff;padding:120px var(--gutter);position:relative;overflow:hidden;
+  }
+  .awards::before{
+    content:"";position:absolute;inset:0;
+    background-image:url("images/hopes-award-3.jpg");
+    background-size:cover;background-position:center;
+    opacity:0.18;mix-blend-mode:luminosity;
+  }
+  .awards::after{
+    content:"AWARDS";position:absolute;right:-20px;top:30px;
+    font-family:"Cormorant Garamond",serif;font-size:200px;font-weight:600;
+    color:rgba(212,184,122,0.08);letter-spacing:-0.02em;line-height:1;
+  }
+  .awards-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:2}
+  .awards-head{text-align:center;margin-bottom:64px}
+  .awards-head .eyebrow{color:var(--gold-light);justify-content:center}
+  .awards-head .eyebrow::before{background:var(--gold-light)}
+  .awards-head h2{
+    font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:clamp(32px,4.5vw,60px);line-height:1.3;letter-spacing:0.04em;
+    color:#fff;margin-bottom:18px;
+  }
+  .awards-head h2 .em{color:var(--gold-light);font-style:italic;font-family:"Cormorant Garamond",serif}
+  .awards-head .sub{
+    font-family:"Noto Serif JP",serif;font-size:18px;color:var(--gold-light);
+    line-height:1.85;max-width:680px;margin:0 auto;font-style:italic;
+  }
+  .awards-feature{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:stretch;
+    margin-bottom:48px;
+  }
+  .awards-photo-large{
+    aspect-ratio:4/3;background-size:cover;background-position:center;
+    box-shadow:0 24px 60px rgba(0,0,0,0.5);position:relative;overflow:hidden;cursor:pointer;
+  }
+  .awards-photo-large::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(transparent 60%,rgba(0,0,0,0.6));
+    transition:opacity .3s;
+  }
+  .awards-photo-large:hover::after{opacity:0.7}
+  .awards-photo-caption{
+    position:absolute;left:0;right:0;bottom:0;padding:24px 28px;color:#fff;z-index:1;
+  }
+  .awards-photo-caption .tag{
+    font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.3em;
+    color:var(--gold-light);text-transform:uppercase;margin-bottom:6px;font-weight:600;
+  }
+  .awards-photo-caption .title{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:600;letter-spacing:0.04em;line-height:1.5}
+  .awards-side{display:flex;flex-direction:column;gap:18px}
+  .awards-side .photo{
+    flex:1;background-size:cover;background-position:center;
+    cursor:pointer;transition:transform .3s;position:relative;overflow:hidden;
+  }
+  .awards-side .photo:hover{transform:translateY(-4px)}
+  .awards-side .photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(transparent 60%,rgba(0,0,0,0.6));
+  }
+  .awards-side .photo .label{
+    position:absolute;left:0;right:0;bottom:0;padding:14px 18px;color:#fff;z-index:1;
+    font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:0.05em;
+  }
+  .awards-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    padding:36px 0;border-top:1px solid rgba(212,184,122,0.3);border-bottom:1px solid rgba(212,184,122,0.3);
+    margin-bottom:36px;
+  }
+  .awards-stat{text-align:center}
+  .awards-stat .num{
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:48px;
+    color:var(--gold-light);line-height:1;margin-bottom:8px;letter-spacing:-0.01em;
+  }
+  .awards-stat .num small{font-size:0.45em;color:rgba(212,184,122,0.7);margin-left:5px;letter-spacing:0.1em}
+  .awards-stat .lbl{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.25em;color:rgba(255,255,255,0.7);text-transform:uppercase}
+  .awards-stat .desc{font-size:12px;color:rgba(255,255,255,0.85);margin-top:6px;line-height:1.6}
+  .awards-quote{
+    text-align:center;padding:0 24px;
+  }
+  .awards-quote-text{
+    font-family:"Noto Serif JP",serif;font-size:22px;line-height:2;color:#fff;
+    font-style:italic;letter-spacing:0.05em;margin-bottom:18px;
+  }
+  .awards-quote-text::before{content:"「";color:var(--gold-light)}
+  .awards-quote-text::after{content:"」";color:var(--gold-light)}
+  .awards-quote-author{
+    font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:0.25em;
+    color:var(--gold-light);text-transform:uppercase;font-weight:600;
+  }
+
   /* Photo Gallery (3 categories with lightbox) */
   .gallery{background:var(--bg-cream)}
   .gallery-cat{margin-bottom:64px}
@@ -531,6 +624,10 @@
     .why-grid{grid-template-columns:1fr;gap:24px}
     .str-grid{grid-template-columns:repeat(2,1fr)}
     .training-grid{grid-template-columns:1fr;gap:20px}
+    .awards-feature{grid-template-columns:1fr;gap:20px}
+    .awards-side{flex-direction:row}
+    .awards-side .photo{aspect-ratio:1/1}
+    .awards-stats{gap:18px}
     .gallery-grid{grid-template-columns:repeat(2,1fr);gap:14px}
     .gallery-grid.three{grid-template-columns:repeat(2,1fr)}
     .gallery-grid.two{grid-template-columns:repeat(2,1fr);max-width:none}
@@ -596,6 +693,17 @@
     .gallery-cat-head .en{font-size:11px;letter-spacing:0.25em}
     .gallery-cat-head .count{font-size:11px}
     .gallery-cat-desc{font-size:13px;line-height:1.85}
+
+    .awards{padding:80px var(--gutter)}
+    .awards::after{font-size:120px;right:-15px;top:18px}
+    .awards-head{margin-bottom:40px}
+    .awards-head .sub{font-size:14px;line-height:1.85}
+    .awards-stats{grid-template-columns:1fr;gap:24px;padding:24px 0}
+    .awards-stat .num{font-size:36px}
+    .awards-quote-text{font-size:16px;line-height:1.95}
+    .awards-photo-caption{padding:18px 22px}
+    .awards-photo-caption .title{font-size:15px}
+    .awards-side .photo .label{font-size:12px;padding:12px 14px}
     .lightbox{padding:50px 16px 70px}
     .lightbox-close{top:16px;right:16px;width:40px;height:40px;font-size:24px}
     .lightbox-counter{top:24px;left:16px;font-size:11px}
@@ -671,6 +779,7 @@
       <a href="#why">なぜ心臓血管外科</a>
       <a href="#strengths">当科の強み</a>
       <a href="#training">学びの機会</a>
+      <a href="#awards">HOPES 受賞</a>
       <a href="#gallery">ギャラリー</a>
       <a href="#career">キャリアパス</a>
       <a href="#scenes">現場の風景</a>
@@ -834,15 +943,15 @@
 
       <article class="training-card">
         <div class="training-num">02</div>
-        <span class="training-tag">HOPES</span>
-        <h3>HOPES での学会発表</h3>
+        <span class="training-tag">HOPES · 受賞実績</span>
+        <h3>HOPES での学会発表 ・ 受賞</h3>
         <p>
           北海道外科関連学会機構合同学術集会「HOPES」にて、
-          学生・若手医師として早期から学会発表のチャンスがあります。
-          道内の同世代と切磋琢磨し、外科系学会のエコシステムに飛び込む第一歩として最適です。
+          医学生・若手医師として早期から学会発表のチャンス。
+          <strong>当科からは複数の優秀演題賞を受賞</strong> 中。教室全体で発表をサポートします。
         </p>
-        <a href="https://hopes2026.hkdo.jp/" target="_blank" rel="noopener" class="training-link">
-          HOPES 2026 公式サイト
+        <a href="#awards" class="training-link">
+          HOPES 受賞ハイライトを見る
         </a>
       </article>
 
@@ -859,6 +968,57 @@
           詳しく聞く ／ 見学を申し込む
         </a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOPES Awards Highlight -->
+<section class="awards" id="awards">
+  <div class="awards-inner">
+    <div class="awards-head">
+      <div class="eyebrow">HOPES Award Winners</div>
+      <h2>HOPES 学会で<span class="em">受賞続出。</span></h2>
+      <p class="sub">医学生・若手医師として早期から学会発表に挑戦し、複数の優秀演題賞を受賞しています。</p>
+    </div>
+
+    <div class="awards-feature">
+      <div class="awards-photo-large" style="background-image:url('images/hopes-award-1.jpg')" onclick="openLightbox(9)">
+        <div class="awards-photo-caption">
+          <div class="tag">Award Ceremony</div>
+          <div class="title">表彰式 ／ 賞状の授与</div>
+        </div>
+      </div>
+      <div class="awards-side">
+        <div class="photo" style="background-image:url('images/hopes-award-2.jpg')" onclick="openLightbox(10)">
+          <div class="label">受賞者スピーチ</div>
+        </div>
+        <div class="photo" style="background-image:url('images/hopes-award-4.jpg')" onclick="openLightbox(12)">
+          <div class="label">受賞者集合・笑顔の瞬間</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="awards-stats">
+      <div class="awards-stat">
+        <div class="num">6<small>+</small></div>
+        <div class="lbl">Awards</div>
+        <div class="desc">HOPES での優秀演題賞 受賞数</div>
+      </div>
+      <div class="awards-stat">
+        <div class="num">2024</div>
+        <div class="lbl">Latest</div>
+        <div class="desc">医学部 6 年生 秋本 遼一郎 先生 受賞</div>
+      </div>
+      <div class="awards-stat">
+        <div class="num">100<small>%</small></div>
+        <div class="lbl">Support</div>
+        <div class="desc">教室全体での発表サポート体制</div>
+      </div>
+    </div>
+
+    <div class="awards-quote">
+      <p class="awards-quote-text">学生のうちから学会で発表し、評価される ── そんな貴重な経験を、当科は本気で応援します。</p>
+      <div class="awards-quote-author">— 札幌医科大学 心臓血管外科</div>
     </div>
   </div>
 </section>
@@ -910,7 +1070,7 @@
       </div>
     </div>
 
-    <!-- HOPES category -->
+    <!-- HOPES Presentation category -->
     <div class="gallery-cat">
       <div class="gallery-cat-head">
         <h3>HOPES 学会発表</h3>
@@ -931,6 +1091,46 @@
           <img src="images/hopes-2.jpg" alt="HOPES 学会 演者">
           <div class="gallery-thumb-zoom">⤢</div>
           <div class="gallery-thumb-overlay">演者として登壇する若手</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- HOPES Award category (NEW) -->
+    <div class="gallery-cat">
+      <div class="gallery-cat-head">
+        <h3>HOPES 受賞・表彰</h3>
+        <span class="en">Award Ceremony</span>
+        <span class="count">5 photos</span>
+      </div>
+      <p class="gallery-cat-desc">
+        HOPES 学会で <strong>優秀演題賞を受賞</strong> した瞬間。学生・若手医師の挑戦が、
+        確かな評価につながっています。教室全体で支える文化が、こうした成果を生み出しています。
+      </p>
+      <div class="gallery-grid">
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(9)">
+          <img src="images/hopes-award-1.jpg" alt="HOPES 表彰式">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">表彰式・賞状授与の瞬間</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(10)">
+          <img src="images/hopes-award-2.jpg" alt="HOPES 受賞者スピーチ">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">受賞者スピーチ</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(11)">
+          <img src="images/hopes-award-3.jpg" alt="HOPES 受賞者集合">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">受賞者ステージ集合</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(12)">
+          <img src="images/hopes-award-4.jpg" alt="HOPES 受賞 笑顔">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">受賞・笑顔の瞬間</div>
+        </a>
+        <a href="#" class="gallery-thumb" onclick="return openLightbox(13)">
+          <img src="images/hopes-award-5.jpg" alt="HOPES 受賞 記念撮影">
+          <div class="gallery-thumb-zoom">⤢</div>
+          <div class="gallery-thumb-overlay">教授陣との記念撮影</div>
         </a>
       </div>
     </div>
@@ -1339,7 +1539,12 @@
     {src:'images/hopes-2.jpg', caption:'HOPES ／ 演者として登壇する若手'},
     {src:'images/social-1.jpg', caption:'親睦・交流 ／ 関連病院との合同会'},
     {src:'images/social-2.jpg', caption:'親睦・交流 ／ 少人数の懇親会'},
-    {src:'images/social-3.jpg', caption:'親睦・交流 ／ 先輩・後輩の交流'}
+    {src:'images/social-3.jpg', caption:'親睦・交流 ／ 先輩・後輩の交流'},
+    {src:'images/hopes-award-1.jpg', caption:'HOPES 受賞・表彰 ／ 表彰式・賞状授与の瞬間'},
+    {src:'images/hopes-award-2.jpg', caption:'HOPES 受賞・表彰 ／ 受賞者スピーチ'},
+    {src:'images/hopes-award-3.jpg', caption:'HOPES 受賞・表彰 ／ 受賞者ステージ集合'},
+    {src:'images/hopes-award-4.jpg', caption:'HOPES 受賞・表彰 ／ 受賞・笑顔の瞬間'},
+    {src:'images/hopes-award-5.jpg', caption:'HOPES 受賞・表彰 ／ 教授陣との記念撮影'}
   ];
 
   function openLightbox(index){
