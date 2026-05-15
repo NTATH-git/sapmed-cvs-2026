@@ -137,16 +137,32 @@
   }
   .hero-photo-main{
     position:absolute;top:0;right:24px;width:calc(100% - 24px);height:calc(100% - 24px);
-    background-image:url("images/iba-loupe.jpg");
-    background-size:cover;background-position:center 25%;
     z-index:1;box-shadow:0 18px 44px rgba(0,0,0,0.45);
+    overflow:hidden;
+  }
+  .hero-photo-main .hero-slide{
+    position:absolute;inset:0;
+    background-size:cover;
+    opacity:0;transition:opacity 1.2s ease-in-out;
     filter:contrast(1.05) saturate(0.95);
   }
+  .hero-photo-main .hero-slide.active{opacity:1}
+  .hero-photo-dots{
+    position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+    z-index:3;display:flex;gap:8px;
+  }
+  .hero-photo-dots .dot{
+    width:28px;height:3px;background:rgba(255,255,255,0.45);
+    cursor:pointer;transition:all .3s;
+  }
+  .hero-photo-dots .dot.active{background:var(--coral);width:44px}
   .hero-photo-credit{
     position:absolute;left:0;bottom:-18px;background:var(--navy-deep);
     padding:16px 24px;max-width:280px;z-index:2;
     border-left:3px solid var(--coral);
+    transition:opacity .4s;
   }
+  .hero-photo-credit.fade{opacity:0.3}
   .hero-photo-credit .role{
     font-family:"Cormorant Garamond",serif;font-size:10px;letter-spacing:0.3em;
     color:var(--coral-soft);text-transform:uppercase;margin-bottom:5px;font-weight:600;
@@ -1009,11 +1025,32 @@
       </div>
       <div class="hero-photo-area">
         <div class="hero-photo-frame"></div>
-        <div class="hero-photo-main"></div>
-        <div class="hero-photo-credit">
+        <div class="hero-photo-main" id="heroPhotoStack">
+          <div class="hero-slide active"
+               style="background-image:url('images/iba-loupe.jpg');background-position:center 22%"
+               data-role="Professor &amp; Chairman"
+               data-name="伊庭 裕 教授 ／ 術中"
+               data-name-en="Yutaka Iba, M.D., Ph.D."></div>
+          <div class="hero-slide"
+               style="background-image:url('images/shibata-surgery.jpg');background-position:center 22%"
+               data-role="Lecturer"
+               data-name="柴田 豪 講師 ／ 術中"
+               data-name-en="Go Shibata, M.D., Ph.D."></div>
+          <div class="hero-slide"
+               style="background-image:url('images/team-surgery.jpg');background-position:center 28%"
+               data-role="Sapmed CVS Team"
+               data-name="仲澤先生をはじめとする手術チーム"
+               data-name-en="Operating Team led by Dr. Nakazawa"></div>
+        </div>
+        <div class="hero-photo-credit" id="heroPhotoCredit">
           <div class="role">Professor &amp; Chairman</div>
           <div class="name">伊庭 裕 教授 ／ 術中</div>
           <div class="name-en">Yutaka Iba, M.D., Ph.D.</div>
+        </div>
+        <div class="hero-photo-dots" id="heroPhotoDots">
+          <span class="dot active" data-i="0"></span>
+          <span class="dot" data-i="1"></span>
+          <span class="dot" data-i="2"></span>
         </div>
       </div>
     </div>
@@ -1882,6 +1919,35 @@
 </div>
 
 <script>
+  // === Hero photo carousel: 伊庭・柴田・仲澤チーム を自動切替 ===
+  (function(){
+    var stack = document.getElementById('heroPhotoStack');
+    var credit = document.getElementById('heroPhotoCredit');
+    var dotsBox = document.getElementById('heroPhotoDots');
+    if (!stack || !credit || !dotsBox) return;
+    var slides = stack.querySelectorAll('.hero-slide');
+    var dots = dotsBox.querySelectorAll('.dot');
+    var idx = 0;
+    function show(i){
+      slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+      dots.forEach(function(d,k){ d.classList.toggle('active', k===i); });
+      var s = slides[i];
+      credit.classList.add('fade');
+      setTimeout(function(){
+        credit.querySelector('.role').innerHTML = s.dataset.role || '';
+        credit.querySelector('.name').textContent = s.dataset.name || '';
+        credit.querySelector('.name-en').textContent = s.dataset.nameEn || '';
+        credit.classList.remove('fade');
+      }, 250);
+      idx = i;
+    }
+    dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); restart(); }); });
+    var timer;
+    function tick(){ show((idx+1) % slides.length); }
+    function restart(){ clearInterval(timer); timer = setInterval(tick, 6000); }
+    restart();
+  })();
+
   // === 画像保存の一般的な抑止（右クリック・ドラッグ） ===
   // ※ スクリーンショット・開発者ツールでの取得は防げません。
   document.addEventListener('contextmenu', function(e){
