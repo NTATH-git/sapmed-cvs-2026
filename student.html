@@ -626,6 +626,25 @@
   .btn-white{background:#fff;color:var(--coral);font-weight:600}
   .btn-white:hover{background:var(--gold-light);color:var(--ink);opacity:1;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
 
+  /* Survey */
+  .survey{background:var(--bg-cream);border-top:1px solid rgba(0,0,0,0.05)}
+  .survey-head{text-align:center;max-width:720px;margin:0 auto 36px}
+  .survey-head .eyebrow{justify-content:center}
+  .survey-head h2{font-family:"Noto Serif JP",serif;font-size:30px;color:var(--ink);font-weight:600;margin:14px 0 16px;letter-spacing:0.04em}
+  .survey-head p{color:var(--ink-soft);line-height:2;font-size:15px}
+  .survey-frame{
+    max-width:880px;margin:0 auto;background:#fff;
+    border:1px solid rgba(0,0,0,0.08);border-radius:6px;
+    box-shadow:0 4px 24px rgba(0,0,0,0.06);overflow:hidden;
+  }
+  .survey-frame iframe{display:block;width:100%;min-height:780px;border:0}
+  .survey-fallback{padding:40px 28px;text-align:center;color:var(--ink-soft);font-size:14px;line-height:2}
+  .survey-fallback a{color:var(--coral);font-weight:600;text-decoration:underline}
+  @media(max-width:760px){
+    .survey-head h2{font-size:24px}
+    .survey-frame iframe{min-height:920px}
+  }
+
   /* Contact */
   .contact{background:var(--paper)}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -1606,6 +1625,29 @@
     <div class="cta-actions">
       <a href="#contact" class="btn btn-white">病院見学を申込む <span class="arrow">→</span></a>
       <a href="mailto:question_surg2@sapmed.ac.jp" class="btn btn-line">メールで質問する <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Survey -->
+<section class="survey" id="survey">
+  <div class="container">
+    <div class="survey-head">
+      <div class="eyebrow"><span class="eyebrow-line"></span>Survey<span class="eyebrow-line"></span></div>
+      <h2>学生さんアンケート</h2>
+      <p>
+        ページをご覧いただきありがとうございます。<br>
+        今後の情報提供・教室活動の改善のため、ぜひご回答をお願いいたします（所要時間：約2分）。
+      </p>
+    </div>
+    <div class="survey-frame">
+      <!-- ▼ Microsoft Forms iframe をここに貼り付け（先生から共有後に差し込み） ▼ -->
+      <div class="survey-fallback">
+        アンケートフォームを準備中です。<br>
+        恐れ入りますが、しばらくお待ちください。<br>
+        お急ぎの方は <a href="mailto:question_surg2@sapmed.ac.jp">question_surg2@sapmed.ac.jp</a> までご連絡ください。
+      </div>
+      <!-- ▲ Microsoft Forms iframe をここに貼り付け ▲ -->
     </div>
   </div>
 </section>
