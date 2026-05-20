@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>会員登録｜札幌医科大学 胸部外科同門会</title>
+<meta name="description" content="札幌医科大学 胸部外科同門会の会員登録。メールアドレスを入力すると、登録フォームのご案内メールをお送りします。" />
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a;--ink-soft:#475569;
+    --primary:#0d3b66;--primary-dark:#082848;
+    --gold:#b08d57;--gold-light:#d4b87a;
+    --bg-cream:#faf8f4;--paper:#fffdf8;--line:#e8e2d0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--ink);background:var(--bg-cream);line-height:1.85;
+    font-feature-settings:"palt";-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;flex-direction:column;
+  }
+  a{color:inherit;text-decoration:none;transition:opacity .2s}
+  a:hover{opacity:0.75}
+  ::selection{background:var(--gold);color:#fff}
+
+  .topbar{background:var(--primary-dark);color:#fff;font-size:12px;padding:8px 24px}
+  .topbar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .topbar a{color:#fff}
+  .topbar a:hover{opacity:0.7}
+
+  .header{background:#fff;border-bottom:1px solid var(--line);padding:18px 24px}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-mark{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Noto Serif JP",serif;font-weight:600;font-size:18px}
+  .logo-text .ja{font-weight:700;font-size:16px;letter-spacing:0.05em}
+  .logo-text .en{font-family:"Cormorant Garamond",serif;font-size:11px;color:var(--ink-soft);letter-spacing:0.15em;text-transform:uppercase}
+  .header-back{font-size:13px;color:var(--ink-soft);letter-spacing:0.05em}
+
+  /* Main */
+  main{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    padding:64px 24px;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(176,141,87,0.08),transparent 50%),
+      radial-gradient(circle at 80% 80%,rgba(13,59,102,0.06),transparent 50%);
+  }
+  .container{max-width:560px;width:100%}
+
+  /* Hero / intro */
+  .intro{text-align:center;margin-bottom:36px}
+  .intro .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:0.4em;
+    color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-weight:500;
+  }
+  .intro .eyebrow::before,.intro .eyebrow::after{content:"";width:24px;height:1px;background:var(--gold)}
+  .intro h1{
+    font-family:"Noto Serif JP",serif;font-size:clamp(24px,3vw,32px);
+    color:var(--primary-dark);font-weight:600;margin-bottom:14px;
+    letter-spacing:0.06em;line-height:1.55;
+  }
+  .intro p{font-size:14px;color:var(--ink-soft);line-height:2;max-width:440px;margin:0 auto}
+
+  /* Card */
+  .card{
+    background:#fff;border:1px solid var(--line);
+    padding:48px 44px;box-shadow:0 8px 32px rgba(13,59,102,0.06);
+  }
+  .card-title{
+    font-family:"Noto Serif JP",serif;font-size:18px;color:var(--primary-dark);
+    font-weight:600;margin-bottom:8px;letter-spacing:0.04em;text-align:center;
+  }
+  .card-sub{
+    font-size:12.5px;color:var(--ink-soft);text-align:center;margin-bottom:28px;
+    letter-spacing:0.04em;line-height:1.85;
+  }
+  label{
+    display:block;font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:13px;color:var(--primary-dark);margin-bottom:8px;letter-spacing:0.05em;
+  }
+  input[type="email"]{
+    width:100%;padding:16px 18px;border:1px solid var(--line);background:#fff;
+    font-size:15px;font-family:inherit;color:var(--ink);letter-spacing:0.02em;
+    transition:border .2s,box-shadow .2s;
+  }
+  input[type="email"]:focus{
+    outline:none;border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(13,59,102,0.08);
+  }
+  .submit-btn{
+    width:100%;background:var(--primary);color:#fff;
+    padding:18px 28px;border:0;font-size:15px;font-weight:600;
+    letter-spacing:0.12em;cursor:pointer;transition:background .2s;
+    font-family:inherit;display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-top:18px;
+  }
+  .submit-btn:hover{background:var(--primary-dark)}
+  .submit-btn .arrow{transition:transform .2s}
+  .submit-btn:hover .arrow{transform:translateX(5px)}
+
+  /* Flow steps */
+  .flow{margin-top:36px;display:flex;flex-direction:column;gap:16px}
+  .flow-step{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:16px;background:var(--bg-cream);border-left:3px solid var(--gold);
+  }
+  .flow-step .num{
+    flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    background:#fff;border:2px solid var(--gold);color:var(--gold);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;font-size:14px;font-weight:600;
+  }
+  .flow-step .text{font-size:13px;color:var(--ink-soft);line-height:1.85}
+  .flow-step .text strong{display:block;color:var(--primary-dark);font-family:"Noto Serif JP",serif;font-size:14px;margin-bottom:2px;font-weight:600}
+
+  /* Demo notice */
+  .demo-notice{
+    background:#fef3c7;border:1px solid #f59e0b;color:#7c2d12;
+    padding:14px 18px;font-size:12px;line-height:1.7;margin-bottom:24px;
+  }
+  .demo-notice strong{color:#7c2d12}
+
+  /* Privacy */
+  .privacy{
+    margin-top:24px;text-align:center;
+    font-size:11px;color:var(--ink-soft);line-height:1.85;
+  }
+  .privacy a{color:var(--primary);text-decoration:underline}
+
+  /* Footer */
+  footer{background:#0a2540;color:rgba(255,255,255,0.5);padding:24px;text-align:center;font-size:11px;letter-spacing:0.1em}
+
+  @media(max-width:600px){
+    main{padding:36px 18px}
+    .header{padding:14px 18px}
+    .logo-mark{width:38px;height:38px;font-size:14px}
+    .logo-text .ja{font-size:13px}
+    .logo-text .en{font-size:9px}
+    .header-back{font-size:11px}
+    .topbar-inner{padding:0;font-size:11px}
+    .intro h1{font-size:20px;line-height:1.6}
+    .intro p{font-size:13px;line-height:1.95}
+    .card{padding:32px 24px}
+    .card-title{font-size:16px}
+    .submit-btn{padding:14px 22px;font-size:14px}
+    .flow-step{padding:14px;gap:12px}
+    .flow-step .num{width:24px;height:24px;font-size:12px}
+    .flow-step .text{font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>札幌医科大学 胸部外科同門会 会員登録</div>
+    <a href="doumonkai.html">← 同門会トップ</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <a href="doumonkai.html" class="logo">
+      <div class="logo-mark">同</div>
+      <div class="logo-text">
+        <div class="ja">胸部外科同門会</div>
+        <div class="en">Member Registration</div>
+      </div>
+    </a>
+    <a href="doumonkai.html" class="header-back">← 戻る</a>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+    <div class="intro">
+      <div class="eyebrow">Member Registration</div>
+      <h1>会員登録のご案内</h1>
+      <p>
+        まずはメールアドレスをご入力ください。<br>
+        登録フォームのご案内をメールでお送りいたします。
+      </p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">メールアドレスのみご入力ください</h2>
+      <p class="card-sub">入力後、登録フォームのご案内を5分以内にお送りします</p>
+
+      <div class="demo-notice">
+        <strong>⚠️ デモ表示中：</strong>
+        現在は送信先（Mailchimp）が未設定です。本番運用前に外部サービスとの連携設定が必要です。
+      </div>
+
+      <form action="https://YOUR-MAILCHIMP-ENDPOINT-HERE" method="POST" target="_blank">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="EMAIL" required placeholder="example@hospital.jp" autofocus>
+        <input type="hidden" name="STAGE" value="initial">
+        <button type="submit" class="submit-btn">
+          登録フォームを受け取る
+          <span class="arrow">→</span>
+        </button>
+      </form>
+
+      <p class="privacy">
+        ご入力いただいたメールアドレスは、同門会の運営目的のみに使用します。<br>
+        詳細は<a href="doumonkai.html#join">入会のご案内</a>をご覧ください。
+      </p>
+    </div>
+
+    <!-- Flow -->
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <div class="text">
+          <strong>メールアドレスをご入力</strong>
+          まずはメールアドレスのみご入力いただき送信
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <div class="text">
+          <strong>登録フォームのメールが届く</strong>
+          ご入力いただいたアドレス宛に、会員情報入力フォームのリンクをお送りします
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <div class="text">
+          <strong>フォームに必要事項をご入力</strong>
+          お名前・ご所属・卒業年などをご入力いただきます（メールアドレスは自動入力）
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <div class="text">
+          <strong>会員専用ページへアクセス可能に</strong>
+          会員パスワードがメールで届き、Annual Report などのコンテンツが閲覧可能に
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>© 2026 SAPMED · THORACIC · ALUMNI · since 1958</footer>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>会員登録｜札幌医科大学 胸部外科同門会</title>
+<meta name="description" content="札幌医科大学 胸部外科同門会の会員登録ページ。お名前・メールアドレス・所属を登録いただくと、同門会のお知らせをお送りします。" />
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a;--ink-soft:#475569;
+    --primary:#0d3b66;--primary-dark:#082848;
+    --navy:#0a2540;--navy-deep:#061528;
+    --accent:#b8332a;--accent-light:#d35450;
+    --gold:#b08d57;--gold-light:#d4b87a;
+    --bg:#fff;--bg-soft:#f5f7fa;--bg-cream:#faf8f4;
+    --paper:#fffdf8;--line:#e8e2d0;
+    --max:1200px;--gutter:32px;
+    --error:#c0401e;--success:#2d7a3a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--ink);background:var(--bg-cream);line-height:1.85;
+    font-feature-settings:"palt";-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;transition:opacity .2s,color .2s}
+  a:hover{opacity:0.75}
+  ::selection{background:var(--gold);color:#fff}
+
+  /* Topbar */
+  .topbar{background:var(--primary-dark);color:#fff;font-size:12px}
+  .topbar-inner{max-width:var(--max);margin:0 auto;padding:8px var(--gutter);display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .topbar a{color:#fff}
+  .topbar a:hover{opacity:0.7}
+
+  /* Header */
+  .header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-mark{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Noto Serif JP",serif;font-weight:600;font-size:18px}
+  .logo-text .ja{font-weight:700;font-size:16px;letter-spacing:0.05em}
+  .logo-text .en{font-family:"Cormorant Garamond",serif;font-size:11px;color:var(--ink-soft);letter-spacing:0.15em;text-transform:uppercase}
+  .header-back{font-size:13px;color:var(--ink-soft);letter-spacing:0.05em}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(135deg,#082848 0%,#0d3b66 50%,#1c5a99 100%);
+    color:#fff;padding:80px var(--gutter) 64px;position:relative;overflow:hidden;
+  }
+  .hero::before{content:"";position:absolute;left:-100px;bottom:-100px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(176,141,87,0.18),transparent 70%)}
+  .hero-inner{max-width:var(--max);margin:0 auto;text-align:center;position:relative;z-index:2}
+  .hero-eyebrow{font-family:"Cormorant Garamond",serif;font-size:13px;letter-spacing:0.4em;text-transform:uppercase;color:#e8d4ad;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px}
+  .hero-eyebrow::before,.hero-eyebrow::after{content:"";width:32px;height:1px;background:#e8d4ad}
+  .hero h1{font-family:"Noto Serif JP",serif;font-weight:600;font-size:clamp(28px,3.6vw,40px);line-height:1.5;letter-spacing:0.08em;margin-bottom:14px}
+  .hero p{font-size:15px;line-height:2;max-width:680px;margin:0 auto;color:#cfdcec}
+
+  /* Steps */
+  .steps{background:var(--paper);border-bottom:1px solid var(--line);padding:32px var(--gutter)}
+  .steps-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;gap:0;align-items:flex-start;position:relative}
+  .steps-inner::before{
+    content:"";position:absolute;top:22px;left:14%;right:14%;height:2px;
+    background:linear-gradient(to right,var(--gold) 0%,var(--gold) 50%,var(--line) 50%);
+    z-index:0;
+  }
+  .step .num.done,
+  .step:first-child .num{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .step{flex:1;text-align:center;position:relative;z-index:1}
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:50%;
+    background:#fff;border:2px solid var(--line);
+    font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:600;color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .step.active .num{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .step .label{
+    font-family:"Noto Serif JP",serif;font-size:14px;font-weight:600;color:var(--ink);
+    letter-spacing:0.04em;
+  }
+  .step.active .label{color:var(--primary-dark)}
+  .step .sub{font-size:11px;color:var(--ink-soft);letter-spacing:0.05em;margin-top:4px}
+
+  /* Main */
+  main{padding:72px var(--gutter)}
+  .main-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start}
+
+  /* Form */
+  .form-card{
+    background:#fff;border:1px solid var(--line);padding:44px 48px;
+    box-shadow:0 4px 24px rgba(13,59,102,0.06);
+  }
+  .form-card h2{
+    font-family:"Noto Serif JP",serif;font-size:24px;color:var(--primary-dark);
+    font-weight:600;margin-bottom:8px;letter-spacing:0.04em;
+  }
+  .form-card .sub{font-size:13px;color:var(--ink-soft);margin-bottom:32px;letter-spacing:0.04em}
+  .form-row{margin-bottom:22px}
+  .form-row.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{
+    display:block;font-family:"Noto Serif JP",serif;font-weight:600;
+    font-size:13px;color:var(--primary-dark);margin-bottom:8px;letter-spacing:0.05em;
+  }
+  label .required{color:var(--accent);margin-left:6px;font-size:11px;font-weight:600;letter-spacing:0.1em}
+  label .optional{color:var(--ink-soft);margin-left:6px;font-size:11px;font-weight:400}
+  input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+    width:100%;padding:13px 14px;border:1px solid var(--line);background:#fff;
+    font-size:14px;font-family:inherit;color:var(--ink);
+    transition:border .2s,box-shadow .2s;
+  }
+  input:focus,select:focus,textarea:focus{
+    outline:none;border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(13,59,102,0.08);
+  }
+  textarea{min-height:90px;resize:vertical;line-height:1.7}
+  select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23475569' stroke-width='1.5' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;
+    appearance:none;padding-right:36px;
+  }
+  .radio-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .radio-group label{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    padding:10px 16px;background:var(--bg-cream);border:1px solid var(--line);
+    margin-bottom:0;font-weight:500;color:var(--ink-soft);
+    transition:all .2s;font-size:13px;letter-spacing:0.04em;
+  }
+  .radio-group label:hover{border-color:var(--gold)}
+  .radio-group input[type="radio"]{accent-color:var(--gold)}
+  .radio-group input[type="radio"]:checked + span{color:var(--primary-dark);font-weight:600}
+  .form-help{font-size:11px;color:var(--ink-soft);margin-top:6px;line-height:1.7}
+  .checkbox-row{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--bg-cream);padding:16px;border-left:3px solid var(--gold);
+    margin-bottom:24px;
+  }
+  .checkbox-row input{margin-top:4px;accent-color:var(--gold);flex-shrink:0}
+  .checkbox-row label{margin:0;font-size:12.5px;line-height:1.85;color:var(--ink-soft);font-weight:400}
+  .checkbox-row label a{color:var(--primary);text-decoration:underline}
+  .submit-btn{
+    width:100%;background:var(--primary);color:#fff;
+    padding:16px 28px;border:0;font-size:15px;font-weight:600;
+    letter-spacing:0.12em;cursor:pointer;transition:background .2s;
+    font-family:inherit;display:flex;align-items:center;justify-content:center;gap:12px;
+  }
+  .submit-btn:hover{background:var(--primary-dark)}
+  .submit-btn .arrow{transition:transform .2s}
+  .submit-btn:hover .arrow{transform:translateX(5px)}
+  .demo-notice{
+    background:#fef3c7;border:1px solid #f59e0b;color:#7c2d12;
+    padding:14px 18px;font-size:12px;line-height:1.7;margin-bottom:24px;
+  }
+  .demo-notice strong{color:#7c2d12}
+
+  /* Sidebar */
+  .sidebar{background:var(--paper);padding:36px 32px;border:1px solid var(--line)}
+  .sidebar h3{
+    font-family:"Noto Serif JP",serif;font-size:18px;color:var(--primary-dark);
+    font-weight:600;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--gold);
+    letter-spacing:0.04em;
+  }
+  .sidebar h3 .en{display:block;font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-top:4px;font-weight:500}
+  .benefit-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+  .benefit-list li{display:flex;gap:12px;font-size:13px;line-height:1.85;color:var(--ink-soft)}
+  .benefit-list li::before{
+    content:"";width:18px;height:18px;border-radius:50%;background:var(--gold);
+    flex-shrink:0;margin-top:3px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='M2 6l3 3 5-6'/%3E%3C/svg%3E");
+    background-size:12px;background-position:center;background-repeat:no-repeat;
+  }
+  .sidebar-info{background:var(--bg-cream);padding:18px;font-size:12px;color:var(--ink-soft);line-height:1.85;border-left:3px solid var(--primary);margin-bottom:18px}
+  .sidebar-info strong{color:var(--primary-dark);display:block;margin-bottom:4px;font-size:13px}
+  .sidebar-contact{font-size:12px;color:var(--ink-soft);line-height:1.85}
+  .sidebar-contact strong{display:block;color:var(--primary-dark);font-size:13px;margin-bottom:6px;font-family:"Noto Serif JP",serif}
+
+  /* Footer */
+  footer{background:#0a2540;color:#cbd2dc;padding:40px var(--gutter) 24px;font-size:13px;text-align:center}
+  footer p{margin-bottom:8px}
+  footer .small{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.1em}
+
+  /* Responsive */
+  @media(max-width:960px){
+    .main-inner{grid-template-columns:1fr;gap:32px}
+    .sidebar{position:static}
+    .form-card{padding:36px 28px}
+    main{padding:48px var(--gutter)}
+    .hero{padding:56px var(--gutter) 48px}
+    .hero h1{font-size:24px}
+  }
+  @media(max-width:600px){
+    :root{--gutter:18px}
+    .topbar-inner{padding:8px 16px;font-size:11px}
+    .header-inner{padding:14px 16px}
+    .logo-mark{width:38px;height:38px;font-size:14px}
+    .logo-text .ja{font-size:13px}
+    .logo-text .en{font-size:9px}
+    .header-back{font-size:11px}
+    .hero{padding:40px var(--gutter) 36px}
+    .hero h1{font-size:20px;letter-spacing:0.04em}
+    .hero p{font-size:13px}
+    .steps{padding:24px var(--gutter)}
+    .steps-inner::before{top:18px;left:18%;right:18%}
+    .step .num{width:36px;height:36px;font-size:15px;margin-bottom:8px}
+    .step .label{font-size:12px;letter-spacing:0.03em}
+    .step .sub{font-size:9px}
+    main{padding:36px var(--gutter)}
+    .form-card{padding:28px 22px}
+    .form-card h2{font-size:20px}
+    .form-row.split{grid-template-columns:1fr;gap:0}
+    .form-row.split .form-row,.form-row.split > div{margin-bottom:18px}
+    .submit-btn{padding:14px 22px;font-size:14px}
+    .sidebar{padding:28px 22px}
+    .sidebar h3{font-size:16px}
+    .benefit-list li{font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>札幌医科大学 胸部外科同門会 会員登録</div>
+    <a href="doumonkai.html">← 同門会トップに戻る</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <a href="doumonkai.html" class="logo">
+      <div class="logo-mark">同</div>
+      <div class="logo-text">
+        <div class="ja">胸部外科同門会</div>
+        <div class="en">Alumni Association · Member Registration</div>
+      </div>
+    </a>
+    <a href="doumonkai.html" class="header-back">← 戻る</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Step 2 of 3 · Complete Your Profile</div>
+    <h1>会員情報のご入力</h1>
+    <p>
+      メールアドレスのご確認ありがとうございます。<br>
+      引き続き、お名前・ご所属などの会員情報をご入力ください。
+    </p>
+  </div>
+</section>
+
+<!-- Steps -->
+<div class="steps">
+  <div class="steps-inner">
+    <div class="step">
+      <div class="num">✓</div>
+      <div class="label">メール入力</div>
+      <div class="sub">完了</div>
+    </div>
+    <div class="step active">
+      <div class="num">2</div>
+      <div class="label">情報入力</div>
+      <div class="sub">お名前・所属など</div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="label">会員専用ページ</div>
+      <div class="sub">パスワードでアクセス</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main -->
+<main>
+  <div class="main-inner">
+
+    <!-- Form -->
+    <div class="form-card">
+      <h2>会員情報のご入力</h2>
+      <p class="sub">ご入力いただいた情報は同門会の運営目的のみに利用いたします。</p>
+
+      <div class="demo-notice">
+        <strong>⚠️ デモ表示中：</strong>
+        現在は送信先（Mailchimp / Google Forms）が未設定です。本番運用前に外部サービスとの連携設定が必要です。
+      </div>
+
+      <form action="https://YOUR-MAILCHIMP-OR-GOOGLEFORM-ENDPOINT-HERE" method="POST" target="_blank">
+
+        <!-- 氏名（姓・名） -->
+        <div class="form-row split">
+          <div>
+            <label for="lname">姓 <span class="required">必須</span></label>
+            <input type="text" id="lname" name="LNAME" required placeholder="例：中島">
+          </div>
+          <div>
+            <label for="fname">名 <span class="required">必須</span></label>
+            <input type="text" id="fname" name="FNAME" required placeholder="例：智博">
+          </div>
+        </div>
+
+        <!-- フリガナ -->
+        <div class="form-row split">
+          <div>
+            <label for="lkana">セイ <span class="optional">(カナ)</span></label>
+            <input type="text" id="lkana" name="LKANA" placeholder="例：ナカジマ">
+          </div>
+          <div>
+            <label for="fkana">メイ <span class="optional">(カナ)</span></label>
+            <input type="text" id="fkana" name="FKANA" placeholder="例：トモヒロ">
+          </div>
+        </div>
+
+        <!-- メール（事前登録時に自動入力）-->
+        <div class="form-row">
+          <label for="email">メールアドレス <span class="required">必須</span></label>
+          <input type="email" id="email" name="EMAIL" required placeholder="例：example@hospital.jp" readonly>
+          <p class="form-help">事前登録時のメールアドレスが自動入力されています。<br>変更が必要な場合は事務局までお問い合わせください。</p>
+        </div>
+
+        <!-- 所属 -->
+        <div class="form-row">
+          <label for="affiliation">ご所属（病院・施設名） <span class="required">必須</span></label>
+          <input type="text" id="affiliation" name="AFFILIATION" required placeholder="例：札幌医科大学附属病院 心臓血管外科">
+        </div>
+
+        <!-- 役職 -->
+        <div class="form-row">
+          <label for="position">役職 <span class="optional">任意</span></label>
+          <input type="text" id="position" name="POSITION" placeholder="例：講師 ／ 院長 ／ 部長 ／ 専攻医 など">
+        </div>
+
+        <!-- 卒業年・分野 -->
+        <div class="form-row split">
+          <div>
+            <label for="grad_year">卒業年 <span class="optional">任意</span></label>
+            <select id="grad_year" name="GRAD_YEAR">
+              <option value="">選択してください</option>
+              <option value="2020s">2020 年代</option>
+              <option value="2010s">2010 年代</option>
+              <option value="2000s">2000 年代</option>
+              <option value="1990s">1990 年代</option>
+              <option value="1980s">1980 年代</option>
+              <option value="before-1980">1979年以前</option>
+            </select>
+          </div>
+          <div>
+            <label>専門分野 <span class="optional">任意</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="FIELD" value="cardiovascular"><span>心臓血管</span></label>
+              <label><input type="radio" name="FIELD" value="thoracic"><span>呼吸器</span></label>
+              <label><input type="radio" name="FIELD" value="both"><span>両方</span></label>
+              <label><input type="radio" name="FIELD" value="other"><span>その他</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- メッセージ -->
+        <div class="form-row">
+          <label for="message">同門会へのメッセージ <span class="optional">任意</span></label>
+          <textarea id="message" name="MESSAGE" placeholder="近況・ご要望などございましたらご自由にお書きください。"></textarea>
+        </div>
+
+        <!-- 同意 -->
+        <div class="checkbox-row">
+          <input type="checkbox" id="consent" name="CONSENT" required>
+          <label for="consent">
+            ご入力いただいた個人情報は、同門会の運営および会員向け情報発信のみに使用し、第三者には提供いたしません。上記内容に同意のうえ登録します。 <span class="required">必須</span>
+          </label>
+        </div>
+
+        <!-- 送信ボタン -->
+        <button type="submit" class="submit-btn">
+          登録して会員情報を送信
+          <span class="arrow">→</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>会員特典 <span class="en">Member Benefits</span></h3>
+      <ul class="benefit-list">
+        <li>年次総会・胸部外科フォーラム のご案内をメールで受信</li>
+        <li>Annual Report PDF を会員専用ページからダウンロード</li>
+        <li>会員名簿・写真ギャラリーへのアクセス</li>
+        <li>若手研究助成・同門会賞 への応募資格</li>
+        <li>関連病院 26 施設のネットワークへの参加</li>
+        <li>胸部外科アカデミー など学術活動への参加</li>
+      </ul>
+
+      <div class="sidebar-info">
+        <strong>個人情報の取り扱い</strong>
+        ご登録いただいた情報は同門会事務局が厳重に管理し、同門会の運営および会員向け情報発信以外の目的には一切使用いたしません。退会・情報削除はいつでも可能です。
+      </div>
+
+      <div class="sidebar-contact">
+        <strong>お問い合わせ</strong>
+        札幌医科大学医学部 外科学第二講座 内<br>
+        TEL: 011-611-2111（内線 33120）<br>
+        〒060-8543 札幌市中央区南1条西16丁目
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 札幌医科大学 胸部外科同門会</p>
+  <p class="small">SAPMED · THORACIC · ALUMNI · since 1958</p>
+</footer>
+
+<script>
+  // URLパラメータからメールアドレスを自動入力（メールリンクからの遷移に対応）
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if(email){
+      const emailInput = document.getElementById('email');
+      if(emailInput){
+        emailInput.value = decodeURIComponent(email);
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
