@@ -2,3 +2,21 @@
 .DS_Store
 *.log
 node_modules/
+
+# --- 写真・動画・資料フォルダ（GitHub Pages に不要・誤混入防止）---
+2025年*/
+2026年/
+Photos-3-001*/
+Annual Report/
+
+# --- 独立した Git リポジトリ（別管理。埋め込み防止）---
+medical-student-study/
+
+# --- 個別の大容量・非Web ファイル ---
+*.pptx
+*.tif
+*.tiff
+*.mov
+*.MOV
+LINE_ALBUM_*
+*alias
